@@ -1,0 +1,128 @@
+{
+    "?xml": {
+        "attr": {
+            "version": "1.0",
+            "encoding": "UTF-8"
+        }
+    },
+    "PutReisInformatieBoodschapIn": {
+        "ReisInformatieProductDAS": {
+            "RIPAdministratie": {
+                "ReisInformatieProductID": "8121037462389006",
+                "AbonnementId": "55",
+                "ReisInformatieTijdstip": "2025-05-01T14:53:00Z"
+            },
+            "DynamischeAankomstStaat": {
+                "RitId": "37462",
+                "RitDatum": "2025-05-01",
+                "RitStation": {
+                    "StationCode": "LWC",
+                    "Type": "0",
+                    "KorteNaam": "Camminghab",
+                    "MiddelNaam": "Camminghaburen",
+                    "LangeNaam": "Leeuwarden Camminghaburen",
+                    "UICCode": "8400389"
+                },
+                "TreinAankomst": {
+                    "TreinNummer": "37462",
+                    "TreinSoort": {
+                        "text": "Stoptrein",
+                        "attr": {
+                            "Code": "ST"
+                        }
+                    },
+                    "TreinStatus": "5",
+                    "LijnNummer": "RS1",
+                    "Vervoerder": "Arriva",
+                    "TreinHerkomst": [
+                        {
+                            "StationCode": "LW",
+                            "Type": "5",
+                            "KorteNaam": "Leeuwarden",
+                            "MiddelNaam": "Leeuwarden",
+                            "LangeNaam": "Leeuwarden",
+                            "UICCode": "8400387",
+                            "attr": {
+                                "InfoStatus": "Gepland"
+                            }
+                        },
+                        {
+                            "StationCode": "LW",
+                            "Type": "5",
+                            "KorteNaam": "Leeuwarden",
+                            "MiddelNaam": "Leeuwarden",
+                            "LangeNaam": "Leeuwarden",
+                            "UICCode": "8400387",
+                            "attr": {
+                                "InfoStatus": "Actueel"
+                            }
+                        }
+                    ],
+                    "PresentatieTreinHerkomst": {
+                        "Uitingen": {
+                            "Uiting": "Leeuwarden"
+                        }
+                    },
+                    "AankomstTijd": [
+                        {
+                            "text": "2025-05-01T14:53:00Z",
+                            "attr": {
+                                "InfoStatus": "Gepland"
+                            }
+                        },
+                        {
+                            "text": "2025-05-01T14:54:09Z",
+                            "attr": {
+                                "InfoStatus": "Actueel"
+                            }
+                        }
+                    ],
+                    "ExacteAankomstVertraging": "PT1M9S",
+                    "PresentatieAankomstVertraging": {
+                        "Uitingen": {
+                            "Uiting": "+1 min."
+                        }
+                    },
+                    "GedempteAankomstVertraging": "PT0S",
+                    "TreinAankomstSpoor": [
+                        {
+                            "SpoorNummer": "1",
+                            "attr": {
+                                "InfoStatus": "Gepland"
+                            }
+                        },
+                        {
+                            "SpoorNummer": "1",
+                            "attr": {
+                                "InfoStatus": "Actueel"
+                            }
+                        }
+                    ],
+                    "PresentatieTreinAankomstSpoor": {
+                        "Uitingen": [
+                            {
+                                "Uiting": "1",
+                                "attr": {
+                                    "Taal": "en"
+                                }
+                            },
+                            {
+                                "Uiting": "1",
+                                "attr": {
+                                    "Taal": "nl"
+                                }
+                            }
+                        ]
+                    },
+                    "WijzigingHerkomst": {
+                        "WijzigingType": "11"
+                    }
+                }
+            },
+            "attr": {
+                "Versie": "6.1",
+                "TimeStamp": "2025-05-01T14:54:09Z"
+            }
+        }
+    }
+}

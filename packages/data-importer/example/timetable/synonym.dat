@@ -1,0 +1,140 @@
+@100,07042025,13122025,0070,IFF Standaard uit RIF         
+*BIST,ENG ,Bistro                        
+*FIET,ENG ,Bicycle accomodation          
+*RESA,ENG ,Reservation recommended       
+*REST,ENG ,Restaurant car                
+*RESV,ENG ,Reservation compulsory        
+*ROL ,ENG ,Wheelchair compartment        
+*SPEC,ENG ,Special price                 
+*T   ,ENG ,Supplement compulsory         
+*TWEE,ENG ,Second class only             
+&BUS ,ENG ,NS Couch                      
+&ECC ,ENG ,EuroCity                      
+&ECC ,FRA ,EuroCity                      
+&ECC ,DEU ,EuroCity                      
+&ECD ,ENG ,Eurocity Direct               
+&ECD ,FRA ,Eurocity Direct               
+&ECD ,DEU ,Eurocity Direct               
+&EST ,ENG ,Eurostar                      
+&EST ,FRA ,Eurostar                      
+&EST ,DEU ,Eurostar                      
+&IC  ,ENG ,Intercity                     
+&IC  ,FRA ,TER                           
+&IC  ,DEU ,Intercity                     
+&ICD ,ENG ,Intercity direct              
+&ICD ,FRA ,Intercity direct              
+&ICD ,DEU ,Intercity direct              
+&ICE ,ENG ,ICE International             
+&ICE ,FRA ,ICE International             
+&ICE ,DEU ,ICE International             
+&INT ,ENG ,International train           
+&INT ,FRA ,Train international           
+&INT ,DEU ,Internationaler Zug           
+&NJ  ,ENG ,Nightjet                      
+&NJ  ,FRA ,Nightjet                      
+&NJ  ,DEU ,Nightjet                      
+&S   ,FRA ,Train rapide                  
+&S   ,DEU ,Schnellzug                    
+&S   ,ENG ,Express train                 
+&SPR ,FRA ,Train Sprinter                
+&SPR ,DEU ,S-Bahn                        
+&SPR ,ENG ,Sprinter                      
+&ST  ,DEU ,Regionalbahn                  
+&ST  ,ENG ,Local                         
+&ST  ,FRA ,Omnibus                       
+&THA ,ENG ,Eurostar                      
+&THA ,FRA ,Eurostar                      
+&THA ,DEU ,Eurostar                      
++ah     ,NSR ,Arnhem                        
++ah     ,NSR ,Arnhem CS                     
++ahbf   ,NSR ,Aken                          
++alm    ,NSR ,Almere                        
++amf    ,NSR ,Amersfoort                    
++amf    ,NSR ,Amersfoort CS                 
++apn    ,NSR ,Alphen aan den Rijn           
++asd    ,NSR ,Amsterdam                     
++asd    ,NSR ,Amsterdam CS                  
++berhbl ,NSR ,Berlijn                       
++bp     ,NSR ,Bûtenpost                     
++buende ,NSR ,Bunde                         
++dussel ,NSR ,Dusseldorf Hbf                
++dussel ,NSR ,Dusseldorf                    
++ebeo   ,NSR ,Bonen                         
++edulh  ,NSR ,Dulmen                        
++ehv    ,NSR ,Eindhoven CS                  
++ehv    ,NSR ,Eindhoven                     
++eldh   ,NSR ,Ludinghausen                  
++elue   ,NSR ,Lunen                         
++enbe   ,NSR ,Munster-Hager                 
++enhf   ,NSR ,Munster Zentrum Nord          
++ese    ,NSR ,De Eschmarke                  
++ese    ,NSR ,Eschmarke                     
++fn     ,NSR ,Frjentsjer                    
++fvs    ,NSR ,Vise                          
++fwd    ,NSR ,Feanwalden                    
++gv     ,NSR ,Hollands Spoor                
++gv     ,NSR ,Den Haag Hollands Spoor       
++gvc    ,NSR ,'s-Gravenhage                 
++gvc    ,NSR ,Den Haag                      
++gvc    ,NSR ,Den Haag CS                   
++hde    ,NSR ,Harde ('t)                    
++hlg    ,NSR ,Harns                         
++hlgh   ,NSR ,Harns Haven                   
++hnp    ,NSR ,Hylpen                        
++hr     ,NSR ,It Hearrenfean                
++hry    ,NSR ,It Hearrenfean IIsstadium     
++ht     ,NSR ,Hertogenbosch ('s)            
++ht     ,NSR ,Den Bosch                     
++hto    ,NSR ,Den Bosch Oost                
++hto    ,NSR ,Hertogenbosch Oost ('s)       
++ijt    ,NSR ,Drylts                        
++kdffh  ,NSR ,Dusseldorf Flughafen          
++kdffh  ,NSR ,Dusseldorf Airport            
++kdul   ,NSR ,Dulken                        
++kkd    ,NSR ,Koln Deutz                    
++kkerp  ,NSR ,Koln-Ehrenfeld                
++kmw    ,NSR ,Koudum-Molkwar                
++koln   ,NSR ,Koln                          
++koln   ,NSR ,Keulen                        
++koln   ,NSR ,Koln Hbf                      
++laa    ,NSR ,Laan van NOI                  
++laa    ,NSR ,Laan van Nieuw Oost Indië     
++laa    ,NSR ,Den Haag Laan van NOI         
++ledn   ,NSR ,Leiden                        
++ledn   ,NSR ,Leiden CS                     
++luik   ,NSR ,Liege-Guilemins               
++luik   ,NSR ,Luik                          
++lw     ,NSR ,Ljouwert                      
++lwc    ,NSR ,Ljouwert Camminghaburen       
++marne  ,NSR ,Disneyland Parijs             
++marne  ,NSR ,Marne-la-Vallee-Chessy        
++mcgb   ,NSR ,Monchengladbach               
++mcgb   ,NSR ,Monchengladbach Hbf           
++mgzb   ,NSR ,Gunzburg                      
++mrb    ,NSR ,Marienberg                    
++munchh ,NSR ,Munchen                       
++munchh ,NSR ,Munchen Hbf                   
++munst  ,NSR ,Munster (Westf.)              
++nsch   ,NSR ,Nieuweschans                  
++nurnb  ,NSR ,Nurnberg                      
++oetz   ,NSR ,Otztal                        
++osnh   ,NSR ,Osnabruck Hbf                 
++paris  ,NSR ,Parijs                        
++polten ,NSR ,Polten St                     
++praha  ,NSR ,Praag                         
++rtd    ,NSR ,Rotterdam                     
++rtd    ,NSR ,Rotterdam CS                  
++shl    ,NSR ,Amsterdam Airport             
++sk     ,NSR ,Snits                         
++sknd   ,NSR ,Snits Noard                   
++stv    ,NSR ,Starum                        
++tgo    ,NSR ,Goppingen                     
++ut     ,NSR ,Utrecht                       
++ut     ,NSR ,Utrecht CS                    
++utm    ,NSR ,Spoorwegmuseum                
++wbf    ,NSR ,Wenen                         
++wk     ,NSR ,Warkum                        
++worgl  ,NSR ,Worgl                         
++wurzb  ,NSR ,Wurzburg                      
++wv     ,NSR ,Wolvege                       
++zue    ,NSR ,Zurich                        

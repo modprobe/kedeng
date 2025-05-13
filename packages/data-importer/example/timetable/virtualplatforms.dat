@@ -1,0 +1,744 @@
+#ac
+-90,07,2,126983,476817,Voorplein Station, OV halte, Spoorlaan
+#ah
+-90,07,2,190250,444104,Busterminal halte L
+-91,07,0,190283,444067,Busterminal halte K
+-92,07,2,190189,444259,Sonsbeekszijde
+#ahp
+-90,05,2,191585,444185,Voorzijde station OV halte JP van Muijlwijkstraat
+-91,05,2,191594,444167,Voorzijde station, OV halte JP van Muijlwijkstraat
+#ahpr
+-90,05,2,193095,444533,Voorzijde station, OV halte Wichard van Pontlaan
+-91,05,2,193089,444520,Voorzijde station, OV halte Wichard van Pontlaan
+#ahz
+-90,05,2,186955,440798,OV halte a/d Zuidzijde, Metamorfosenallee
+#akm
+-90,05,2,185546,562388,Voorzijde station, Galemaleane
+#alm
+-90,07,2,143446,487488,Busstation, Haltes O, P, en Q
+-95,07,1,143446,487488,Uitstaphalte Busstation,Haltes O,P,Q
+#almb
+-90,05,2,147598,489513,Achterzijde station, ov-halte Poolcirkelstraat
+-91,05,1,147598,489513,OHR-Uitstaphalte Achterzijde, Poolcirkelstraat
+#almm
+-90,05,2,141611,486635,Achterzijde,halte Busbaan,Chopinpad Almere Poort
+-91,05,2,141662,486665,Achterz,OV-halte busbaan,Chopinpad Almere Parkwijk
+-92,05,1,141662,486665,OHR-Achterzijde,OVhalte busbaan Chopinpad AlmerePw
+#almo
+-90,05,2,149182,490558,Voorzijde station, busstrook Ambonstraat
+-91,05,1,149182,490558,OHR-Uitstaphalte Voorzijde, busstrook Ambonstraat
+#almp
+-90,05,2,145317,487665,Voorzijde station, Busstation halte A
+-91,05,1,145317,487665,OHR-Uitstaphalte Voorzijde, Busstation PW halte A
+#amf
+-90,08,0,154003,462759,Busplatform K en L, Stationsplein
+-91,05,1,154142,462756,Bushalte bij taxistandplaats
+-92,05,1,154051,462981,Piet Mondriaanplein
+-93,07,2,153933,463011,P+R Piet Mondriaanplein
+#amfs
+-90,05,2,156079,465214,OV bushalte, Sara Burgerhartsingel (ri. Vathorst)
+-91,05,2,156087,465237,OV-halte,Sara Burgerhartsingel(AmersfoortCentraal)
+-92,05,2,156086,465174,Zielhorsterweg
+#aml
+-90,05,2,241399,486282,Voorzijde station, Busplein halte A
+#ampo
+-90,05,2,139082,483939,Voorzijde station, Busstation halte H,Winterspelen
+-91,05,1,139082,483939,OHR-Uitstap Voorzijde,Bushalte H,Winterspelen
+#amr
+-90,05,2,111201,516970,Achterzijde station, Kiss & Ride, Wognumse Buurt
+-91,05,2,111224,516862,OHR Voorkant station t.h.v. AH
+#amri
+-90,05,2,242219,484596,NS Bushalte, Rietstraat
+#amrn
+-90,05,2,112790,517560,Voorplein Station, OV halte, Drechterwaard
+-91,10,2,112907,517481,OV halte Hertog Aalbrechtweg
+#ana
+-91,07,2,116252,542433,Voorzijde station, Bushalte, Stationsweg
+#apd
+-90,07,2,194675,469236,Voorzijde,tegenover taxistandplaats, Stationsplein
+-91,05,2,194677,469223,Voorzijde station, taxistandplaats, Stationsplein
+#apdo
+-90,05,2,197291,469935,Voorzijde station, Linie
+#apn
+-90,05,0,105083,459879,Centrumzijde station, OV busstation, Stationsplein
+-91,05,1,105097,459874,Centrumzijde,OV-busstation(uitstap)Prins Bernardln
+#arn
+-90,05,2,035768,391660,Stationsplein
+-91,05,2,035709,391722,Ongepland TVV  Doeleweg
+#asa
+-90,07,0,123059,484347,Busstation, Overzichtweg
+-91,07,1,123103,484365,Busstation, Overzichtweg
+-92,05,2,123000,484401,Metrostation Amsterdam Amstel
+#asb
+-90,05,2,125017,480436,Busstation, Hoogoordplein, Halte K
+-91,05,2,124975,480578,Metrostation Amsterdam Bijlmer
+#asd
+-90,07,2,121784,488129,Busstation IJ-Zijde, Bushalte M
+-91,07,2,122081,487981,Oostzijde station, Kiss & Ride Rotonde
+-93,05,2,121809,487931,Metrostation Amsterdam Centraal
+-94,05,2,121608,487973,Bushalte Prins Hendrikkade t.h.v. Lovers
+#asdl
+-90,05,2,117348,485554,Halte C, Willem Frogerplein
+-91,05,2,117322,485705,Metrostation Amsterdam Lelylaan
+#asdm
+-90,05,2,124097,486035,OV halte, Insulindeweg Noordzijde
+#asdn
+-90,03,2,123989,490501,Halte IJdoornlaan
+-91,05,2,124010,490534,Metrostation Noord (M52)
+#asdz
+-90,05,2,119947,483766,Centrumzijde,Halte A Strawinskylaan Rai/Duivendr
+-91,05,2,119945,483789,Centrumzijde, Halte E Strawinskylaan Schiphol
+-93,05,2,120047,483602,Metrostation Amsterdam Zuid
+#ashd
+-90,05,2,125785,478878,Voorzijde station, Halte C, Meibergdreef
+#asn
+-90,05,2,234464,556702,NS bushalte, Busstation (uitstaphalte OV)
+#ass
+-92,08,2,117472,489219,Radarweg West
+-95,10,2,117638,489251,Piarcoplein (Flix- en int. bussen busstation)
+-96,05,2,117675,489168,Metrostation Amsterdam Sloterdijk
+#assp
+-90,05,2,125056,485029,Voorzijde station, OV halte Kruislaan
+#atw
+-90,05,2,087480,359194,kon Astridplein
+#avat
+-91,05,2,158143,467232,OV-halte Lovink
+#bd
+-90,07,2,112849,401014,Belcrumzijde station, Stationslaan
+#bdg
+-90,05,2,111086,455031,OV halte Stationsplein
+#bdpb
+-90,05,2,108898,402137,Voorzijde station, Westerhagelaan
+#berch
+-90,05,2,088386,357309,Busstation Antwerpen-Berchem
+#bet
+-90,05,2,155096,391212,OV halte Spoorstraat
+-92,05,2,155130,391180,Stationsplein,Tussen stationsgebouw en stalling
+#beurs
+-90,05,2,092629,437048,Metrostation Beurs
+-90,05,2,092629,437048,Metrostation Beurs
+#bgn
+-90,05,2,079212,390174,Voorzijde station, Stationsplein
+#bh
+-90,11,2,275811,481665,Bahnhof, Am Bahnhof
+#bhv
+-90,05,2,142542,460295,OV halte, Soestdijkseweg-Noord
+-91,05,2,142508,460274,OV halte,  Soestdijkseweg-Noord
+#bkf
+-90,05,2,145895,523194,OV halte, Broekerhavenweg richting Hoorn
+-91,05,2,145903,523200,OV halte, Broekerhavenweg naar Enkhuizen
+#bkg
+-90,05,2,144576,523173,OV halte  Burgermeester J. N. Stuifbergenlaan
+#bkl
+-90,05,2,127924,464757,OV busstation, Stationsweg
+#bl
+-90,05,2,231350,541466,Voorzijde, NS-bushalte Kiss&Ride, Stationslaan
+#bll
+-90,05,2,103282,490976,Voorzijde Station, Zuider Stationsweg
+#bmn
+-90,07,2,207088,456122,Voorzijde station, Stationsweg
+#bn
+-90,05,2,247904,479805,Ns bushalte, Parallelweg
+#bnk
+-90,07,2,141790,452639,OV halte Baan van Fectio richting Zeist
+-91,05,2,141781,452656,OV halte Baan van Fecio richting Utrecht
+#br
+-90,05,2,208406,376152,Centrumzijde station, OV halte, van Laerstraat
+#brd
+-90,05,2,097497,430076,Achterzijde station, Zuideinde
+#brn
+-90,05,2,147818,468922,OV halte Stationsplein
+-91,05,1,147818,468922,OHR - Uitstaphalte OV halte Stationsplein
+#bsk
+-90,05,2,104256,454551,Voorzijde station, OV halte Parklaan
+#bsks
+-90,05,2,104243,453442,OV halte Snijdelwijklaan richting Gouda
+-91,05,2,104273,453435,OV halte Snijdelwijklaan richting Apeldoorn
+#bsmz
+-90,07,2,139747,475352,Ri. Hvsm Bushalte Bussummergrindweg
+-91,07,2,139694,475503,Ri. Ndb Bushalte Brinklaan
+#btl
+-90,05,2,150227,399436,Achterzijde station, Qpark
+-91,07,2,150222,399334,Achterzijde station, van Salmstraat
+#bv
+-90,05,2,105240,499154,OV halte, Stationsplein
+#bzl
+-90,05,2,055675,388912,Voorzijde station, Stationsstraat
+#cas
+-90,05,2,105613,506706,Voorzijde station, OV halte, Stationsweg
+-91,05,1,105613,506706,OHR-Uitstaphalte Voorzijde,OV halte,Stationsweg
+#cl
+-90,05,2,143987,439860,OV halte Stationsplein
+#cpbr
+-90,05,2,098011,437310,A. van Rijckevorseplein
+#cps
+-90,05,2,099776,440900,Stationsplein richting Gouda
+-91,05,2,099824,440914,Stationsplein richting Rotterdam
+#db
+-90,05,2,146246,453072,OV busstation, halte B
+#ddr
+-91,05,2,105401,424584,Busstation Stationsplein
+-92,05,2,105109,424622,Burgemeester de Raadtsingel
+#ddzd
+-90,05,2,105639,422740,Parkeerplaats BeneVia Muziekcentrum, Spirea
+#dld
+-90,05,2,145062,461273,Amersfoort,rechts OV-bushalte Dolderseweg
+-91,05,2,145023,461328,Baarn,Bilthoven links NS-bushalte Dolderseweg
+#dmn
+-90,05,2,126352,484220,Voorzijde station, OV halte van Gemertplein
+-91,05,2,126419,484257,Bushalte Ouddiemerlaan
+#dmnz
+-90,05,2,125565,482632,Voorzijde, OV-halte Diemerdreef richting Weesp
+-91,05,2,125503,482615,voorzijde OV-halte Diemerdreef richting Duivendr
+#dn
+-92,05,2,182888,385327,Voorzijde Stationsplein
+#dr
+-90,07,2,204109,450909,Voorzijde station, busstation, Zuider Parallelweg
+#drh
+-90,05,2,104130,495299,Voorplein station, van den Vondellaan
+#dron
+-90,05,2,177667,505186,Voorzijde,De Noord richting Lelystad Centrum
+-91,05,2,177671,505159,Voorzijde, de Noord richting Kampen Zuid
+#dt
+-90,05,2,084288,447086,Busplatform, v. Leeuwenhoeksingel
+-91,05,2,084182,446896,Voorzijde station, Coenderstraat
+#dtcp
+-90,05,2,084733,445201,Marcellus Emantspad
+-91,05,2,084740,445188,Forensenweg
+#duisb
+-90,05,2,251667,383230,OV halte, Kammerstrasse
+#dussel
+-90,05,2,253175,360032,Voorzijde, OV Halte, Worringer Strasse
+#dv
+-90,05,2,207780,474643,Voorzijde station, busstation
+-91,05,2,207738,474622,Stationstraat
+-92,05,1,207660,474731,Uitstaphalte Voorzijde(t.h.v. brommerplekken)
+#dvc
+-90,05,2,211519,473869,P&R zijde, Piet van Donkplein 1
+#dvd
+-90,05,2,124259,481764,OV halte, Stationsplein richting Diemen Zuid
+-91,05,2,124246,481769,OV halte, Stationsplein richting Amsterdam RAI
+-92,05,2,124276,481836,Metrostation Duivendrecht
+#dvnk
+-90,05,2,091592,462360,OV halte Trompweg richting Den Haag Centraal
+-91,05,2,091603,462347,OV halte Trompweg richting Leiden
+-92,05,2,091315,462465,Trompplein
+#ed
+-92,05,2,174676,448729,Busstation
+#edn
+-90,05,2,177745,309163,Voorzijde station, Stationsplein
+#eghm
+-90,05,2,202240,323154,Voorzijde station, Nieuwenhagerweg
+#ehs
+-90,05,2,159818,384558,Achtseweg (stationszijde)
+-91,05,2,159813,384546,Achtseweg (overkant)
+#ehv
+-91,05,2,161403,383870,Taxistandplaats, Kennedyplein
+-92,07,0,161176,383865,Opgang Kruisstraattunnel Busplein
+#ekz
+-90,05,2,148313,523609,Voorzijde, OV-halte zijkant station, Stationsplein
+#em
+-90,05,2,214810,427634,Bahnhofstrasse 21
+#eml
+-90,05,2,170522,479253,OV halte Dr. Van Dalelaan richting Putten
+-91,05,2,170541,479273,OV halte Dr. van Dalelaan richting Harderwijk
+#es
+-90,05,2,257703,471505,Voorzijde station, Stationsplein
+-91,05,1,257741,471506,Voorzijde station, ABN
+#esk
+-90,05,2,254256,473193,Voorzijde station, NS Bushalte
+#esn
+-90,05,2,089990,386355,spoorwegstraat 2 2910 Essen
+#est
+-90,07,2,187126,436624,Voorzijde, Oude Aamsestraat richting Nijmegen
+-91,05,2,187097,436684,OV-halte,Voorzijde,v. Oldebarneveltstr Arnhem Cent
+#etn
+-90,05,2,102967,398722,Voorzijde station, Stationsplein
+#fvs
+-90,05,2,176547,305334,Voorzijde, Pont du Roi Baudouin (op viaduct)
+#gd
+-90,07,2,108312,447992,NS-bushalte, Bloemendaalzijde,Burgerm Jamessingel
+-91,05,2,108238,448004,NSbushalte,Bloemendaalzijde,Burg.Jamessingel Rtd
+-92,05,2,108297,448005,Burgerm Jamessingel(Gouda- Gouda Goverwelle)
+#gdg
+-90,05,2,110718,447541,NS-bushalte Willensplein
+#gdm
+-90,06,2,146984,432582,OV Halte Burg. Roozeveld van der Venlaan
+#gerp
+-90,05,2,235167,580459,OV Halte Helperpark
+-91,05,2,235076,580361,OV-halte Helperzoom
+#gn
+-90,08,2,233849,581209,Stationsweg aan de waterkant
+-91,08,2,233667,581181,Voorzijde station, Bushalte A/B, Stationsweg
+-92,05,1,233771,581174,Voorzijde station, Bushalte C, Stationsweg
+-94,05,2,233493,581356,OV-halte Emmaplein
+#gp
+-90,05,2,166262,381191,Achterzijde station, Toernooiveld (spoorzijde)
+-91,05,2,166250,381187,Achterzijde station, Toernooiveld (overkant)
+#gs
+-90,09,2,051084,390913,Achterzijde station, Stationspark
+-91,05,2,050997,390920,voorzijde station, busstation (Ongepland)
+#gv
+-90,05,2,082007,453904,Achterzijde station, Waldorpstraat
+#gvc
+-90,07,2,082260,455166,Busplatform, Prins Bernhardviaduct
+#gvm
+-90,05,2,085196,456356,Voorzijde station, Aegonplein
+#gvmw
+-90,05,2,081099,452402,OV-halte Hildebrandstraat richting Den Haag Centr
+-91,05,2,080923,452463,OV halte Troelstrakade richting Delft
+#gw
+-90,05,2,184147,567134,Voorzijde station, Stationsweg
+#gz
+-90,05,2,122953,399604,Voorzijde station, Anne Frankplein OV Halte
+#had
+-90,05,2,101833,486018,Voorplein Station, OV halte Zandvoortselaan
+-91,05,2,101796,486067,Voorplein Station, OV halte Zandvoortselaan
+#hd
+-90,05,2,170913,483346,Voorzijde station, Busplein Stationsplein
+-91,05,2,170970,483362,voorzijde station, Busplein Stationsplein
+-92,05,1,170966,483415,Stationslaan
+#hde
+-90,08,2,189411,491333,Achterzijde station, Defensieterrein
+-91,05,2,189394,491385,Voorzijde
+#hdr
+-90,05,2,112918,552399,Voorplein Station, Middenweg
+#hdrz
+-90,05,2,113153,549670,Voorzijde Station, OV halte Waterkeringsweg
+#hfd
+-90,07,2,107988,478556,OV halte Busstation, Van Heuven Goedhartlaan
+#hgl
+-90,05,2,251038,475852,Voorzijde station, Busstation, Stationsplein
+#hgv
+-90,05,2,228343,527807,Voorzijde station, P&R, Parkeerplaats
+-91,05,2,228331,527795,Voorzijde station, P&R, Parkeerplaats
+-92,05,2,228366,527834,Voorzijde station, busstation (lange zijde)
+#hil
+-90,05,2,099010,479740,Voorzijde station, OV halte Loosterweg
+#hk
+-90,05,2,107347,500981,Voorzijde station, halte P+R, Euratomplein
+#hks
+-90,05,2,141099,522575,OV halte, Stationslaan
+-91,05,2,141090,522573,NS-halte Stationslaan
+#hlm
+-90,08,0,104119,489053,Voorplein station, OV halte Jansweg
+-91,05,2,104088,489110,Voorplein station OV (uitstaphalte)
+-92,05,2,103991,489265,Kennemerplein (Kiss&Ride)
+#hlms
+-90,05,2,106253,488551,OV halte aan de A200 zijde Ikea richting Haarlem
+-91,05,2,106254,488496,OV halte A200 zijde Oostpoort richting Halfweg
+-92,05,2,106265,488624,Spaarnwoude NZ, Woudplein
+-93,05,2,106249,488498,Spaarnwoude ZZ, Bushalte Lijn 2, Robertus Nurksweg
+#hlo
+-90,07,2,108544,512820,Voorzijde station, OV halte, Zeeweg
+-92,07,1,108544,512820,OHR - Uitstaphalte Voorzijde station
+#hm
+-90,05,2,173945,387346,Achterzijde station, Engelseweg
+#hmbh
+-90,05,2,176803,386914,Voorzijde station, Deltaweg
+#hmbv
+-90,05,2,170348,385984,Achterzijde station, Diepenbroeksingel
+#hmh
+-90,05,2,171927,386591,Meester Stikkerpleinzijde station
+#hn
+-90,05,2,132367,517555,Voorplein Station, OV halte, Stationsweg
+-91,05,2,132496,517629,Achterzijde station P+R
+#hnk
+-90,05,2,134586,518444,OV halte, Rijnweg richting Enkhuizen
+-91,05,2,134573,518470,OV halte, Rijnweg richting Hoorn
+#hon
+-90,05,2,225582,477806,Voorzijde station, Stationsstraat
+-91,05,2,225602,477801,Voorzijde station, Stationsstraat
+#hor
+-90,10,2,140611,465543,OV halte Tolakkerweg
+#hr
+-90,05,2,190600,552754,OV uitstaphalte
+-91,05,2,190606,552725,Voorzijde station, Trambaan
+-92,05,0,190605,552704,Busstation, halte A
+#hrl
+-90,05,2,196254,322472,Voorzijde station, Parallelweg
+#hrn
+-90,05,2,237270,577131,Voorzijde station, Nieuwe stationsweg
+#hrnt
+-90,03,2,235527,576536,Bushalte P&R, Vondellaan
+-91,03,2,235567,576567,P&R Haren, parkeervak tegenover fietsenstalling
+#hrt
+-90,05,2,200498,382124,Achterzijde station, Industrieweg
+#ht
+-90,07,2,148581,411314,NS bushalte t.h.v. spoor 1 (perronweg)
+-92,05,2,148497,411470,Magistratenlaan/Parallelweg
+-94,05,2,148492,411355,Magistratenlaan Kiss and Ride achterzijde station
+-95,05,0,148484,411376,Magistratenlaan achterzijde station
+#htn
+-90,07,2,140085,449417,OV bushalte De Molen
+#htnc
+-90,05,2,140811,447664,Voorzijde station, NS Bushalte Forum
+#hto
+-90,05,2,150288,412509,OV halte, Bruistensingel, beide richtingen
+#hvs
+-90,07,1,140853,470899,Voorzijde station, Schapenkamp
+-91,07,0,140834,470944,voorzijde station, Schapenkamp
+-92,07,1,140853,470899,OHR - Uitstaphalte Voorzijde station, Schapenkamp
+#hvsm
+-90,06,2,140409,472230,OV halte Mies Bouwman Boulevard
+-91,05,2,140408,472198,OV halte Mies Bouwman Boulevard
+#hvsp
+-91,05,2,141289,469845,NS bushalte Laapersweg
+#hwd
+-90,05,2,116922,520406,OV Busstation
+#hwzb
+-90,05,2,111269,488876,OV halte, A200 richting Haarlem
+-92,05,2,111366,488830,OV halte A200 richting Amsterdam Sloterdijk
+#hz
+-90,05,2,204817,320356,Voorzijde station, Bahnhof Strasse
+#hze
+-90,05,2,167719,377344,Voorzijde station, De Laarstukken
+#kbd
+-90,05,2,066675,383443,Voorzijde station, Spoorlaan
+-91,05,2,066680,383424,Voorzijde station, Spoorlaan
+#klp
+-90,05,2,167798,450876,OV busstation, Dokter Hoolboomweg
+-91,05,2,167900,450848,P&R terrein
+#kma
+-90,05,2,112105,501051,OV halte Provincialeweg richting Zaandam
+-91,05,2,112076,501083,Ov halte Provinciale weg richting Uitgeest
+-92,05,1,112076,501083,OHR -Uitstaphalte Ov halte Provinciale weg
+#kpnz
+-90,05,2,190786,505141,Voorzijde station, Burgemeester van Tuinenplein
+-91,05,2,190786,505161,voorzijde station, Burgemeester van Tuinenplein
+#krg
+-90,05,2,061146,387113,Voorzijde station, Stationsweg
+#kz
+-90,05,2,115492,496795,OV halte Provincialeweg richting Zaandam
+-91,05,2,115518,496781,OV halte Provinciale weg richting Uitgeest
+-92,05,1,115518,496781,OHR -Uitstaphalte OV halte Provinciale weg
+#laa
+-90,05,2,083396,455060,Anna van Hannoverstraat
+#ldl
+-90,05,2,093742,462525,OV halte Lammenschansweg
+-91,05,2,093711,462519,OV halte Lammenschansweg
+#ledn
+-90,07,2,093074,464524,Voorzijde station, Bushalte G/H, Stationsplein
+#lg
+-90,05,2,199490,323127,Voorzijde station, Stationsplein
+#lls
+-90,10,2,160839,502410,Evenemententerrein
+-91,05,2,160772,502273,Achterzijde station, Stationslaan
+#llzm
+-90,05,2,095350,450574,Spoorpad halte D
+#lw
+-90,05,2,182108,578960,Voorzijde station, Stationsplein
+-91,05,0,181953,578934,Busstation, Bushalte K, Stationsplein
+-92,05,1,182019,578983,halte U, overkant busstation
+-93,07,1,181919,578934,Busstation, Bushalte O, Stationsplein
+-95,05,0,181946,578916,Busstation, halte L
+#mas
+-90,05,2,130693,460936,OV busstation, Safariweg
+#mdb
+-90,05,2,032091,391053,OV halte richting Arnemuiden, Kanaalweg
+-91,05,2,032086,391051,Voorzijde station, Kanaalweg
+#mp
+-90,08,2,209752,522858,P&R (grote verbussingen)
+-92,05,2,209768,522979,Meppel busstation halte F
+#mrn
+-90,05,2,153800,452957,OV halte Tuindorpweg richting Rhenen
+-91,05,2,153805,452961,OV halte Tuindorpweg richting Bunnik
+#mrz
+-90,05,2,093106,433558,Busstation
+#mt
+-90,07,2,177386,317796,Voorzijde station, t.h.v. taxistandplaats
+-92,05,2,177413,317690,Parkeerstrook Spoorweglaan
+#mtr
+-90,05,2,178246,316507,Universiteitssingel
+#mz
+-90,05,2,171919,368369,Busstation aan de Driebos/ Den Engelsman
+#ndb
+-90,05,2,139380,477012,Voorzijde station, NS-Bushalte Albrechtlaan
+-91,05,2,139386,477007,voorzijde station, NS bushalte Albrechtlaan
+#ndkp
+-90,05,2,102409,374506,Voorzijde station
+#nkk
+-90,05,2,162255,470467,OV halte Stationsweg
+#nm
+-90,07,2,187129,428460,Voorzijde station, Busstation halte B
+-91,06,2,187127,428328,Voorzijde station, Busstation halte M
+-92,05,2,187135,428461,Voorzijde station, Busstation halte C
+-93,05,1,187173,428452,Voorzijde station, busstation halte L
+#nmd
+-90,05,2,182996,426147,OV halte busstation Spijkerhofplein
+#nmgo
+-90,05,2,185070,426550,NS bushalte zuidzijde station, Neerbosscheweg
+#nml
+-90,08,2,187626,430517,Hertog Eduartplein
+#ns
+-90,10,2,182046,486965,Achterzijde station, P+R Veluwe Transferium
+-91,05,2,182017,487127,OV Halte Enkweg
+-92,05,2,182195,487167,F.A. Molijnlaan t.h.v. huisnummer 5
+#nvp
+-90,05,2,104312,474809,OV halte, Venneperweg richting Hoofddorp
+-91,05,2,104306,474809,OV halte, Venneperweg richting Leiden
+#nwk
+-90,05,2,102129,442162,Kerklaan, Uitgang Dorrestein richting Gouda
+-91,05,2,102154,442142,Kerklaan, Uitgang Dorrestein richting Rotterdam
+#o
+-90,05,2,164836,419622,Voorzijde station, NS bushalte, Spoorlaan
+#obd
+-90,05,2,122785,521254,OV halte Dorpsstraat richting Hoorn
+-91,05,2,122785,521256,OV halte Dorpsstraat richting Heerhugowaard
+#oberh
+-90,05,2,256893,388145,Voorzijde, OV Halte, Poststrasse
+#odb
+-90,05,2,095793,400228,Voorzijde station, Stationsstraat
+#olv
+-90,05,2,107625,510870,Kapellaan 146
+#osnh
+-90,05,2,000000,000000,Voorzijde station, Busplein via Möserstrasse
+#ost
+-90,05,2,204465,483339,Voorzijde station, Stationsweg
+#ot
+-90,05,2,141616,399233,Voorzijde station,  OV Halte Spoorlaan
+-91,05,2,141666,399243,Voorzijde station,  OV Halte Spoorlaan
+-92,06,2,141435,399243,Schijfstraat K+R strook
+#otb
+-90,04,2,186180,445146,OV halte, Stationsweg (westzijde)
+-91,05,2,186199,445152,Voorzijde station, Stationsweg (oostzijde)
+#ovn
+-90,05,2,101978,489527,OV halte Tetterodeweg
+#ow
+-90,05,2,163282,418915,Voorzijde station, Braakstraat
+#pmo
+-90,05,2,126467,502626,OV halte, Doctor J.M. Den Uyllaan richting Hoorn
+-91,05,2,126454,502600,OV halte, Dr. J.M. Den Uyllaan richting Purmerend
+#pmr
+-90,05,2,125661,501846,Voorzijde station, OV halte, Beatrixplein
+#pmw
+-90,05,2,124333,501066,Voorplein station, Abel Tasmanplein
+-91,05,2,124478,500960,OV halte Australielaan ongepland
+#pt
+-90,05,2,167896,475268,OV halte Stationsstraat
+#rai
+-90,07,2,121176,483343,Voorzijde station, Europaboulevard
+-91,05,2,121204,483344,Metrostation Rai
+#rb
+-90,05,2,069716,382237,Provincialeweg
+#rh
+-90,10,2,199110,447119,OV halte richting Arnhem, Arnhemsestraatweg
+-91,10,2,199244,447159,OV halte richting Zuthpen, Arnhemsestraatweg
+#rheine
+-90,05,2,294810,478462,Voorzijde station, OV Halte, Kardinal-Galen-Ring
+#rhn
+-90,05,2,168124,440921,NS bushalte P&R terrein Stationsplein
+-91,05,2,168141,440911,OV halte Zwarteweg ongepland
+#rlb
+-90,05,2,095900,432670,Voorzijde station, OV halte Spinozaweg
+-91,05,0,095967,432734,Instap Aesopusviaduct
+-92,05,1,096018,432715,Uitstaphalte Aesopusviaduct
+#rm
+-90,05,0,197384,356157,Busstation, Stationsplein halte I
+-91,05,1,197350,356124,Godsweerdersingel
+#rs
+-90,05,2,153795,414143,OV halte, Deken van Roestellaan
+-91,05,2,153783,414129,OV halte,  Deken van Roestellaan
+#rsd
+-90,07,2,090631,395015,Voorzijde station, Stationsplein
+-91,07,2,090576,394950,Stationsplein GWK
+#rsn
+-90,05,2,232195,481053,Achterzijde station, P&R terrein Reggesingel
+-91,05,2,232243,480983,Voorzijde station, Bushalte Station Rijssen
+#rsw
+-90,07,2,081912,450403,Voorzijde station, Sir Winston Churchilllaan
+-91,07,2,081899,450427,Voorzijde station, Sir Winston Churchilllaan
+#rta
+-90,07,0,097533,440749,OV halte Prins Alexanderlaan
+-93,05,1,097532,440625,Uitstaphalte Alexanderlaan
+-95,05,2,097586,440670,Metrostation Rotterdam Alexander
+#rtb
+-90,05,2,093140,437144,OV halte Voorzijde station, Blaak
+-91,05,2,093127,437108,OV halte Voorzijde station, Blaak
+-94,05,2,093250,437219,Metrostation Blaak
+#rtd
+-90,07,2,091718,437645,Centrumzijde, busstation Conradstraat halte EE
+-92,07,2,091905,437671,Metrostation Rotterdam Centraal
+#rtn
+-90,05,2,092739,439646,Onder viaduct A20, Bergweg
+#rtst
+-90,07,2,095368,434293,De Veranda
+#rtz
+-90,07,2,094599,435508,OV halte Rosestraat richting Rotterdam Centraal
+-91,05,2,094582,435498,OV halte Rosestraat richting Zwijndrecht
+#rvs
+-90,05,2,172294,422927,Voorzijde station, Stationssingel
+#sd
+-90,05,2,149065,466221,OV halte Steenhoffstraat richting Baarn
+-91,05,2,149023,466244,OV halte, Steenhoffstraat richting Den Dolder
+#sdm
+-90,05,2,087578,437506,Horvathweg richting Den Haag Centraal
+-92,05,2,087577,437486,Horvathweg richting Rotterdam Centraal
+-94,05,2,087752,437501,Schiedam metrostation
+#sgn
+-90,05,2,115712,533271,Voorplein Station, Stationsweg
+#shl
+-94,12,2,112105,479964,GOS busstation
+-95,10,2,112275,480063,Halte F6,  volg borden Touring coaches
+#slg
+-90,05,2,092407,432277,Bushalte Zuiderparkweg
+-91,05,2,092368,432188,Metrostation Slinge
+#sptn
+-90,05,2,103707,494202,OV halte Santpoortse Dreef richting Haarlem
+-91,05,2,103738,494281,OV halte Santpoortse Dreef richting Uitgeest
+#sptz
+-90,05,2,103553,492663,Voorzijde station, Willem de Zwijgerlaan
+#ssh
+-90,05,2,095473,470050,Voorzijde station, Stationsplein
+#st
+-90,05,2,149833,465000,Ri. Brn OV halte Torenstraat
+-91,05,2,149812,464941,Ri. Dld NS bushalte Torenstraat
+#std
+-90,07,2,188035,334792,Achterzijde station, P&R Q-park Geerweg
+#stz
+-90,05,2,149275,464123,OV busstation Eikenlaan richting Baarn
+-91,05,2,149268,464129,Ov busstation Eikenlaan richting Den Dolder
+#swk
+-90,05,2,204295,533956,Voorzijde station, Bushalte A, Stationsplein
+#tb
+-90,07,2,133786,397021,Bushalte, Burg. Brokxlaan
+-92,07,1,133961,397050,OV halte noordzijde burg Broxlaan
+#tbr
+-90,05,2,127677,398441,Onder viaduct, OV halte Reeshofweg
+#tbu
+-90,05,2,131707,397366,OV halte, Statenlaan
+-91,05,2,131700,397444,OV halte, Statenlaan
+#tl
+-90,05,2,157530,433467,NS bushalte Stationsweg
+#tpsw
+-90,07,2,155398,431617,OV halte J.M. den Uyllaan richting Geldermalsen
+-91,07,2,155348,431589,OV halte J.M. den Uyllaan richting Tiel
+#twl
+-90,05,2,203740,472473,Voorzijde station, Raccordement
+#ut
+-92,10,2,135749,455713,tijdelijke halte Jaarbeursplein bushalte G
+#utg
+-90,07,2,108532,503899,Achterzijde station, Anna van Renesselaan
+-91,07,2,108531,504028,Voorzijde station, OV halte
+-92,07,1,108532,503899,OHR - Uitstaphalte  Anna van Renesselaan
+#utln
+-90,05,2,138263,453093,OV halte Furkaplateau
+#utlr
+-90,05,2,133106,456720,OV busstation Berlijnplein halte B
+#utm
+-90,10,2,137336,455651,OV halte Maliesingel
+#uto
+-90,05,2,137109,458092,NS bushalte Aidadreef
+#utt
+-90,05,2,131458,456917,OV halte Vleutensebaan richting Vleuten
+-91,05,2,131476,456891,OV halte Vleutensebaan richting Utrecht Centraal
+#utvr
+-90,05,2,136762,454498,OV halte Vondellaan richting Utrecht Centraal
+-91,05,2,136736,454498,OV halte Vondellaan richting Houten/Bunnik
+#utzl
+-90,05,2,134611,457270,OV halte Cartesiusweg richting Maarssen
+-91,05,2,134578,457264,OV halte Cartesiusweg richting Utrecht Centraal
+#vb
+-90,05,2,084436,453696,Onder spoorviaduct, Prinses Mariannelaan
+#vg
+-90,05,2,148433,407420,Voorzijde station, Stationsstraat
+#vh
+-90,05,2,093388,470995,Voorzijde station, Jacoba van Beierenweg
+-91,05,2,093319,471170,P+R terrein de gaasbak
+-92,05,2,093379,470962,Voorzijde station, Jacoba van Beierenweg
+#vl
+-90,05,2,209674,375336,Busstation, Stationsplein
+#vndc
+-90,05,2,166133,447963,OV busstation, Stationsplein
+-91,05,2,166162,447931,OV-halte Kerkewijk (westzijde)
+-92,05,2,166145,447849,OV-halte Kerkewijk (oostzijde)
+#vndw
+-90,06,2,164939,448798,OV halte Dichterslaan richting Veenendaal Centrum
+-91,05,2,164922,448780,OV halte Dichterslaan richting Maarn
+#vp
+-90,05,2,195754,445361,Voorzijde station, Stationsplein
+#vs
+-90,05,2,030458,385393,Stationsplein
+#vss
+-90,05,2,030319,387701,Achterzijde station, Nieuwe Vlissingseweg
+-91,05,2,030395,387843,Achterzijde station, Nieuwe Vlissingeseweg
+#vst
+-90,05,2,089905,460299,OV halte, Wijngaardenlaan
+-91,05,2,089876,460288,OV halte, Wijngaardenlaan
+#vtn
+-90,05,2,129044,457191,OV busstation, de Sporeplein
+#wad
+-90,05,2,104444,450984,OV-halte Stationsstraat
+-91,05,2,104472,450942,OV-halte Stationsstraat
+#wadn
+-90,05,2,104305,452138,NS-bushalte Sparrengaarde
+#wadt
+-90,06,2,104409,449069,NS bushalte Coenecoop
+-91,06,2,104395,449068,NS bushalte Coenecoop
+#wc
+-90,05,2,178663,424783,Voorzijde station, Stationslaan ri Oss
+-91,05,2,178706,424792,Voorzijde station Stationslaan ri. Nijmegen
+#wd
+-90,10,2,120995,455139,P+R terrein (alleen gepland)
+-91,07,2,121116,455216,OV halte Stationsplein Zuid
+#wdn
+-90,05,2,237071,486612,Voorzijde station, Bushalte, Spoorstraat
+#wf
+-90,05,2,182785,446386,Voorzijde station, Wolfhezerweg ri. Oosterbeek
+-91,05,2,182783,446378,Voorzijde station, Wolfhezerweg ri Ede Wageningen
+#wh
+-90,05,2,206310,489520,Voorzijde station, Stationspleintje
+#wm
+-90,05,2,114750,500313,OV halte, Provincialeweg richting Zaandam
+-91,05,2,114737,500340,OV halte, Provincialeweg richting Uitgeest
+-92,05,1,114737,500340,OHR -Uitstaphalte OV halte
+#wp
+-90,05,2,131632,480546,Achterzijde station, rotonde Leeuwenveldseweg
+-91,05,2,131632,480611,Ov halte Leeuwenveldseweg
+-92,05,2,131596,480618,Weesp P+R
+#wt
+-90,07,2,176955,362246,Q park terrein
+-91,07,2,177191,362235,Busstation, Stationsplein
+#wv
+-90,05,2,196594,543775,Voorzijde station, Stationsweg
+-91,05,2,196531,543850,Voorzijde station, Stationsweg
+#wz
+-90,05,2,196830,496405,Voorzijde station, Buurtbushalte Stationsweg
+-91,05,2,196846,496411,Voorzijde station, stationsweg richting 't Harde
+-92,05,2,196851,496369,voorzijde station, stationsweg richting Zwolle
+#ypb
+-90,05,2,086584,452365,Voorzijde station, P+R terrein
+#zbm
+-90,05,2,146428,424337,Voorzijde station, Oude stationsweg
+#zd
+-90,05,2,116027,494740,Voorzijde station, Bushalte D
+-91,05,1,116027,494740,OHR - Uitstaphalte halte D
+#zdk
+-90,05,2,116376,496737,Voorplein station, Veldbloemenweg
+#zl
+-90,10,2,202683,502022,Zuidzijde, Hanzelaan
+-91,10,1,202762,502014,Zuidzijde, Hanzelaan
+-92,07,2,202778,502058,Busstation
+#zlw
+-90,05,2,104910,411461,Voorzijde station, Westelijke Parallelweg
+#zp
+-90,07,2,210221,462237,Achterzijde station, Lijmerij
+#ztm
+-90,07,2,092611,451243,Achterzijde station, Mahatma Ghandisingel
+#ztmo
+-90,05,2,093538,451272,Busstation, Zuidweg richting Den Haag Centraal
+-91,05,2,093535,451243,Busstation, Zuidweg richting Gouda
+#zv
+-90,05,2,202192,437424,Stationsplein
+#zvb
+-90,05,2,101193,406144,Voorzijde station, Stationslaan
+-91,05,2,101164,406139,Voorzijde station, Stationslaan
+#zvt
+-90,05,2,096675,487939,Voorzijde station, Stationsplein
+#zwd
+-90,05,2,103544,425557,Voorzijde station, Stationsplein
+-91,05,2,103501,425424,Achterzijde Station, Westelijke Parallelweg
+#zzs
+-90,05,2,115466,498109,OV halte, Provincialeweg richting Zaandam
+-91,05,2,115486,498153,OV halte Provinciale weg richting Uitgeest
+-92,05,1,115486,498153,OHR -Uitstaphalte OV halte Provinciale weg

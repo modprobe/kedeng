@@ -1,0 +1,68 @@
+@100,07042025,13122025,0070,IFF Standaard uit RIF         
+060,ABRN      ,ABRN                          ,0000
+051,ArBr      ,Arr.-Breng                    ,0000
+500,Arriva    ,Arriva                        ,0000
+550,Noord     ,Arriva Noord                  ,0000
+003,BBA       ,BBA                           ,0000
+055,BN        ,Blauwnet                      ,0000
+052,Breng     ,Breng                         ,0000
+900,BR        ,British Rail                  ,0000
+970,CFL       ,Chemins de Fer Luxembourg     ,0000
+600,Connexxion,Connexxion                    ,0000
+910,DB        ,DB                            ,0000
+930,DSB       ,Danske Statsbaner             ,0000
+098,DRS       ,Dutch Rail Services B.V.      ,0000
+961,EETC      ,EETC                          ,0400
+210,Eu Sleeper,Eu Sleeper                    ,0000
+056,EB        ,Eurobahn                      ,0000
+951,EST       ,Eurostar                      ,0000
+083,FS        ,Ferrovie dello Stato          ,0000
+980,SNCF      ,Franse Spoorwegen             ,0000
+022,GVB       ,GVB                           ,0000
+025,GVU       ,GVU                           ,0000
+023,HTM       ,HTM                           ,0000
+501,Hermes    ,Hermes                        ,0000
+911,Keo       ,Keolis                        ,0000
+963,LTE       ,LTE                           ,0000
+041,RENFE     ,Largo Recorrido Renfe         ,0000
+046,Limex     ,Limex                         ,0000
+962,LCB       ,Locon Benelux                 ,0000
+053,Mti       ,Mti                           ,0000
+920,NMBS      ,NMBS                          ,0000
+100,NS        ,NS                            ,0400
+200,NS Int    ,NS Int                        ,0000
+806,Noordned  ,Noordned (OVR)                ,0000
+014,Novio     ,Novio                         ,0000
+015,Oad       ,Oad                           ,0000
+950,OBB       ,Oestereichische Bahn          ,0000
+960,Overig INT,Overig Internationaal         ,0000
+030,PSD       ,Provinciale Stoombootdiensten ,0000
+750,Qbuzz     ,Qbuzz                         ,0000
+037,Rnet      ,R-net                         ,0000
+058,RRReis    ,RRReis                        ,0000
+967,Rail2U    ,Rail2U                        ,0000
+966,Railexpert,Railexpert                    ,0000
+965,Railpromo ,Railpromo                     ,0000
+047,Doeksen   ,Rederij Doeksen               ,0000
+028,NACO      ,Rederij NACO                  ,0000
+024,Ret       ,Ret                           ,0000
+012,SBM       ,SBM                           ,0000
+850,STENA     ,STENA                         ,0000
+940,SB        ,Schweizerische Bundesbahn     ,0000
+021,NL stadsv ,Stadsvervoer Nederland        ,0000
+020,Oss stadsv,Stadsvervoer Oss              ,0000
+964,SSN       ,StoomSt.NL                    ,0000
+036,Svd       ,Svd                           ,0000
+400,Syntus    ,Syntus                        ,0000
+968,TCS       ,TCS                           ,0000
+027,TESO      ,TESO                          ,0000
+751,U-OV      ,U-OV                          ,0000
+061,Vias      ,VIAS                          ,0000
+097,VSM       ,VSM                           ,0000
+054,Vallei    ,Valleilijn                    ,0000
+050,Veren     ,Veren (OVR)                   ,0000
+026,Wagenborg ,Wagenborg                     ,0000
+029,Waterbus  ,Waterbus                      ,0000
+099,ZSM       ,ZLSM                          ,0000
+941,SB smal   ,Zwitserland Smallspoor        ,0000
+942,CD        ,ceske drahy                   ,0000

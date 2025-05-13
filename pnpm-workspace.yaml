@@ -1,0 +1,7 @@
+packages:
+  - packages/persister
+  - packages/api
+onlyBuiltDependencies:
+  - '@nestjs/core'
+  - esbuild
+  - protobufjs

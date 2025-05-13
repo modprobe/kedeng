@@ -1,0 +1,37 @@
+@100,07042025,13122025,0070,IFF Standaard uit RIF         
+B   ,Bus                           
+BBE ,Belbus                        
+BBS ,Belbus ipv trein              
+BMI ,Stopbus ipv trein             
+BMS ,Snelbus ipv trein             
+BSN ,Snelbus ipv trein             
+BST ,Stopbus ipv trein             
+BTA ,Taxibus ipv trein             
+BTS ,Snelbus ipv trein             
+BUS ,Stopbus ipv trein             
+DSN ,Snelbus ipv trein             
+DST ,Stopbus ipv trein             
+ECC ,EuroCity                      
+ECD ,Eurocity Direct               
+ES  ,European Sleeper              
+EST ,Eurostar                      
+HSN ,Intercity direct              
+IC  ,Intercity                     
+ICD ,Intercity direct              
+ICE ,ICE International             
+INT ,Int. Trein                    
+M   ,Metro                         
+MBS ,Snelbus ipv trein             
+MST ,Stopbus ipv trein             
+MTR ,Metro ipv trein               
+MTS ,Metro ipv trein               
+NJ  ,Nightjet                      
+NSM ,Metro ipv trein               
+NSS ,Snelbus ipv trein             
+NST ,Tram ipv trein                
+NT  ,Nachttrein                    
+OSB ,Snelbus ipv trein             
+S   ,Sneltrein                     
+SPR ,Sprinter                      
+ST  ,Stoptrein                     
+THA ,Eurostar                      

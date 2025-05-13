@@ -1,0 +1,446 @@
+{
+  "payload": [
+    {
+      "id": {
+        "uicCode": "8031372",
+        "uicCdCode": "108031372",
+        "evaCode": "8070704",
+        "code": "ASCH"
+      },
+      "stationType": "LOCAL_TRAIN_STATION",
+      "names": {
+        "long": "Aachen Schanz",
+        "medium": "A.-Schanz",
+        "short": "A.-Schanz",
+        "synonyms": []
+      },
+      "location": {
+        "lat": 50.769975,
+        "lng": 6.073725
+      },
+      "tracks": [
+        "1",
+        "2"
+      ],
+      "hasKnownFacilities": true,
+      "availableForAccessibleTravel": true,
+      "hasTravelAssistance": false,
+      "areTracksIndependentlyAccessible": true,
+      "isBorderStop": false,
+      "country": "D",
+      "startDate": "2018-12-16",
+      "nearbyMeLocationId": {
+        "value": "ASCH",
+        "type": "stationV3"
+      }
+    },
+    {
+      "id": {
+        "uicCode": "8006050",
+        "uicCdCode": "108006050",
+        "evaCode": "8010085",
+        "code": "DRESD"
+      },
+      "stationType": "INTERCITY_HUB_STATION",
+      "names": {
+        "long": "Dresden Hbf",
+        "medium": "Dresden",
+        "short": "Dresden",
+        "synonyms": []
+      },
+      "location": {
+        "lat": 51.040563,
+        "lng": 13.732035
+      },
+      "tracks": [
+        "1",
+        "1a",
+        "2",
+        "2a",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14"
+      ],
+      "hasKnownFacilities": true,
+      "availableForAccessibleTravel": true,
+      "hasTravelAssistance": true,
+      "areTracksIndependentlyAccessible": true,
+      "isBorderStop": false,
+      "country": "D",
+      "startDate": "2018-12-16",
+      "nearbyMeLocationId": {
+        "value": "DRESD",
+        "type": "stationV3"
+      }
+    },
+    {
+      "id": {
+        "uicCode": "8499998",
+        "uicCdCode": "118499998",
+        "evaCode": "8499998",
+        "cdCode": 99998,
+        "code": "EHST"
+      },
+      "stationType": "OPTIONAL_STATION",
+      "names": {
+        "long": "Eindhoven Stadion",
+        "medium": "Ehv Stadion",
+        "short": "Ehv Stadion",
+        "synonyms": [
+          "Philips Stadion"
+        ]
+      },
+      "location": {
+        "lat": 51.442778,
+        "lng": 5.467222
+      },
+      "tracks": [
+        "1"
+      ],
+      "hasKnownFacilities": false,
+      "availableForAccessibleTravel": false,
+      "hasTravelAssistance": false,
+      "areTracksIndependentlyAccessible": false,
+      "isBorderStop": false,
+      "country": "NL",
+      "startDate": "2018-12-16",
+      "nearbyMeLocationId": {
+        "value": "EHST",
+        "type": "stationV3"
+      }
+    },
+    {
+      "id": {
+        "uicCode": "8029086",
+        "uicCdCode": "108029086",
+        "evaCode": "8002218",
+        "code": "GEISL"
+      },
+      "stationType": "EXPRESS_TRAIN_STATION",
+      "names": {
+        "long": "Geislingen (Steige)",
+        "medium": "Geislingen",
+        "short": "Geislingen",
+        "synonyms": [
+          "Geislingen an der Steige"
+        ]
+      },
+      "location": {
+        "lat": 48.619601,
+        "lng": 9.84162
+      },
+      "tracks": [
+        "1",
+        "2",
+        "3"
+      ],
+      "hasKnownFacilities": false,
+      "availableForAccessibleTravel": false,
+      "hasTravelAssistance": false,
+      "areTracksIndependentlyAccessible": true,
+      "isBorderStop": false,
+      "country": "D",
+      "startDate": "2018-12-16",
+      "nearbyMeLocationId": {
+        "value": "GEISL",
+        "type": "stationV3"
+      }
+    },
+    {
+      "id": {
+        "uicCode": "8499972",
+        "uicCdCode": "118499972",
+        "evaCode": "8499972",
+        "cdCode": 99972,
+        "code": "HRNT"
+      },
+      "stationType": "OPTIONAL_STATION",
+      "names": {
+        "long": "Haren Transferium",
+        "medium": "Haren Transf",
+        "short": "Haren Transf",
+        "synonyms": []
+      },
+      "location": {
+        "lat": 53.169762,
+        "lng": 6.592032
+      },
+      "tracks": [],
+      "hasKnownFacilities": false,
+      "availableForAccessibleTravel": false,
+      "hasTravelAssistance": false,
+      "areTracksIndependentlyAccessible": false,
+      "isBorderStop": false,
+      "country": "NL",
+      "startDate": "2018-12-16",
+      "nearbyMeLocationId": {
+        "value": "HRNT",
+        "type": "stationV3"
+      }
+    },
+    {
+      "id": {
+        "uicCode": "8019585",
+        "uicCdCode": "108019585",
+        "evaCode": "8000667",
+        "code": "KMB"
+      },
+      "stationType": "INTERCITY_STATION",
+      "names": {
+        "long": "Montabaur",
+        "medium": "Montabaur",
+        "short": "Montabaur",
+        "synonyms": []
+      },
+      "location": {
+        "lat": 50.444834,
+        "lng": 7.825333
+      },
+      "tracks": [],
+      "hasKnownFacilities": true,
+      "availableForAccessibleTravel": true,
+      "hasTravelAssistance": false,
+      "areTracksIndependentlyAccessible": true,
+      "isBorderStop": false,
+      "country": "D",
+      "startDate": "2018-12-16",
+      "nearbyMeLocationId": {
+        "value": "KMB",
+        "type": "stationV3"
+      }
+    },
+    {
+      "id": {
+        "uicCode": "8015195",
+        "uicCdCode": "108015195",
+        "evaCode": "8003395",
+        "code": "KOHL"
+      },
+      "stationType": "LOCAL_TRAIN_STATION",
+      "names": {
+        "long": "Kohlscheid",
+        "medium": "Kohlscheid",
+        "short": "Kohlscheid",
+        "synonyms": []
+      },
+      "location": {
+        "lat": 50.831728,
+        "lng": 6.074485
+      },
+      "tracks": [],
+      "hasKnownFacilities": false,
+      "availableForAccessibleTravel": true,
+      "hasTravelAssistance": false,
+      "areTracksIndependentlyAccessible": true,
+      "isBorderStop": false,
+      "country": "D",
+      "startDate": "2018-12-16",
+      "nearbyMeLocationId": {
+        "value": "KOHL",
+        "type": "stationV3"
+      }
+    },
+    {
+      "id": {
+        "uicCode": "8024069",
+        "uicCdCode": "108024069",
+        "evaCode": "8010296",
+        "code": "LRW"
+      },
+      "stationType": "LOCAL_TRAIN_STATION",
+      "names": {
+        "long": "Rathenow",
+        "medium": "Rathenow",
+        "short": "Rathenow",
+        "synonyms": []
+      },
+      "location": {
+        "lat": 52.59964,
+        "lng": 12.35484
+      },
+      "tracks": [],
+      "hasKnownFacilities": false,
+      "availableForAccessibleTravel": true,
+      "hasTravelAssistance": false,
+      "areTracksIndependentlyAccessible": true,
+      "isBorderStop": false,
+      "country": "D",
+      "startDate": "2018-12-16",
+      "nearbyMeLocationId": {
+        "value": "LRW",
+        "type": "stationV3"
+      }
+    },
+    {
+      "id": {
+        "uicCode": "8022609",
+        "uicCdCode": "108022609",
+        "evaCode": "8000010",
+        "code": "NAH"
+      },
+      "stationType": "INTERCITY_STATION",
+      "names": {
+        "long": "Aschaffenburg Hbf",
+        "medium": "Aschaffenbg Hbf",
+        "short": "Aschaffenbg",
+        "synonyms": []
+      },
+      "location": {
+        "lat": 49.980557,
+        "lng": 9.143697
+      },
+      "tracks": [],
+      "hasKnownFacilities": true,
+      "availableForAccessibleTravel": true,
+      "hasTravelAssistance": true,
+      "areTracksIndependentlyAccessible": true,
+      "isBorderStop": false,
+      "country": "D",
+      "startDate": "2018-12-16",
+      "nearbyMeLocationId": {
+        "value": "NAH",
+        "type": "stationV3"
+      }
+    },
+    {
+      "id": {
+        "uicCode": "5457076",
+        "uicCdCode": "115457076",
+        "evaCode": "5400014",
+        "code": "PRAHA"
+      },
+      "stationType": "MEGA_STATION",
+      "names": {
+        "long": "Praha hl.n.",
+        "medium": "Praha hl.n.",
+        "short": "Praha",
+        "synonyms": [
+          "Praag",
+          "Prague",
+          "Prag"
+        ]
+      },
+      "location": {
+        "lat": 50.083056,
+        "lng": 14.435833
+      },
+      "tracks": [],
+      "hasKnownFacilities": true,
+      "availableForAccessibleTravel": true,
+      "hasTravelAssistance": true,
+      "areTracksIndependentlyAccessible": true,
+      "isBorderStop": false,
+      "country": "CZ",
+      "startDate": "2018-12-16",
+      "nearbyMeLocationId": {
+        "value": "PRAHA",
+        "type": "stationV3"
+      }
+    },
+    {
+      "id": {
+        "uicCode": "5457256",
+        "uicCdCode": "115457256",
+        "evaCode": "5400201",
+        "code": "PRAHOL"
+      },
+      "stationType": "INTERCITY_STATION",
+      "names": {
+        "long": "Praha-Holešovice",
+        "medium": "P.-Holešovice",
+        "short": "P.-Holešov.",
+        "synonyms": []
+      },
+      "location": {
+        "lat": 50.109667,
+        "lng": 14.439919
+      },
+      "tracks": [],
+      "hasKnownFacilities": true,
+      "availableForAccessibleTravel": true,
+      "hasTravelAssistance": false,
+      "areTracksIndependentlyAccessible": true,
+      "isBorderStop": false,
+      "country": "CZ",
+      "startDate": "2018-12-16",
+      "nearbyMeLocationId": {
+        "value": "PRAHOL",
+        "type": "stationV3"
+      }
+    },
+    {
+      "id": {
+        "uicCode": "8014277",
+        "uicCdCode": "108014277",
+        "evaCode": "8000774",
+        "code": "RBB"
+      },
+      "stationType": "INTERCITY_STATION",
+      "names": {
+        "long": "Baden-Baden",
+        "medium": "Baden-Baden",
+        "short": "Baden-Baden",
+        "synonyms": []
+      },
+      "location": {
+        "lat": 48.7906,
+        "lng": 8.19083
+      },
+      "tracks": [],
+      "hasKnownFacilities": true,
+      "availableForAccessibleTravel": true,
+      "hasTravelAssistance": true,
+      "areTracksIndependentlyAccessible": true,
+      "isBorderStop": false,
+      "country": "D",
+      "startDate": "2018-12-16",
+      "nearbyMeLocationId": {
+        "value": "RBB",
+        "type": "stationV3"
+      }
+    },
+    {
+      "id": {
+        "uicCode": "8499971",
+        "uicCdCode": "118499971",
+        "evaCode": "8499971",
+        "cdCode": 99971,
+        "code": "RTNG"
+      },
+      "stationType": "OPTIONAL_STATION",
+      "names": {
+        "long": "Rotterdam Noord Goederen",
+        "medium": "R'dam Noord G",
+        "short": "R'dam N G",
+        "synonyms": [
+          "SSN Stoomdepot"
+        ]
+      },
+      "location": {
+        "lat": 51.945,
+        "lng": 4.50556
+      },
+      "tracks": [],
+      "hasKnownFacilities": false,
+      "availableForAccessibleTravel": false,
+      "hasTravelAssistance": false,
+      "areTracksIndependentlyAccessible": false,
+      "isBorderStop": false,
+      "country": "NL",
+      "startDate": "2018-12-16",
+      "nearbyMeLocationId": {
+        "value": "RTNG",
+        "type": "stationV3"
+      }
+    }
+  ]
+}

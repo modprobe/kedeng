@@ -1,0 +1,506 @@
+{
+    "?xml": {
+        "attr": {
+            "version": "1.0",
+            "encoding": "UTF-8"
+        }
+    },
+    "PutReisInformatieBoodschapIn": {
+        "ReisInformatieProductDVS": {
+            "RIPAdministratie": {
+                "ReisInformatieProductID": "5121007062051003",
+                "AbonnementId": "54",
+                "ReisInformatieTijdstip": "2025-05-01T14:53:00.000Z"
+            },
+            "DynamischeVertrekStaat": {
+                "RitId": "7062",
+                "RitDatum": "2025-05-01",
+                "RitStation": {
+                    "StationCode": "AML",
+                    "Type": "5",
+                    "KorteNaam": "Almelo",
+                    "MiddelNaam": "Almelo",
+                    "LangeNaam": "Almelo",
+                    "UICCode": "8400051"
+                },
+                "Trein": {
+                    "TreinNummer": "7062",
+                    "TreinSoort": {
+                        "text": "Sprinter",
+                        "attr": {
+                            "Code": "SPR"
+                        }
+                    },
+                    "TreinFormule": "1",
+                    "TreinStatus": "2",
+                    "Vervoerder": "NS",
+                    "Reserveren": "N",
+                    "Toeslag": "N",
+                    "NietInstappen": "N",
+                    "AchterBlijvenAchtersteTreinDeel": "N",
+                    "RangeerBeweging": "N",
+                    "SpeciaalKaartje": "N",
+                    "TreinEindBestemming": [
+                        {
+                            "StationCode": "APD",
+                            "Type": "5",
+                            "KorteNaam": "Apeldoorn",
+                            "MiddelNaam": "Apeldoorn",
+                            "LangeNaam": "Apeldoorn",
+                            "UICCode": "8400066",
+                            "attr": {
+                                "InfoStatus": "Gepland"
+                            }
+                        },
+                        {
+                            "StationCode": "APD",
+                            "Type": "5",
+                            "KorteNaam": "Apeldoorn",
+                            "MiddelNaam": "Apeldoorn",
+                            "LangeNaam": "Apeldoorn",
+                            "UICCode": "8400066",
+                            "attr": {
+                                "InfoStatus": "Actueel"
+                            }
+                        }
+                    ],
+                    "PresentatieTreinEindBestemming": {
+                        "Uitingen": [
+                            {
+                                "Uiting": "Apeldoorn",
+                                "attr": {
+                                    "Taal": "en"
+                                }
+                            },
+                            {
+                                "Uiting": "Apeldoorn",
+                                "attr": {
+                                    "Taal": "nl"
+                                }
+                            }
+                        ]
+                    },
+                    "VertrekTijd": [
+                        {
+                            "text": "2025-05-01T14:53:00.000Z",
+                            "attr": {
+                                "InfoStatus": "Gepland"
+                            }
+                        },
+                        {
+                            "text": "2025-05-01T14:54:00.000Z",
+                            "attr": {
+                                "InfoStatus": "Actueel"
+                            }
+                        }
+                    ],
+                    "ExacteVertrekVertraging": "PT1M",
+                    "PresentatieVertrekVertraging": {
+                        "Uitingen": [
+                            {
+                                "Uiting": "+1 min.",
+                                "attr": {
+                                    "Taal": "en"
+                                }
+                            },
+                            {
+                                "Uiting": "+1 min.",
+                                "attr": {
+                                    "Taal": "nl"
+                                }
+                            }
+                        ]
+                    },
+                    "GedempteVertrekVertraging": "PT0S",
+                    "TreinVertrekSpoor": [
+                        {
+                            "SpoorNummer": "3",
+                            "attr": {
+                                "InfoStatus": "Gepland"
+                            }
+                        },
+                        {
+                            "SpoorNummer": "3",
+                            "attr": {
+                                "InfoStatus": "Actueel"
+                            }
+                        }
+                    ],
+                    "PresentatieTreinVertrekSpoor": {
+                        "Uitingen": [
+                            {
+                                "Uiting": "3",
+                                "attr": {
+                                    "Taal": "en"
+                                }
+                            },
+                            {
+                                "Uiting": "3",
+                                "attr": {
+                                    "Taal": "nl"
+                                }
+                            }
+                        ]
+                    },
+                    "VertrekRichting": "A",
+                    "AfstandPerronEindKopVertrekTrein": "0",
+                    "VerkorteRoute": [
+                        {
+                            "Station": [
+                                {
+                                    "StationCode": "WDN",
+                                    "Type": "1",
+                                    "KorteNaam": "Wierden",
+                                    "MiddelNaam": "Wierden",
+                                    "LangeNaam": "Wierden",
+                                    "UICCode": "8400691"
+                                },
+                                {
+                                    "StationCode": "RSN",
+                                    "Type": "0",
+                                    "KorteNaam": "Rijssen",
+                                    "MiddelNaam": "Rijssen",
+                                    "LangeNaam": "Rijssen",
+                                    "UICCode": "8400538"
+                                },
+                                {
+                                    "StationCode": "HON",
+                                    "Type": "0",
+                                    "KorteNaam": "Holten",
+                                    "MiddelNaam": "Holten",
+                                    "LangeNaam": "Holten",
+                                    "UICCode": "8400328"
+                                },
+                                {
+                                    "StationCode": "DV",
+                                    "Type": "5",
+                                    "KorteNaam": "Deventer",
+                                    "MiddelNaam": "Deventer",
+                                    "LangeNaam": "Deventer",
+                                    "UICCode": "8400173"
+                                }
+                            ],
+                            "attr": {
+                                "InfoStatus": "Gepland"
+                            }
+                        },
+                        {
+                            "Station": [
+                                {
+                                    "StationCode": "WDN",
+                                    "Type": "1",
+                                    "KorteNaam": "Wierden",
+                                    "MiddelNaam": "Wierden",
+                                    "LangeNaam": "Wierden",
+                                    "UICCode": "8400691"
+                                },
+                                {
+                                    "StationCode": "RSN",
+                                    "Type": "0",
+                                    "KorteNaam": "Rijssen",
+                                    "MiddelNaam": "Rijssen",
+                                    "LangeNaam": "Rijssen",
+                                    "UICCode": "8400538"
+                                },
+                                {
+                                    "StationCode": "HON",
+                                    "Type": "0",
+                                    "KorteNaam": "Holten",
+                                    "MiddelNaam": "Holten",
+                                    "LangeNaam": "Holten",
+                                    "UICCode": "8400328"
+                                },
+                                {
+                                    "StationCode": "DV",
+                                    "Type": "5",
+                                    "KorteNaam": "Deventer",
+                                    "MiddelNaam": "Deventer",
+                                    "LangeNaam": "Deventer",
+                                    "UICCode": "8400173"
+                                }
+                            ],
+                            "attr": {
+                                "InfoStatus": "Actueel"
+                            }
+                        }
+                    ],
+                    "PresentatieVerkorteRoute": {
+                        "Uitingen": [
+                            {
+                                "Uiting": "Wierden, Rijssen, Holten, Deventer",
+                                "attr": {
+                                    "Taal": "en"
+                                }
+                            },
+                            {
+                                "Uiting": "Wierden, Rijssen, Holten, Deventer",
+                                "attr": {
+                                    "Taal": "nl"
+                                }
+                            }
+                        ]
+                    },
+                    "TreinVleugel": {
+                        "TreinVleugelVertrekSpoor": [
+                            {
+                                "SpoorNummer": "3",
+                                "attr": {
+                                    "InfoStatus": "Gepland"
+                                }
+                            },
+                            {
+                                "SpoorNummer": "3",
+                                "attr": {
+                                    "InfoStatus": "Actueel"
+                                }
+                            }
+                        ],
+                        "PresentatieTreinVleugelVertrekSpoor": {
+                            "Uitingen": [
+                                {
+                                    "Uiting": "3",
+                                    "attr": {
+                                        "Taal": "en"
+                                    }
+                                },
+                                {
+                                    "Uiting": "3",
+                                    "attr": {
+                                        "Taal": "nl"
+                                    }
+                                }
+                            ]
+                        },
+                        "TreinVleugelEindBestemming": [
+                            {
+                                "StationCode": "APD",
+                                "Type": "5",
+                                "KorteNaam": "Apeldoorn",
+                                "MiddelNaam": "Apeldoorn",
+                                "LangeNaam": "Apeldoorn",
+                                "UICCode": "8400066",
+                                "attr": {
+                                    "InfoStatus": "Gepland"
+                                }
+                            },
+                            {
+                                "StationCode": "APD",
+                                "Type": "5",
+                                "KorteNaam": "Apeldoorn",
+                                "MiddelNaam": "Apeldoorn",
+                                "LangeNaam": "Apeldoorn",
+                                "UICCode": "8400066",
+                                "attr": {
+                                    "InfoStatus": "Actueel"
+                                }
+                            }
+                        ],
+                        "PresentatieTreinVleugelEindBestemming": {
+                            "Uitingen": [
+                                {
+                                    "Uiting": "Apeldoorn",
+                                    "attr": {
+                                        "Taal": "en"
+                                    }
+                                },
+                                {
+                                    "Uiting": "Apeldoorn",
+                                    "attr": {
+                                        "Taal": "nl"
+                                    }
+                                }
+                            ]
+                        },
+                        "StopStations": [
+                            {
+                                "Station": [
+                                    {
+                                        "StationCode": "WDN",
+                                        "Type": "1",
+                                        "KorteNaam": "Wierden",
+                                        "MiddelNaam": "Wierden",
+                                        "LangeNaam": "Wierden",
+                                        "UICCode": "8400691"
+                                    },
+                                    {
+                                        "StationCode": "RSN",
+                                        "Type": "0",
+                                        "KorteNaam": "Rijssen",
+                                        "MiddelNaam": "Rijssen",
+                                        "LangeNaam": "Rijssen",
+                                        "UICCode": "8400538"
+                                    },
+                                    {
+                                        "StationCode": "HON",
+                                        "Type": "0",
+                                        "KorteNaam": "Holten",
+                                        "MiddelNaam": "Holten",
+                                        "LangeNaam": "Holten",
+                                        "UICCode": "8400328"
+                                    },
+                                    {
+                                        "StationCode": "DVC",
+                                        "Type": "0",
+                                        "KorteNaam": "Colmschate",
+                                        "MiddelNaam": "Colmschate",
+                                        "LangeNaam": "Deventer Colmschate",
+                                        "UICCode": "8400185"
+                                    },
+                                    {
+                                        "StationCode": "DV",
+                                        "Type": "5",
+                                        "KorteNaam": "Deventer",
+                                        "MiddelNaam": "Deventer",
+                                        "LangeNaam": "Deventer",
+                                        "UICCode": "8400173"
+                                    },
+                                    {
+                                        "StationCode": "TWL",
+                                        "Type": "0",
+                                        "KorteNaam": "Twello",
+                                        "MiddelNaam": "Twello",
+                                        "LangeNaam": "Twello",
+                                        "UICCode": "8400599"
+                                    },
+                                    {
+                                        "StationCode": "APDO",
+                                        "Type": "0",
+                                        "KorteNaam": "Osseveld",
+                                        "MiddelNaam": "Osseveld",
+                                        "LangeNaam": "Apeldoorn Osseveld",
+                                        "UICCode": "8400229"
+                                    },
+                                    {
+                                        "StationCode": "APD",
+                                        "Type": "5",
+                                        "KorteNaam": "Apeldoorn",
+                                        "MiddelNaam": "Apeldoorn",
+                                        "LangeNaam": "Apeldoorn",
+                                        "UICCode": "8400066"
+                                    }
+                                ],
+                                "attr": {
+                                    "InfoStatus": "Gepland"
+                                }
+                            },
+                            {
+                                "Station": [
+                                    {
+                                        "StationCode": "WDN",
+                                        "Type": "1",
+                                        "KorteNaam": "Wierden",
+                                        "MiddelNaam": "Wierden",
+                                        "LangeNaam": "Wierden",
+                                        "UICCode": "8400691"
+                                    },
+                                    {
+                                        "StationCode": "RSN",
+                                        "Type": "0",
+                                        "KorteNaam": "Rijssen",
+                                        "MiddelNaam": "Rijssen",
+                                        "LangeNaam": "Rijssen",
+                                        "UICCode": "8400538"
+                                    },
+                                    {
+                                        "StationCode": "HON",
+                                        "Type": "0",
+                                        "KorteNaam": "Holten",
+                                        "MiddelNaam": "Holten",
+                                        "LangeNaam": "Holten",
+                                        "UICCode": "8400328"
+                                    },
+                                    {
+                                        "StationCode": "DVC",
+                                        "Type": "0",
+                                        "KorteNaam": "Colmschate",
+                                        "MiddelNaam": "Colmschate",
+                                        "LangeNaam": "Deventer Colmschate",
+                                        "UICCode": "8400185"
+                                    },
+                                    {
+                                        "StationCode": "DV",
+                                        "Type": "5",
+                                        "KorteNaam": "Deventer",
+                                        "MiddelNaam": "Deventer",
+                                        "LangeNaam": "Deventer",
+                                        "UICCode": "8400173"
+                                    },
+                                    {
+                                        "StationCode": "TWL",
+                                        "Type": "0",
+                                        "KorteNaam": "Twello",
+                                        "MiddelNaam": "Twello",
+                                        "LangeNaam": "Twello",
+                                        "UICCode": "8400599"
+                                    },
+                                    {
+                                        "StationCode": "APDO",
+                                        "Type": "0",
+                                        "KorteNaam": "Osseveld",
+                                        "MiddelNaam": "Osseveld",
+                                        "LangeNaam": "Apeldoorn Osseveld",
+                                        "UICCode": "8400229"
+                                    },
+                                    {
+                                        "StationCode": "APD",
+                                        "Type": "5",
+                                        "KorteNaam": "Apeldoorn",
+                                        "MiddelNaam": "Apeldoorn",
+                                        "LangeNaam": "Apeldoorn",
+                                        "UICCode": "8400066"
+                                    }
+                                ],
+                                "attr": {
+                                    "InfoStatus": "Actueel"
+                                }
+                            }
+                        ],
+                        "MaterieelDeelDVS": {
+                            "MaterieelSoort": "SNG",
+                            "MaterieelAanduiding": "3",
+                            "MaterieelLengte": "5900",
+                            "MaterieelDeelVolgordeVertrek": "1",
+                            "MaterieelNummer": "000000-02303-0",
+                            "MaterieelDeelEindBestemming": [
+                                {
+                                    "StationCode": "APD",
+                                    "Type": "5",
+                                    "KorteNaam": "Apeldoorn",
+                                    "MiddelNaam": "Apeldoorn",
+                                    "LangeNaam": "Apeldoorn",
+                                    "UICCode": "8400066",
+                                    "attr": {
+                                        "InfoStatus": "Gepland"
+                                    }
+                                },
+                                {
+                                    "StationCode": "APD",
+                                    "Type": "5",
+                                    "KorteNaam": "Apeldoorn",
+                                    "MiddelNaam": "Apeldoorn",
+                                    "LangeNaam": "Apeldoorn",
+                                    "UICCode": "8400066",
+                                    "attr": {
+                                        "InfoStatus": "Actueel"
+                                    }
+                                }
+                            ],
+                            "PresentatieMaterieelDeelEindBestemming": {
+                                "Uitingen": {
+                                    "Uiting": "Apeldoorn"
+                                }
+                            }
+                        }
+                    },
+                    "Wijziging": {
+                        "WijzigingType": "10"
+                    }
+                }
+            },
+            "attr": {
+                "Versie": "6.2",
+                "TimeStamp": "2025-05-01T14:54:08.894Z"
+            }
+        }
+    }
+}

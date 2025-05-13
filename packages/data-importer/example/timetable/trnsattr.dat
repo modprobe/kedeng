@@ -1,0 +1,33 @@
+@100,07042025,13122025,0070,IFF Standaard uit RIF         
+TAR ,4   ,AfwijkendTarief               
+BAR ,4   ,Bar/Buffet                    
+RESV,4   ,Reserveren verplicht          
+SPEC,1   ,Speciaal ticket vereist       
+T   ,1   ,Toeslag                       
+RESA,4   ,Reserveren buitenl. aanbevolen
+TWEE,4   ,alleen 2e klas                
+REST,4   ,Restauratie                   
+GAVR,1   ,Geen AVR-NS                   
+FIET,4   ,Fietsvervoer mogelijk         
+BIST,4   ,Bistro                        
+NIIN,7   ,Niet instappen voor reizigers 
+NUIT,6   ,Niet uitstappen voor reizigers
+KOPS,4   ,Warme en koude dranken        
+ROL ,4   ,Rolstoel plaatsen             
+LIGW,4   ,Ligwagen                      
+SLP ,4   ,Slaapwagen                    
+TELE,4   ,Telefoon                      
+EEN ,4   ,alleen 1e klas                
+XXX1,4   ,1 dag voor de dienstregeling  
+XXX2,4   ,2 dagen voor de dienstregeling
+XXX3,4   ,Rijdt laatste dag dienstreg   
+FINI,4   ,Fiets meenemen niet mogelijk  
+RESM,4   ,Reserveren mogelijk           
+FIVE,4   ,Fietsreservering verplicht    
+OO  ,4   ,Voraussichtlich stark ausgel. 
+SPRZ,4   ,Sprinter zonder toilet        
+TSR ,4   ,Toeslag Schiphol-Rotterdam vv 
+IRES,4   ,Int. reserveren verplicht     
+BEMU,4   ,Voor bezoekers Spoorwegmuseum 
+TVIE,4   ,Toeslag Interrail/Eurail      
+UKT ,4   ,Vertrek van UK-Terminal       

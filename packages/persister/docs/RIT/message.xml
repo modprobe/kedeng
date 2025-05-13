@@ -1,0 +1,2360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:PutReisInformatieBoodschapIn xmlns="urn:ns:cdm:reisinformatie:data:rit:5"
+    xmlns:ns2="urn:ns:cdm:reisinformatie:message:ritinfo:5">
+    <ReisInformatieProductRitInfo Versie="9.2" TimeStamp="2025-05-01T14:54:08.800Z"
+        ApplicatieVersie="1.2.110">
+        <RIPAdministratie>
+            <ReisInformatieProductID>51220067300012</ReisInformatieProductID>
+            <AbonnementId>57</AbonnementId>
+            <ReisInformatieTijdstip>2025-05-02T07:18:00.000Z</ReisInformatieTijdstip>
+            <GeldigTot>2025-05-02T09:07:00.000Z</GeldigTot>
+        </RIPAdministratie>
+        <RitInfo>
+            <TreinNummer>6730</TreinNummer>
+            <TreinDatum>2025-05-02</TreinDatum>
+            <TreinSoort Code="SPR">Sprinter</TreinSoort>
+            <Vervoerder>NS</Vervoerder>
+            <Reserveren>N</Reserveren>
+            <Toeslag>N</Toeslag>
+            <SpeciaalKaartje>N</SpeciaalKaartje>
+            <Reisplanner>J</Reisplanner>
+            <LogischeRit>
+                <LogischeRitNummer>6730</LogischeRitNummer>
+                <LogischeRitDeel>
+                    <LogischeRitDeelNummer>6730</LogischeRitDeelNummer>
+                    <LogischeRitDeelStation>
+                        <Station>
+                            <StationCode>TL</StationCode>
+                            <Type>1</Type>
+                            <KorteNaam>Tiel</KorteNaam>
+                            <MiddelNaam>Tiel</MiddelNaam>
+                            <LangeNaam>Tiel</LangeNaam>
+                            <UICCode>8400596</UICCode>
+                        </Station>
+                        <StationToegankelijk>J</StationToegankelijk>
+                        <PresentatieStationToegankelijk>
+                            <Uitingen Taal="nl">
+                                <Uiting>Station is toegankelijk</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Station is accessible</Uiting>
+                            </Uitingen>
+                        </PresentatieStationToegankelijk>
+                        <StationReisAssistentie>J</StationReisAssistentie>
+                        <PresentatieStationReisAssistentie>
+                            <Uitingen Taal="nl">
+                                <Uiting>Reisassistentie beschikbaar op dit station</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Travel Assistance available at this station</Uiting>
+                            </Uitingen>
+                        </PresentatieStationReisAssistentie>
+                        <TreinEindBestemming InfoStatus="Gepland">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <TreinEindBestemming InfoStatus="Actueel">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <PresentatieTreinEindBestemming>
+                            <Uitingen>
+                                <Uiting>Leiden Centraal</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinEindBestemming>
+                        <Stopt InfoStatus="Gepland">J</Stopt>
+                        <Stopt InfoStatus="Actueel">J</Stopt>
+                        <VertrekTijd InfoStatus="Gepland">2025-05-02T07:18:00.000Z</VertrekTijd>
+                        <VertrekTijd InfoStatus="Actueel">2025-05-02T07:18:00.000Z</VertrekTijd>
+                        <TreinVertrekSpoor InfoStatus="Gepland">
+                            <SpoorNummer>3</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <TreinVertrekSpoor InfoStatus="Actueel">
+                            <SpoorNummer>3</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <PresentatieTreinVertrekSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>3</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>3</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinVertrekSpoor>
+                        <StationnementType>X</StationnementType>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2410</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>4</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>6900</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>1</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>1</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02410-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2647</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>6</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>10000</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>3</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>2</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02647-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <NietInstappen>N</NietInstappen>
+                        <TreinRangeertVolledigAf>N</TreinRangeertVolledigAf>
+                    </LogischeRitDeelStation>
+                    <LogischeRitDeelStation>
+                        <Station>
+                            <StationCode>TPSW</StationCode>
+                            <Type>0</Type>
+                            <KorteNaam>Passewaaij</KorteNaam>
+                            <MiddelNaam>Passewaaij</MiddelNaam>
+                            <LangeNaam>Tiel Passewaaij</LangeNaam>
+                            <UICCode>8400600</UICCode>
+                        </Station>
+                        <StationToegankelijk>J</StationToegankelijk>
+                        <PresentatieStationToegankelijk>
+                            <Uitingen Taal="nl">
+                                <Uiting>Station is toegankelijk</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Station is accessible</Uiting>
+                            </Uitingen>
+                        </PresentatieStationToegankelijk>
+                        <StationReisAssistentie>J</StationReisAssistentie>
+                        <PresentatieStationReisAssistentie>
+                            <Uitingen Taal="nl">
+                                <Uiting>Reisassistentie beschikbaar op dit station</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Travel Assistance available at this station</Uiting>
+                            </Uitingen>
+                        </PresentatieStationReisAssistentie>
+                        <TreinEindBestemming InfoStatus="Gepland">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <TreinEindBestemming InfoStatus="Actueel">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <PresentatieTreinEindBestemming>
+                            <Uitingen>
+                                <Uiting>Leiden Centraal</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinEindBestemming>
+                        <Stopt InfoStatus="Gepland">J</Stopt>
+                        <Stopt InfoStatus="Actueel">J</Stopt>
+                        <AankomstTijd InfoStatus="Gepland">2025-05-02T07:21:00.000Z</AankomstTijd>
+                        <AankomstTijd InfoStatus="Actueel">2025-05-02T07:21:00.000Z</AankomstTijd>
+                        <TreinAankomstSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <TreinAankomstSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <PresentatieTreinAankomstSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinAankomstSpoor>
+                        <VertrekTijd InfoStatus="Gepland">2025-05-02T07:21:00.000Z</VertrekTijd>
+                        <VertrekTijd InfoStatus="Actueel">2025-05-02T07:21:00.000Z</VertrekTijd>
+                        <TreinVertrekSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <TreinVertrekSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <PresentatieTreinVertrekSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinVertrekSpoor>
+                        <StationnementType>X</StationnementType>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2410</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>4</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>6900</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>1</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>1</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02410-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2647</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>6</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>10000</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>3</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>2</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02647-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <NietInstappen>N</NietInstappen>
+                        <TreinRangeertVolledigAf>N</TreinRangeertVolledigAf>
+                    </LogischeRitDeelStation>
+                    <LogischeRitDeelStation>
+                        <Station>
+                            <StationCode>GDM</StationCode>
+                            <Type>1</Type>
+                            <KorteNaam>Geldermlsn</KorteNaam>
+                            <MiddelNaam>Geldermalsen</MiddelNaam>
+                            <LangeNaam>Geldermalsen</LangeNaam>
+                            <UICCode>8400244</UICCode>
+                        </Station>
+                        <StationToegankelijk>J</StationToegankelijk>
+                        <PresentatieStationToegankelijk>
+                            <Uitingen Taal="nl">
+                                <Uiting>Station is toegankelijk</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Station is accessible</Uiting>
+                            </Uitingen>
+                        </PresentatieStationToegankelijk>
+                        <StationReisAssistentie>J</StationReisAssistentie>
+                        <PresentatieStationReisAssistentie>
+                            <Uitingen Taal="nl">
+                                <Uiting>Reisassistentie beschikbaar op dit station</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Travel Assistance available at this station</Uiting>
+                            </Uitingen>
+                        </PresentatieStationReisAssistentie>
+                        <TreinEindBestemming InfoStatus="Gepland">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <TreinEindBestemming InfoStatus="Actueel">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <PresentatieTreinEindBestemming>
+                            <Uitingen>
+                                <Uiting>Leiden Centraal</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinEindBestemming>
+                        <Stopt InfoStatus="Gepland">J</Stopt>
+                        <Stopt InfoStatus="Actueel">J</Stopt>
+                        <AankomstTijd InfoStatus="Gepland">2025-05-02T07:29:00.000Z</AankomstTijd>
+                        <AankomstTijd InfoStatus="Actueel">2025-05-02T07:29:00.000Z</AankomstTijd>
+                        <TreinAankomstSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <TreinAankomstSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <PresentatieTreinAankomstSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinAankomstSpoor>
+                        <VertrekTijd InfoStatus="Gepland">2025-05-02T07:30:00.000Z</VertrekTijd>
+                        <VertrekTijd InfoStatus="Actueel">2025-05-02T07:30:00.000Z</VertrekTijd>
+                        <TreinVertrekSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <TreinVertrekSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <PresentatieTreinVertrekSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinVertrekSpoor>
+                        <StationnementType>X</StationnementType>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2410</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>4</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>6900</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>1</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>1</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02410-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2647</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>6</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>10000</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>3</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>2</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02647-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <NietInstappen>N</NietInstappen>
+                        <TreinRangeertVolledigAf>N</TreinRangeertVolledigAf>
+                    </LogischeRitDeelStation>
+                    <LogischeRitDeelStation>
+                        <Station>
+                            <StationCode>CL</StationCode>
+                            <Type>0</Type>
+                            <KorteNaam>Culemborg</KorteNaam>
+                            <MiddelNaam>Culemborg</MiddelNaam>
+                            <LangeNaam>Culemborg</LangeNaam>
+                            <UICCode>8400154</UICCode>
+                        </Station>
+                        <StationToegankelijk>N</StationToegankelijk>
+                        <PresentatieStationToegankelijk>
+                            <Uitingen Taal="nl">
+                                <Uiting>Station is niet toegankelijk</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Station is not accessible</Uiting>
+                            </Uitingen>
+                        </PresentatieStationToegankelijk>
+                        <StationReisAssistentie>J</StationReisAssistentie>
+                        <PresentatieStationReisAssistentie>
+                            <Uitingen Taal="nl">
+                                <Uiting>Reisassistentie beschikbaar op dit station</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Travel Assistance available at this station</Uiting>
+                            </Uitingen>
+                        </PresentatieStationReisAssistentie>
+                        <TreinEindBestemming InfoStatus="Gepland">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <TreinEindBestemming InfoStatus="Actueel">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <PresentatieTreinEindBestemming>
+                            <Uitingen>
+                                <Uiting>Leiden Centraal</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinEindBestemming>
+                        <Stopt InfoStatus="Gepland">J</Stopt>
+                        <Stopt InfoStatus="Actueel">J</Stopt>
+                        <AankomstTijd InfoStatus="Gepland">2025-05-02T07:35:00.000Z</AankomstTijd>
+                        <AankomstTijd InfoStatus="Actueel">2025-05-02T07:35:00.000Z</AankomstTijd>
+                        <TreinAankomstSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <TreinAankomstSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <PresentatieTreinAankomstSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinAankomstSpoor>
+                        <VertrekTijd InfoStatus="Gepland">2025-05-02T07:35:00.000Z</VertrekTijd>
+                        <VertrekTijd InfoStatus="Actueel">2025-05-02T07:35:00.000Z</VertrekTijd>
+                        <TreinVertrekSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <TreinVertrekSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <PresentatieTreinVertrekSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinVertrekSpoor>
+                        <StationnementType>X</StationnementType>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2410</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>4</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>6900</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>1</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>1</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02410-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2647</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>6</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>10000</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>3</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>2</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02647-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <NietInstappen>N</NietInstappen>
+                        <TreinRangeertVolledigAf>N</TreinRangeertVolledigAf>
+                    </LogischeRitDeelStation>
+                    <LogischeRitDeelStation>
+                        <Station>
+                            <StationCode>HTNC</StationCode>
+                            <Type>0</Type>
+                            <KorteNaam>Castellum</KorteNaam>
+                            <MiddelNaam>Castellum</MiddelNaam>
+                            <LangeNaam>Houten Castellum</LangeNaam>
+                            <UICCode>8400335</UICCode>
+                        </Station>
+                        <StationToegankelijk>N</StationToegankelijk>
+                        <PresentatieStationToegankelijk>
+                            <Uitingen Taal="nl">
+                                <Uiting>Station is niet toegankelijk</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Station is not accessible</Uiting>
+                            </Uitingen>
+                        </PresentatieStationToegankelijk>
+                        <StationReisAssistentie>J</StationReisAssistentie>
+                        <PresentatieStationReisAssistentie>
+                            <Uitingen Taal="nl">
+                                <Uiting>Reisassistentie beschikbaar op dit station</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Travel Assistance available at this station</Uiting>
+                            </Uitingen>
+                        </PresentatieStationReisAssistentie>
+                        <TreinEindBestemming InfoStatus="Gepland">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <TreinEindBestemming InfoStatus="Actueel">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <PresentatieTreinEindBestemming>
+                            <Uitingen>
+                                <Uiting>Leiden Centraal</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinEindBestemming>
+                        <Stopt InfoStatus="Gepland">J</Stopt>
+                        <Stopt InfoStatus="Actueel">J</Stopt>
+                        <AankomstTijd InfoStatus="Gepland">2025-05-02T07:41:00.000Z</AankomstTijd>
+                        <AankomstTijd InfoStatus="Actueel">2025-05-02T07:41:00.000Z</AankomstTijd>
+                        <TreinAankomstSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <TreinAankomstSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <PresentatieTreinAankomstSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinAankomstSpoor>
+                        <VertrekTijd InfoStatus="Gepland">2025-05-02T07:42:00.000Z</VertrekTijd>
+                        <VertrekTijd InfoStatus="Actueel">2025-05-02T07:42:00.000Z</VertrekTijd>
+                        <TreinVertrekSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <TreinVertrekSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <PresentatieTreinVertrekSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinVertrekSpoor>
+                        <StationnementType>X</StationnementType>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2410</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>4</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>6900</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>1</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>1</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02410-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2647</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>6</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>10000</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>3</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>2</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02647-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <NietInstappen>N</NietInstappen>
+                        <TreinRangeertVolledigAf>N</TreinRangeertVolledigAf>
+                    </LogischeRitDeelStation>
+                    <LogischeRitDeelStation>
+                        <Station>
+                            <StationCode>HTN</StationCode>
+                            <Type>1</Type>
+                            <KorteNaam>Houten</KorteNaam>
+                            <MiddelNaam>Houten</MiddelNaam>
+                            <LangeNaam>Houten</LangeNaam>
+                            <UICCode>8400340</UICCode>
+                        </Station>
+                        <StationToegankelijk>J</StationToegankelijk>
+                        <PresentatieStationToegankelijk>
+                            <Uitingen Taal="nl">
+                                <Uiting>Station is toegankelijk</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Station is accessible</Uiting>
+                            </Uitingen>
+                        </PresentatieStationToegankelijk>
+                        <StationReisAssistentie>J</StationReisAssistentie>
+                        <PresentatieStationReisAssistentie>
+                            <Uitingen Taal="nl">
+                                <Uiting>Reisassistentie beschikbaar op dit station</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Travel Assistance available at this station</Uiting>
+                            </Uitingen>
+                        </PresentatieStationReisAssistentie>
+                        <TreinEindBestemming InfoStatus="Gepland">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <TreinEindBestemming InfoStatus="Actueel">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <PresentatieTreinEindBestemming>
+                            <Uitingen>
+                                <Uiting>Leiden Centraal</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinEindBestemming>
+                        <Stopt InfoStatus="Gepland">J</Stopt>
+                        <Stopt InfoStatus="Actueel">J</Stopt>
+                        <AankomstTijd InfoStatus="Gepland">2025-05-02T07:45:00.000Z</AankomstTijd>
+                        <AankomstTijd InfoStatus="Actueel">2025-05-02T07:45:00.000Z</AankomstTijd>
+                        <TreinAankomstSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <TreinAankomstSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <PresentatieTreinAankomstSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinAankomstSpoor>
+                        <VertrekTijd InfoStatus="Gepland">2025-05-02T07:45:00.000Z</VertrekTijd>
+                        <VertrekTijd InfoStatus="Actueel">2025-05-02T07:45:00.000Z</VertrekTijd>
+                        <TreinVertrekSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <TreinVertrekSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <PresentatieTreinVertrekSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinVertrekSpoor>
+                        <StationnementType>X</StationnementType>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2410</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>4</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>6900</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>1</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>1</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02410-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2647</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>6</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>10000</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>3</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>2</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02647-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <NietInstappen>N</NietInstappen>
+                        <TreinRangeertVolledigAf>N</TreinRangeertVolledigAf>
+                    </LogischeRitDeelStation>
+                    <LogischeRitDeelStation>
+                        <Station>
+                            <StationCode>UTLN</StationCode>
+                            <Type>0</Type>
+                            <KorteNaam>Lunetten</KorteNaam>
+                            <MiddelNaam>Lunetten</MiddelNaam>
+                            <LangeNaam>Utrecht Lunetten</LangeNaam>
+                            <UICCode>8400623</UICCode>
+                        </Station>
+                        <StationToegankelijk>J</StationToegankelijk>
+                        <PresentatieStationToegankelijk>
+                            <Uitingen Taal="nl">
+                                <Uiting>Station is toegankelijk</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Station is accessible</Uiting>
+                            </Uitingen>
+                        </PresentatieStationToegankelijk>
+                        <StationReisAssistentie>J</StationReisAssistentie>
+                        <PresentatieStationReisAssistentie>
+                            <Uitingen Taal="nl">
+                                <Uiting>Reisassistentie beschikbaar op dit station</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Travel Assistance available at this station</Uiting>
+                            </Uitingen>
+                        </PresentatieStationReisAssistentie>
+                        <TreinEindBestemming InfoStatus="Gepland">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <TreinEindBestemming InfoStatus="Actueel">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <PresentatieTreinEindBestemming>
+                            <Uitingen>
+                                <Uiting>Leiden Centraal</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinEindBestemming>
+                        <Stopt InfoStatus="Gepland">J</Stopt>
+                        <Stopt InfoStatus="Actueel">J</Stopt>
+                        <AankomstTijd InfoStatus="Gepland">2025-05-02T07:49:00.000Z</AankomstTijd>
+                        <AankomstTijd InfoStatus="Actueel">2025-05-02T07:49:00.000Z</AankomstTijd>
+                        <TreinAankomstSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <TreinAankomstSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <PresentatieTreinAankomstSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinAankomstSpoor>
+                        <VertrekTijd InfoStatus="Gepland">2025-05-02T07:49:00.000Z</VertrekTijd>
+                        <VertrekTijd InfoStatus="Actueel">2025-05-02T07:49:00.000Z</VertrekTijd>
+                        <TreinVertrekSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <TreinVertrekSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <PresentatieTreinVertrekSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinVertrekSpoor>
+                        <StationnementType>X</StationnementType>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2410</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>4</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>6900</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>1</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>1</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02410-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2647</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>6</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>10000</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>3</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>2</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02647-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <NietInstappen>N</NietInstappen>
+                        <TreinRangeertVolledigAf>N</TreinRangeertVolledigAf>
+                    </LogischeRitDeelStation>
+                    <LogischeRitDeelStation>
+                        <Station>
+                            <StationCode>UTVR</StationCode>
+                            <Type>1</Type>
+                            <KorteNaam>VaartscheR</KorteNaam>
+                            <MiddelNaam>Vaartsche Rijn</MiddelNaam>
+                            <LangeNaam>Utrecht Vaartsche Rijn</LangeNaam>
+                            <UICCode>8400606</UICCode>
+                        </Station>
+                        <StationToegankelijk>N</StationToegankelijk>
+                        <PresentatieStationToegankelijk>
+                            <Uitingen Taal="nl">
+                                <Uiting>Station is niet toegankelijk</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Station is not accessible</Uiting>
+                            </Uitingen>
+                        </PresentatieStationToegankelijk>
+                        <StationReisAssistentie>J</StationReisAssistentie>
+                        <PresentatieStationReisAssistentie>
+                            <Uitingen Taal="nl">
+                                <Uiting>Reisassistentie beschikbaar op dit station</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Travel Assistance available at this station</Uiting>
+                            </Uitingen>
+                        </PresentatieStationReisAssistentie>
+                        <TreinEindBestemming InfoStatus="Gepland">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <TreinEindBestemming InfoStatus="Actueel">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <PresentatieTreinEindBestemming>
+                            <Uitingen>
+                                <Uiting>Leiden Centraal</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinEindBestemming>
+                        <Stopt InfoStatus="Gepland">J</Stopt>
+                        <Stopt InfoStatus="Actueel">J</Stopt>
+                        <AankomstTijd InfoStatus="Gepland">2025-05-02T07:51:00.000Z</AankomstTijd>
+                        <AankomstTijd InfoStatus="Actueel">2025-05-02T07:51:00.000Z</AankomstTijd>
+                        <TreinAankomstSpoor InfoStatus="Gepland">
+                            <SpoorNummer>3</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <TreinAankomstSpoor InfoStatus="Actueel">
+                            <SpoorNummer>3</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <PresentatieTreinAankomstSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>3</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>3</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinAankomstSpoor>
+                        <VertrekTijd InfoStatus="Gepland">2025-05-02T07:51:00.000Z</VertrekTijd>
+                        <VertrekTijd InfoStatus="Actueel">2025-05-02T07:51:00.000Z</VertrekTijd>
+                        <TreinVertrekSpoor InfoStatus="Gepland">
+                            <SpoorNummer>3</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <TreinVertrekSpoor InfoStatus="Actueel">
+                            <SpoorNummer>3</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <PresentatieTreinVertrekSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>3</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>3</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinVertrekSpoor>
+                        <StationnementType>X</StationnementType>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2410</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>4</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>6900</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>1</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>1</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02410-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2647</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>6</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>10000</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>3</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>2</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02647-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <NietInstappen>N</NietInstappen>
+                        <TreinRangeertVolledigAf>N</TreinRangeertVolledigAf>
+                    </LogischeRitDeelStation>
+                    <LogischeRitDeelStation>
+                        <Station>
+                            <StationCode>UT</StationCode>
+                            <Type>6</Type>
+                            <KorteNaam>Utrecht C</KorteNaam>
+                            <MiddelNaam>Utrecht C.</MiddelNaam>
+                            <LangeNaam>Utrecht Centraal</LangeNaam>
+                            <UICCode>8400621</UICCode>
+                        </Station>
+                        <StationToegankelijk>J</StationToegankelijk>
+                        <PresentatieStationToegankelijk>
+                            <Uitingen Taal="nl">
+                                <Uiting>Station is toegankelijk</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Station is accessible</Uiting>
+                            </Uitingen>
+                        </PresentatieStationToegankelijk>
+                        <StationReisAssistentie>J</StationReisAssistentie>
+                        <PresentatieStationReisAssistentie>
+                            <Uitingen Taal="nl">
+                                <Uiting>Reisassistentie beschikbaar op dit station</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Travel Assistance available at this station</Uiting>
+                            </Uitingen>
+                        </PresentatieStationReisAssistentie>
+                        <TreinEindBestemming InfoStatus="Gepland">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <TreinEindBestemming InfoStatus="Actueel">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <PresentatieTreinEindBestemming>
+                            <Uitingen>
+                                <Uiting>Leiden Centraal</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinEindBestemming>
+                        <Stopt InfoStatus="Gepland">J</Stopt>
+                        <Stopt InfoStatus="Actueel">J</Stopt>
+                        <AankomstTijd InfoStatus="Gepland">2025-05-02T07:54:00.000Z</AankomstTijd>
+                        <AankomstTijd InfoStatus="Actueel">2025-05-02T07:54:00.000Z</AankomstTijd>
+                        <TreinAankomstSpoor InfoStatus="Gepland">
+                            <SpoorNummer>20</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <TreinAankomstSpoor InfoStatus="Actueel">
+                            <SpoorNummer>20</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <PresentatieTreinAankomstSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>20</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>20</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinAankomstSpoor>
+                        <VertrekTijd InfoStatus="Gepland">2025-05-02T07:56:00.000Z</VertrekTijd>
+                        <VertrekTijd InfoStatus="Actueel">2025-05-02T07:56:00.000Z</VertrekTijd>
+                        <TreinVertrekSpoor InfoStatus="Gepland">
+                            <SpoorNummer>20</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <TreinVertrekSpoor InfoStatus="Actueel">
+                            <SpoorNummer>20</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <PresentatieTreinVertrekSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>20</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>20</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinVertrekSpoor>
+                        <StationnementType>X</StationnementType>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2410</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>4</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>6900</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>1</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>1</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02410-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2647</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>6</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>10000</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>3</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>2</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02647-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <NietInstappen>N</NietInstappen>
+                        <TreinRangeertVolledigAf>N</TreinRangeertVolledigAf>
+                    </LogischeRitDeelStation>
+                    <LogischeRitDeelStation>
+                        <Station>
+                            <StationCode>UTLR</StationCode>
+                            <Type>0</Type>
+                            <KorteNaam>LeidscheRn</KorteNaam>
+                            <MiddelNaam>Leidsche Rijn</MiddelNaam>
+                            <LangeNaam>Utrecht Leidsche Rijn</LangeNaam>
+                            <UICCode>8400607</UICCode>
+                        </Station>
+                        <Stopt InfoStatus="Gepland">N</Stopt>
+                        <Stopt InfoStatus="Actueel">N</Stopt>
+                        <StationnementType>D</StationnementType>
+                    </LogischeRitDeelStation>
+                    <LogischeRitDeelStation>
+                        <Station>
+                            <StationCode>UTT</StationCode>
+                            <Type>0</Type>
+                            <KorteNaam>Terwijde</KorteNaam>
+                            <MiddelNaam>Terwijde</MiddelNaam>
+                            <LangeNaam>Utrecht Terwijde</LangeNaam>
+                            <UICCode>8400614</UICCode>
+                        </Station>
+                        <Stopt InfoStatus="Gepland">N</Stopt>
+                        <Stopt InfoStatus="Actueel">N</Stopt>
+                        <StationnementType>D</StationnementType>
+                    </LogischeRitDeelStation>
+                    <LogischeRitDeelStation>
+                        <Station>
+                            <StationCode>VTN</StationCode>
+                            <Type>0</Type>
+                            <KorteNaam>Vleuten</KorteNaam>
+                            <MiddelNaam>Vleuten</MiddelNaam>
+                            <LangeNaam>Vleuten</LangeNaam>
+                            <UICCode>8400651</UICCode>
+                        </Station>
+                        <Stopt InfoStatus="Gepland">N</Stopt>
+                        <Stopt InfoStatus="Actueel">N</Stopt>
+                        <StationnementType>D</StationnementType>
+                    </LogischeRitDeelStation>
+                    <LogischeRitDeelStation>
+                        <Station>
+                            <StationCode>WD</StationCode>
+                            <Type>1</Type>
+                            <KorteNaam>Woerden</KorteNaam>
+                            <MiddelNaam>Woerden</MiddelNaam>
+                            <LangeNaam>Woerden</LangeNaam>
+                            <UICCode>8400702</UICCode>
+                        </Station>
+                        <StationToegankelijk>N</StationToegankelijk>
+                        <PresentatieStationToegankelijk>
+                            <Uitingen Taal="nl">
+                                <Uiting>Station is niet toegankelijk</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Station is not accessible</Uiting>
+                            </Uitingen>
+                        </PresentatieStationToegankelijk>
+                        <StationReisAssistentie>J</StationReisAssistentie>
+                        <PresentatieStationReisAssistentie>
+                            <Uitingen Taal="nl">
+                                <Uiting>Reisassistentie beschikbaar op dit station</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Travel Assistance available at this station</Uiting>
+                            </Uitingen>
+                        </PresentatieStationReisAssistentie>
+                        <TreinEindBestemming InfoStatus="Gepland">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <TreinEindBestemming InfoStatus="Actueel">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <PresentatieTreinEindBestemming>
+                            <Uitingen>
+                                <Uiting>Leiden Centraal</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinEindBestemming>
+                        <Stopt InfoStatus="Gepland">J</Stopt>
+                        <Stopt InfoStatus="Actueel">J</Stopt>
+                        <AankomstTijd InfoStatus="Gepland">2025-05-02T08:06:00.000Z</AankomstTijd>
+                        <AankomstTijd InfoStatus="Actueel">2025-05-02T08:06:00.000Z</AankomstTijd>
+                        <TreinAankomstSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <TreinAankomstSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <PresentatieTreinAankomstSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinAankomstSpoor>
+                        <VertrekTijd InfoStatus="Gepland">2025-05-02T08:07:00.000Z</VertrekTijd>
+                        <VertrekTijd InfoStatus="Actueel">2025-05-02T08:07:00.000Z</VertrekTijd>
+                        <TreinVertrekSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <TreinVertrekSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <PresentatieTreinVertrekSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinVertrekSpoor>
+                        <StationnementType>X</StationnementType>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2410</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>4</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>6900</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>1</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>1</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02410-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2647</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>6</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>10000</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>3</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>2</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02647-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <NietInstappen>N</NietInstappen>
+                        <TreinRangeertVolledigAf>N</TreinRangeertVolledigAf>
+                    </LogischeRitDeelStation>
+                    <LogischeRitDeelStation>
+                        <Station>
+                            <StationCode>BDG</StationCode>
+                            <Type>0</Type>
+                            <KorteNaam>Bodegraven</KorteNaam>
+                            <MiddelNaam>Bodegraven</MiddelNaam>
+                            <LangeNaam>Bodegraven</LangeNaam>
+                            <UICCode>8400121</UICCode>
+                        </Station>
+                        <StationToegankelijk>J</StationToegankelijk>
+                        <PresentatieStationToegankelijk>
+                            <Uitingen Taal="nl">
+                                <Uiting>Station is toegankelijk</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Station is accessible</Uiting>
+                            </Uitingen>
+                        </PresentatieStationToegankelijk>
+                        <StationReisAssistentie>J</StationReisAssistentie>
+                        <PresentatieStationReisAssistentie>
+                            <Uitingen Taal="nl">
+                                <Uiting>Reisassistentie beschikbaar op dit station</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Travel Assistance available at this station</Uiting>
+                            </Uitingen>
+                        </PresentatieStationReisAssistentie>
+                        <TreinEindBestemming InfoStatus="Gepland">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <TreinEindBestemming InfoStatus="Actueel">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <PresentatieTreinEindBestemming>
+                            <Uitingen>
+                                <Uiting>Leiden Centraal</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinEindBestemming>
+                        <Stopt InfoStatus="Gepland">J</Stopt>
+                        <Stopt InfoStatus="Actueel">J</Stopt>
+                        <AankomstTijd InfoStatus="Gepland">2025-05-02T08:15:00.000Z</AankomstTijd>
+                        <AankomstTijd InfoStatus="Actueel">2025-05-02T08:15:00.000Z</AankomstTijd>
+                        <TreinAankomstSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <TreinAankomstSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <PresentatieTreinAankomstSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinAankomstSpoor>
+                        <VertrekTijd InfoStatus="Gepland">2025-05-02T08:16:00.000Z</VertrekTijd>
+                        <VertrekTijd InfoStatus="Actueel">2025-05-02T08:16:00.000Z</VertrekTijd>
+                        <TreinVertrekSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <TreinVertrekSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <PresentatieTreinVertrekSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinVertrekSpoor>
+                        <StationnementType>X</StationnementType>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2410</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>4</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>6900</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>1</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>1</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02410-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2647</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>6</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>10000</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>3</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>2</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02647-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <NietInstappen>N</NietInstappen>
+                        <TreinRangeertVolledigAf>N</TreinRangeertVolledigAf>
+                    </LogischeRitDeelStation>
+                    <LogischeRitDeelStation>
+                        <Station>
+                            <StationCode>APN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Alphen</KorteNaam>
+                            <MiddelNaam>Alphen a/d Rijn</MiddelNaam>
+                            <LangeNaam>Alphen a/d Rijn</LangeNaam>
+                            <UICCode>8400053</UICCode>
+                        </Station>
+                        <StationToegankelijk>J</StationToegankelijk>
+                        <PresentatieStationToegankelijk>
+                            <Uitingen Taal="nl">
+                                <Uiting>Station is toegankelijk</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Station is accessible</Uiting>
+                            </Uitingen>
+                        </PresentatieStationToegankelijk>
+                        <StationReisAssistentie>J</StationReisAssistentie>
+                        <PresentatieStationReisAssistentie>
+                            <Uitingen Taal="nl">
+                                <Uiting>Reisassistentie beschikbaar op dit station</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Travel Assistance available at this station</Uiting>
+                            </Uitingen>
+                        </PresentatieStationReisAssistentie>
+                        <TreinEindBestemming InfoStatus="Gepland">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <TreinEindBestemming InfoStatus="Actueel">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <PresentatieTreinEindBestemming>
+                            <Uitingen>
+                                <Uiting>Leiden Centraal</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinEindBestemming>
+                        <Stopt InfoStatus="Gepland">J</Stopt>
+                        <Stopt InfoStatus="Actueel">J</Stopt>
+                        <AankomstTijd InfoStatus="Gepland">2025-05-02T08:23:00.000Z</AankomstTijd>
+                        <AankomstTijd InfoStatus="Actueel">2025-05-02T08:23:00.000Z</AankomstTijd>
+                        <TreinAankomstSpoor InfoStatus="Gepland">
+                            <SpoorNummer>2</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <TreinAankomstSpoor InfoStatus="Actueel">
+                            <SpoorNummer>2</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <PresentatieTreinAankomstSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>2</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>2</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinAankomstSpoor>
+                        <VertrekTijd InfoStatus="Gepland">2025-05-02T08:24:00.000Z</VertrekTijd>
+                        <VertrekTijd InfoStatus="Actueel">2025-05-02T08:24:00.000Z</VertrekTijd>
+                        <TreinVertrekSpoor InfoStatus="Gepland">
+                            <SpoorNummer>2</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <TreinVertrekSpoor InfoStatus="Actueel">
+                            <SpoorNummer>2</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <PresentatieTreinVertrekSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>2</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>2</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinVertrekSpoor>
+                        <StationnementType>X</StationnementType>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2410</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>4</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>6900</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>1</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>1</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02410-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2647</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>6</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>10000</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>3</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>2</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02647-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <NietInstappen>N</NietInstappen>
+                        <TreinRangeertVolledigAf>N</TreinRangeertVolledigAf>
+                    </LogischeRitDeelStation>
+                    <LogischeRitDeelStation>
+                        <Station>
+                            <StationCode>LDL</StationCode>
+                            <Type>0</Type>
+                            <KorteNaam>Leiden Lam</KorteNaam>
+                            <MiddelNaam>Lammenschans</MiddelNaam>
+                            <LangeNaam>Leiden Lammenschans</LangeNaam>
+                            <UICCode>8400384</UICCode>
+                        </Station>
+                        <StationToegankelijk>J</StationToegankelijk>
+                        <PresentatieStationToegankelijk>
+                            <Uitingen Taal="nl">
+                                <Uiting>Station is toegankelijk</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Station is accessible</Uiting>
+                            </Uitingen>
+                        </PresentatieStationToegankelijk>
+                        <StationReisAssistentie>J</StationReisAssistentie>
+                        <PresentatieStationReisAssistentie>
+                            <Uitingen Taal="nl">
+                                <Uiting>Reisassistentie beschikbaar op dit station</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Travel Assistance available at this station</Uiting>
+                            </Uitingen>
+                        </PresentatieStationReisAssistentie>
+                        <TreinEindBestemming InfoStatus="Gepland">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <TreinEindBestemming InfoStatus="Actueel">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <PresentatieTreinEindBestemming>
+                            <Uitingen>
+                                <Uiting>Leiden Centraal</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinEindBestemming>
+                        <Stopt InfoStatus="Gepland">J</Stopt>
+                        <Stopt InfoStatus="Actueel">J</Stopt>
+                        <AankomstTijd InfoStatus="Gepland">2025-05-02T08:32:00.000Z</AankomstTijd>
+                        <AankomstTijd InfoStatus="Actueel">2025-05-02T08:32:00.000Z</AankomstTijd>
+                        <TreinAankomstSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <TreinAankomstSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <PresentatieTreinAankomstSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinAankomstSpoor>
+                        <VertrekTijd InfoStatus="Gepland">2025-05-02T08:32:00.000Z</VertrekTijd>
+                        <VertrekTijd InfoStatus="Actueel">2025-05-02T08:32:00.000Z</VertrekTijd>
+                        <TreinVertrekSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <TreinVertrekSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinVertrekSpoor>
+                        <PresentatieTreinVertrekSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinVertrekSpoor>
+                        <StationnementType>X</StationnementType>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2410</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>4</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>6900</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>1</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>1</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02410-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2647</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>6</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>10000</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>3</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>2</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02647-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <NietInstappen>N</NietInstappen>
+                        <TreinRangeertVolledigAf>N</TreinRangeertVolledigAf>
+                    </LogischeRitDeelStation>
+                    <LogischeRitDeelStation>
+                        <Station>
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </Station>
+                        <StationToegankelijk>J</StationToegankelijk>
+                        <PresentatieStationToegankelijk>
+                            <Uitingen Taal="nl">
+                                <Uiting>Station is toegankelijk</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Station is accessible</Uiting>
+                            </Uitingen>
+                        </PresentatieStationToegankelijk>
+                        <StationReisAssistentie>J</StationReisAssistentie>
+                        <PresentatieStationReisAssistentie>
+                            <Uitingen Taal="nl">
+                                <Uiting>Reisassistentie beschikbaar op dit station</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>Travel Assistance available at this station</Uiting>
+                            </Uitingen>
+                        </PresentatieStationReisAssistentie>
+                        <TreinEindBestemming InfoStatus="Gepland">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <TreinEindBestemming InfoStatus="Actueel">
+                            <StationCode>LEDN</StationCode>
+                            <Type>5</Type>
+                            <KorteNaam>Leiden C</KorteNaam>
+                            <MiddelNaam>Leiden C.</MiddelNaam>
+                            <LangeNaam>Leiden Centraal</LangeNaam>
+                            <UICCode>8400390</UICCode>
+                        </TreinEindBestemming>
+                        <PresentatieTreinEindBestemming>
+                            <Uitingen>
+                                <Uiting>Leiden Centraal</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinEindBestemming>
+                        <Stopt InfoStatus="Gepland">J</Stopt>
+                        <Stopt InfoStatus="Actueel">J</Stopt>
+                        <AankomstTijd InfoStatus="Gepland">2025-05-02T08:37:00.000Z</AankomstTijd>
+                        <AankomstTijd InfoStatus="Actueel">2025-05-02T08:37:00.000Z</AankomstTijd>
+                        <TreinAankomstSpoor InfoStatus="Gepland">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <TreinAankomstSpoor InfoStatus="Actueel">
+                            <SpoorNummer>1</SpoorNummer>
+                        </TreinAankomstSpoor>
+                        <PresentatieTreinAankomstSpoor>
+                            <Uitingen Taal="nl">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                            <Uitingen Taal="en">
+                                <Uiting>1</Uiting>
+                            </Uitingen>
+                        </PresentatieTreinAankomstSpoor>
+                        <StationnementType>X</StationnementType>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2410</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>4</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>6900</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>1</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>1</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02410-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <MaterieelDeel>
+                            <MaterieelDeelID>2647</MaterieelDeelID>
+                            <MaterieelDeelSoort>SLT</MaterieelDeelSoort>
+                            <MaterieelDeelAanduiding>6</MaterieelDeelAanduiding>
+                            <MaterieelDeelLengte>10000</MaterieelDeelLengte>
+                            <MaterieelDeelVertrekPositie>3</MaterieelDeelVertrekPositie>
+                            <MaterieelDeelVolgordeVertrek>2</MaterieelDeelVolgordeVertrek>
+                            <MaterieelNummer>000000-02647-0</MaterieelNummer>
+                            <MaterieelDeelToegankelijk>J</MaterieelDeelToegankelijk>
+                            <PresentatieMaterieelDeelToegankelijk>
+                                <Uitingen Taal="nl">
+                                    <Uiting>Trein is toegankelijk</Uiting>
+                                </Uitingen>
+                                <Uitingen Taal="en">
+                                    <Uiting>Train is accessible</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelToegankelijk>
+                            <MaterieelDeelEindBestemming InfoStatus="Gepland">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <MaterieelDeelEindBestemming InfoStatus="Actueel">
+                                <StationCode>LEDN</StationCode>
+                                <Type>5</Type>
+                                <KorteNaam>Leiden C</KorteNaam>
+                                <MiddelNaam>Leiden C.</MiddelNaam>
+                                <LangeNaam>Leiden Centraal</LangeNaam>
+                                <UICCode>8400390</UICCode>
+                            </MaterieelDeelEindBestemming>
+                            <PresentatieMaterieelDeelEindBestemming>
+                                <Uitingen>
+                                    <Uiting>Leiden Centraal</Uiting>
+                                </Uitingen>
+                            </PresentatieMaterieelDeelEindBestemming>
+                            <AchterBlijvenMaterieelDeel>N</AchterBlijvenMaterieelDeel>
+                        </MaterieelDeel>
+                        <NietInstappen>N</NietInstappen>
+                        <TreinRangeertVolledigAf>N</TreinRangeertVolledigAf>
+                    </LogischeRitDeelStation>
+                </LogischeRitDeel>
+            </LogischeRit>
+        </RitInfo>
+    </ReisInformatieProductRitInfo>
+</ns2:PutReisInformatieBoodschapIn>

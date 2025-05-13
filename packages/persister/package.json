@@ -1,0 +1,37 @@
+{
+  "name": "@alxt/kedeng-persister",
+  "dependencies": {
+    "@date-fns/tz": "^1.2.0",
+    "@date-fns/utc": "^2.1.0",
+    "@logtape/logtape": "^0.9.1",
+    "@logtape/otel": "^0.3.0",
+    "@nats-io/jetstream": "^3.0.2",
+    "@nats-io/nats-core": "^3.0.2",
+    "@nats-io/transport-node": "^3.0.2",
+    "date-fns": "^4.1.0",
+    "fast-xml-parser": "^5.2.1",
+    "jsonpath-plus": "^10.3.0",
+    "knex": "^3.1.0",
+    "pg": "^8.15.6",
+    "ts-pattern": "^5.7.0",
+    "ts-results-es": "^5.0.1",
+    "valibot": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "db:recreate": "knex migrate:rollback && knex migrate:latest"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "protobufjs"
+    ]
+  },
+  "packageManager": "pnpm@10.8.0+sha512.0e82714d1b5b43c74610193cb20734897c1d00de89d0e18420aebc5977fa13d780a9cb05734624e81ebd81cc876cd464794850641c48b9544326b5622ca29971"
+}

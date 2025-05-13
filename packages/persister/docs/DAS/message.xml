@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:PutReisInformatieBoodschapIn
+    xmlns:ns1="urn:ndov:cdm:trein:reisinformatie:messages:dynamischeaankomststaat:1">
+    <ns2:ReisInformatieProductDAS Versie="6.1" TimeStamp="2025-05-01T14:54:09Z"
+        xmlns:ns2="urn:ndov:cdm:trein:reisinformatie:data:4">
+        <ns2:RIPAdministratie>
+            <ns2:ReisInformatieProductID>8121037462389006</ns2:ReisInformatieProductID>
+            <ns2:AbonnementId>55</ns2:AbonnementId>
+            <ns2:ReisInformatieTijdstip>2025-05-01T14:53:00Z</ns2:ReisInformatieTijdstip>
+        </ns2:RIPAdministratie>
+        <ns2:DynamischeAankomstStaat>
+            <ns2:RitId>37462</ns2:RitId>
+            <ns2:RitDatum>2025-05-01</ns2:RitDatum>
+            <ns2:RitStation>
+                <ns2:StationCode>LWC</ns2:StationCode>
+                <ns2:Type>0</ns2:Type>
+                <ns2:KorteNaam>Camminghab</ns2:KorteNaam>
+                <ns2:MiddelNaam>Camminghaburen</ns2:MiddelNaam>
+                <ns2:LangeNaam>Leeuwarden Camminghaburen</ns2:LangeNaam>
+                <ns2:UICCode>8400389</ns2:UICCode>
+            </ns2:RitStation>
+            <ns2:TreinAankomst>
+                <ns2:TreinNummer>37462</ns2:TreinNummer>
+                <ns2:TreinSoort Code="ST">Stoptrein</ns2:TreinSoort>
+                <ns2:TreinStatus>5</ns2:TreinStatus>
+                <ns2:LijnNummer>RS1</ns2:LijnNummer>
+                <ns2:Vervoerder>Arriva</ns2:Vervoerder>
+                <ns2:TreinHerkomst InfoStatus="Gepland">
+                    <ns2:StationCode>LW</ns2:StationCode>
+                    <ns2:Type>5</ns2:Type>
+                    <ns2:KorteNaam>Leeuwarden</ns2:KorteNaam>
+                    <ns2:MiddelNaam>Leeuwarden</ns2:MiddelNaam>
+                    <ns2:LangeNaam>Leeuwarden</ns2:LangeNaam>
+                    <ns2:UICCode>8400387</ns2:UICCode>
+                </ns2:TreinHerkomst>
+                <ns2:TreinHerkomst InfoStatus="Actueel">
+                    <ns2:StationCode>LW</ns2:StationCode>
+                    <ns2:Type>5</ns2:Type>
+                    <ns2:KorteNaam>Leeuwarden</ns2:KorteNaam>
+                    <ns2:MiddelNaam>Leeuwarden</ns2:MiddelNaam>
+                    <ns2:LangeNaam>Leeuwarden</ns2:LangeNaam>
+                    <ns2:UICCode>8400387</ns2:UICCode>
+                </ns2:TreinHerkomst>
+                <ns2:PresentatieTreinHerkomst>
+                    <ns2:Uitingen>
+                        <ns2:Uiting>Leeuwarden</ns2:Uiting>
+                    </ns2:Uitingen>
+                </ns2:PresentatieTreinHerkomst>
+                <ns2:AankomstTijd InfoStatus="Gepland">2025-05-01T14:53:00Z</ns2:AankomstTijd>
+                <ns2:AankomstTijd InfoStatus="Actueel">2025-05-01T14:54:09Z</ns2:AankomstTijd>
+                <ns2:ExacteAankomstVertraging>PT1M9S</ns2:ExacteAankomstVertraging>
+                <ns2:PresentatieAankomstVertraging>
+                    <ns2:Uitingen>
+                        <ns2:Uiting>+1 min.</ns2:Uiting>
+                    </ns2:Uitingen>
+                </ns2:PresentatieAankomstVertraging>
+                <ns2:GedempteAankomstVertraging>PT0S</ns2:GedempteAankomstVertraging>
+                <ns2:TreinAankomstSpoor InfoStatus="Gepland">
+                    <ns2:SpoorNummer>1</ns2:SpoorNummer>
+                </ns2:TreinAankomstSpoor>
+                <ns2:TreinAankomstSpoor InfoStatus="Actueel">
+                    <ns2:SpoorNummer>1</ns2:SpoorNummer>
+                </ns2:TreinAankomstSpoor>
+                <ns2:PresentatieTreinAankomstSpoor>
+                    <ns2:Uitingen Taal="en">
+                        <ns2:Uiting>1</ns2:Uiting>
+                    </ns2:Uitingen>
+                    <ns2:Uitingen Taal="nl">
+                        <ns2:Uiting>1</ns2:Uiting>
+                    </ns2:Uitingen>
+                </ns2:PresentatieTreinAankomstSpoor>
+                <ns2:WijzigingHerkomst>
+                    <ns2:WijzigingType>11</ns2:WijzigingType>
+                </ns2:WijzigingHerkomst>
+            </ns2:TreinAankomst>
+        </ns2:DynamischeAankomstStaat>
+    </ns2:ReisInformatieProductDAS>
+</ns1:PutReisInformatieBoodschapIn>

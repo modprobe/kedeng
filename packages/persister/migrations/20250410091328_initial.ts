@@ -36,7 +36,7 @@ export async function up(knex: Knex): Promise<void> {
         .references("service.id")
         .deferrable("deferred");
 
-      table.index(["service_id", "running_on"]);
+      table.unique(["service_id", "running_on"]);
     })
 
     .createTable("journey_event", (table) => {

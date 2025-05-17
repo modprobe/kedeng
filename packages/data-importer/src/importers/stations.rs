@@ -1,7 +1,7 @@
 use crate::db;
 use anyhow::Result;
 use postgres::Client;
-use sea_query::{Expr, PostgresQueryBuilder, Query, QueryStatementWriter, SimpleExpr, ValueTuple};
+use sea_query::{Expr, PostgresQueryBuilder, Query, QueryStatementWriter};
 use serde::{Deserialize, Serialize};
 use std::fmt::{Display, Formatter};
 
@@ -167,8 +167,6 @@ pub fn import(db: &mut Client, api_key: &str) -> Result<()> {
     }
 
     let sql = qb.to_string(PostgresQueryBuilder);
-    println!("{}", sql);
-
     db.batch_execute(&sql)?;
 
     Ok(())

@@ -4,7 +4,9 @@ use identification::ServiceIdentification;
 use number::ServiceNumber;
 use platform_info::PlatformInfo;
 use station_event::StationEvent;
+use std::iter::Filter;
 use std::ops::Index;
+use std::slice::Iter;
 use transport_mode::TransportMode;
 use validity::Validity;
 
@@ -107,4 +109,26 @@ pub struct ServiceLeg {
     pub transport_mode: TransportMode,
     pub attributes: Vec<Attribute>,
     pub station_events: Vec<(StationEvent, Option<PlatformInfo>)>,
+}
+
+impl ServiceLeg {
+    pub fn stops(&self) -> impl Iterator<Item = &(StationEvent, Option<PlatformInfo>)> {
+        self.station_events
+            .iter()
+            .filter(|(e, _)| e.stop_type != StationEventType::Passage)
+    }
+
+    pub fn num_stops(&self) -> u32 {
+        self.stops().count() as u32
+    }
+
+    pub fn stop_number(&self, event: &StationEvent) -> Option<u32> {
+        if event.stop_type == StationEventType::Passage {
+            return None;
+        }
+
+        self.stops()
+            .position(|(e, _)| e == event)
+            .map(|pos| pos as u32)
+    }
 }

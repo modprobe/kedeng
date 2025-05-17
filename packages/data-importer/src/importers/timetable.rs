@@ -10,10 +10,10 @@ use crate::importers::timetable::parsers::{
 use crate::util::read_iso_8859_1_file;
 use anyhow::{Context, Result, anyhow};
 use chrono::{NaiveDateTime, Utc};
-use indicatif::ProgressBar;
-use nom::IResult;
+use indicatif::{ProgressBar, ProgressStyle};
+use nom::{IResult, Parser};
 use postgres::Client;
-use sea_query::{OnConflict, PostgresQueryBuilder, Query};
+use sea_query::{OnConflict, PostgresQueryBuilder, Query, ReturningClause};
 use sea_query_postgres::PostgresBinder;
 use std::io::Cursor;
 use std::path::{Path, PathBuf};
@@ -69,11 +69,19 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
     println!("+ Loaded {} companies", companies.data.len());
 
     let services = timetable.data.iter().flat_map(Service::split_legs);
-    let bar = ProgressBar::new(services.size_hint().0 as u64);
 
-    let uuid_ctx = ContextV7::new();
+    let spinner = ProgressBar::new_spinner();
+    spinner.set_style(
+        ProgressStyle::with_template("{spinner} [{elapsed_precise}] {msg}")?.tick_strings(&[
+            "[    ]", "[=   ]", "[==  ]", "[=== ]", "[====]", "[ ===]", "[  ==]", "[   =]",
+            "[    ]", "[   =]", "[  ==]", "[ ===]", "[====]", "[=== ]", "[==  ]", "[=   ]",
+            "[====]",
+        ]),
+    );
 
-    for service in services {
+    for (sidx, service) in services.enumerate() {
+        let mut transaction = db.transaction()?;
+
         let footnote = if service.validity.footnote == 0 {
             &Footnote::always_valid(&timetable.identification)
         } else {
@@ -82,10 +90,24 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
                 .context("! footnote not found")?
         };
 
-        if service.service_number.service_number == 0 && service.service_number.variant.is_none() {
-            println!("+ Skipping service without number or variant");
+        let service_number = (service.service_number.service_number != 0)
+            .then_some(service.service_number.service_number.to_string())
+            .or(service.service_number.variant.clone());
+
+        if service_number.is_none() {
+            spinner.println("+ Skipping service without number or variant");
             continue;
         }
+
+        let service_number = service_number.unwrap();
+
+        spinner.set_message(format!(
+            "[{} / ~{}] Processing service {} {}",
+            sidx,
+            timetable.data.len(),
+            service.transport_mode.code,
+            service_number
+        ));
 
         let company = companies
             .get_by_id(service.service_number.company_number)
@@ -99,11 +121,7 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
                 db::Service::Provider,
             ])
             .values_panic([
-                if service.service_number.service_number != 0 {
-                    service.service_number.service_number.to_string().into()
-                } else {
-                    service.service_number.clone().variant.unwrap().into()
-                },
+                service_number.clone().into(),
                 service.transport_mode.code.clone().into(),
                 company.code.clone().into(),
             ])
@@ -117,58 +135,112 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
             .returning(Query::returning().column(db::Service::Id))
             .build_postgres(PostgresQueryBuilder);
 
-        let inserted_service = db
+        let inserted_service = transaction
             .query(service_sql.as_str(), &service_params.as_params())
             .context("! failed to insert service(s)")?;
+
         assert_eq!(inserted_service.len(), 1);
 
         let service_id: Uuid = inserted_service.first().unwrap().get("id");
 
-        let mut journey_insert = Query::insert();
-        journey_insert.into_table(db::Journey::Table).columns([
-            db::Journey::Id,
-            db::Journey::ServiceId,
-            db::Journey::RunningOn,
-        ]);
+        let (journey_attributes, stop_attributes): (Vec<_>, Vec<_>) = service
+            .attributes
+            .iter()
+            .cloned()
+            .partition(|attr| attr.first_stop == 1 && attr.last_stop == service.num_stops());
 
         let mut journey_event_insert = Query::insert();
         journey_event_insert
             .into_table(db::JourneyEvent::Table)
             .columns([
-                db::JourneyEvent::Id,
                 db::JourneyEvent::JourneyId,
                 db::JourneyEvent::Station,
-                db::JourneyEvent::EventType,
+                db::JourneyEvent::EventTypePlanned,
                 db::JourneyEvent::StopOrder,
                 db::JourneyEvent::ArrivalTimePlanned,
                 db::JourneyEvent::ArrivalPlatformPlanned,
                 db::JourneyEvent::DepartureTimePlanned,
                 db::JourneyEvent::DeparturePlatformPlanned,
-            ]);
+                db::JourneyEvent::Attributes,
+            ])
+            .on_conflict(
+                OnConflict::columns([db::JourneyEvent::JourneyId, db::JourneyEvent::StopOrder])
+                    .update_columns([
+                        db::JourneyEvent::Station,
+                        db::JourneyEvent::EventTypePlanned,
+                        db::JourneyEvent::ArrivalTimePlanned,
+                        db::JourneyEvent::ArrivalPlatformPlanned,
+                        db::JourneyEvent::DepartureTimePlanned,
+                        db::JourneyEvent::DeparturePlatformPlanned,
+                        db::JourneyEvent::Attributes,
+                    ])
+                    .to_owned(),
+            );
 
-        let mut at_least_one_journey = false;
         let mut at_least_one_journey_event = false;
 
         for journey in footnote
             .iterate_valid_dates(&timetable.identification)
             .flatten()
         {
-            at_least_one_journey = true;
+            let mut journey_insert = Query::insert();
+            let (journey_insert_sql, journey_insert_params) = journey_insert
+                .into_table(db::Journey::Table)
+                .columns([
+                    db::Journey::ServiceId,
+                    db::Journey::RunningOn,
+                    db::Journey::Attributes,
+                ])
+                .values_panic([
+                    service_id.into(),
+                    journey.into(),
+                    (!journey_attributes.is_empty())
+                        .then(|| {
+                            journey_attributes
+                                .iter()
+                                .map(|attr| attr.code.clone())
+                                .collect::<Vec<_>>()
+                        })
+                        .into(),
+                ])
+                .on_conflict(
+                    OnConflict::columns([db::Journey::ServiceId, db::Journey::RunningOn])
+                        .update_columns([db::Journey::Attributes])
+                        .to_owned(),
+                )
+                .returning(Query::returning().columns([db::Journey::Id]))
+                .build_postgres(PostgresQueryBuilder);
 
-            let journey_id = Uuid::new_v7(Timestamp::from_unix(
-                &uuid_ctx,
-                NaiveDateTime::from(journey).and_utc().timestamp() as u64,
-                0,
-            ));
+            let inserted_journey = transaction
+                .query(
+                    journey_insert_sql.as_str(),
+                    &journey_insert_params.as_params(),
+                )
+                .context(format!(
+                    "query: {} - params: {:?}",
+                    journey_insert_sql.as_str(),
+                    journey_insert_params.as_params()
+                ))
+                .context("! failed to insert journey")?;
 
-            journey_insert.values_panic([
-                journey_id.into(),
-                service_id.into(),
-                journey.format("%Y-%m-%d").to_string().into(),
-            ]);
+            assert_eq!(inserted_journey.len(), 1);
+
+            let journey_id: Uuid = inserted_journey.first().unwrap().get("id");
 
             for (idx, (event, platform)) in service.station_events.iter().enumerate() {
                 at_least_one_journey_event = true;
+
+                let stop_attributes = service.stop_number(event).and_then(|stop_number| {
+                    let attribute_codes = stop_attributes
+                        .iter()
+                        .filter(|attr| {
+                            attr.first_stop <= stop_number && stop_number <= attr.last_stop
+                        })
+                        .map(|attr| attr.code.clone())
+                        .collect::<Vec<_>>();
+
+                    (!attribute_codes.is_empty()).then_some(attribute_codes)
+                });
 
                 let (date, time) = (
                     journey,
@@ -178,14 +250,7 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
                         .unwrap_or(Utc::now().naive_utc().time()),
                 );
 
-                let timestamp = Timestamp::from_unix(
-                    &uuid_ctx,
-                    date.and_time(time).and_utc().timestamp() as u64,
-                    0,
-                );
-
                 journey_event_insert.values_panic([
-                    Uuid::new_v7(timestamp).into(),
                     journey_id.into(),
                     event.station.clone().into(),
                     event.stop_type.to_string().into(),
@@ -202,18 +267,9 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
                     } else {
                         None::<String>.into()
                     },
+                    stop_attributes.into(),
                 ]);
             }
-        }
-
-        let mut transaction = db.transaction()?;
-
-        if at_least_one_journey {
-            let journey_insert_query = journey_insert.to_string(PostgresQueryBuilder);
-            transaction
-                .batch_execute(journey_insert_query.as_str())
-                .context(format!("query: {journey_insert_query}"))
-                .context("! could not insert journey")?;
         }
 
         if at_least_one_journey_event {
@@ -228,7 +284,12 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
             .commit()
             .context("! could not commit transaction")?;
 
-        bar.inc(1);
+        // spinner.println(format!(
+        //     "+ Inserted service {} {}",
+        //     service.transport_mode.code,
+        //     service_number.clone()
+        // ));
+        spinner.tick();
     }
 
     println!("+ All done!");

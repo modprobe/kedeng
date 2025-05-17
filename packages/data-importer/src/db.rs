@@ -37,15 +37,7 @@ pub enum Journey {
     Id,
     ServiceId,
     RunningOn,
-}
-
-#[derive(Iden)]
-pub enum ServiceAttribute {
-    Table,
-    ServiceId,
-    Attribute,
-    FromStop,
-    ToStop,
+    Attributes,
 }
 
 #[derive(Iden)]
@@ -54,12 +46,13 @@ pub enum JourneyEvent {
     Id,
     JourneyId,
     Station,
-    EventType,
+    EventTypePlanned,
     StopOrder,
     ArrivalTimePlanned,
     ArrivalPlatformPlanned,
     DepartureTimePlanned,
     DeparturePlatformPlanned,
+    Attributes,
 }
 
 #[derive(Iden)]

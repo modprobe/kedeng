@@ -78,7 +78,7 @@ fn main() -> anyhow::Result<()> {
         Some(cli.db_port),
     );
 
-    init_metrics_provider()?;
+    // init_metrics_provider()?;
 
     match cli.importer {
         Importer::Timetable { input_path } => timetable::import(&mut db, input_path),

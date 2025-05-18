@@ -1,6 +1,6 @@
 import { Ok } from "ts-results-es";
 import type { Knex } from "knex";
-import { match, P } from "ts-pattern";
+import { match } from "ts-pattern";
 import { getLogger } from "@logtape/logtape";
 
 import type { Handler } from "../../types";
@@ -64,8 +64,8 @@ const handleStationLevelChanges = async (
        * [x] 13 aankomsttijd gewijzigd
        * [x] 20 vertrekspoor gew
        * [x] 21 aankomstspoor gew
-       * [ ] 22 vertrekspoorfixatie
-       * [ ] 23 aankomstspoorfixatie
+       * [x] 22 vertrekspoorfixatie
+       * [x] 23 aankomstspoorfixatie
        * [x] 31 extra vertrek
        * [x] 32 vervallen vertrek
        * [x] 38 extra aankomst
@@ -102,6 +102,14 @@ const handleStationLevelChanges = async (
         .with({ WijzigingType: ChangeType.ArrivalPlatformChanged }, () => {
           update.arrival_platform_actual =
             changedStation.TreinAankomstSpoor![1]!.SpoorNummer;
+        })
+        .with({ WijzigingType: ChangeType.ArrivalPlatformAllocated }, () => {
+          update.arrival_platform_planned =
+            changedStation.TreinAankomstSpoor![0].SpoorNummer;
+        })
+        .with({ WijzigingType: ChangeType.DeparturePlatformAllocated }, () => {
+          update.departure_platform_planned =
+            changedStation.TreinVertrekSpoor![0].SpoorNummer;
         })
         .with(
           { WijzigingType: ChangeType.ArrivalCancelled },

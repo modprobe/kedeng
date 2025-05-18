@@ -1,19 +1,24 @@
+mod instrumentation;
+
 use std::env;
 use std::error::Error;
 use std::io::Read;
-use std::sync::Mutex;
+use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::{Arc, Mutex};
 
-use async_nats::jetstream::stream;
+use crate::instrumentation::{get_meter, shutdown_metrics};
+use async_nats::jetstream::{stream, Context};
 use bytes::Bytes;
 use flate2::bufread::GzDecoder;
-use slog::debug;
-use slog::info;
-use slog::o;
-use slog::Drain;
-use slog::Logger;
+use opentelemetry::metrics::Counter;
+use opentelemetry::KeyValue;
+use slog::{debug, error, info, o};
+use slog::{Drain, Logger};
 use slog_term::{FullFormat, TermDecorator};
-use zeromq::Socket;
-use zeromq::SocketRecv;
+use tokio::signal::unix::{signal, SignalKind};
+use tokio::time::{sleep, Duration};
+use tokio_util::task::TaskTracker;
+use zeromq::{Socket, SocketRecv, ZmqMessage};
 
 fn get_logger() -> Logger {
     if !atty::is(atty::Stream::Stdout) {
@@ -69,10 +74,65 @@ impl Source {
     }
 }
 
+async fn process(
+    msg: ZmqMessage,
+    nats: Arc<Context>,
+    logger: Arc<Logger>,
+    counter_received: Arc<Counter<u64>>,
+    counter_published: Arc<Counter<u64>>,
+) -> anyhow::Result<()> {
+    assert_eq!(msg.len(), 2);
+
+    let source = String::from_utf8(msg.get(0).unwrap().clone().to_vec())?;
+    let source = Source::from_envelope(source.as_str()).unwrap();
+
+    let data = msg.get(1).unwrap().clone();
+    let mut gz = GzDecoder::new(&data[..]);
+    let mut unzipped_data = String::new();
+
+    gz.read_to_string(&mut unzipped_data)?;
+
+    info!(logger, "Received message"; "envelope" => source.as_envelope());
+    // debug!(logger, "Decompressed message"; "envelope" => source.name(), "data" => unzipped_data.clone());
+    counter_received.add(1, &[KeyValue::new("source", source.as_envelope())]);
+
+    nats.publish(source.name(), Bytes::from(unzipped_data))
+        .await?;
+
+    counter_published.add(1, &[KeyValue::new("stream", source.name())]);
+
+    info!(logger, "Published message"; "subject" => source.name());
+    Ok(())
+}
+
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
-    let logger = get_logger();
+    let logger = Arc::new(get_logger());
     info!(logger, "Starting receiver");
+
+    let running = Arc::new(AtomicBool::new(true));
+    let task_tracker = TaskTracker::new();
+
+    // Set up a shutdown handler
+    let running_clone = Arc::clone(&running);
+    let logger_clone = Arc::clone(&logger);
+    tokio::spawn(async move {
+        let mut sigint =
+            signal(SignalKind::interrupt()).expect("Failed to register SIGINT handler");
+        let mut sigterm =
+            signal(SignalKind::terminate()).expect("Failed to register SIGTERM handler");
+
+        tokio::select! {
+            _ = sigint.recv() => {
+                info!(logger_clone, "Received SIGINT");
+                running_clone.store(false, Ordering::SeqCst);
+            }
+            _ = sigterm.recv() => {
+                info!(logger_clone, "Received SIGTERM");
+                running_clone.store(false, Ordering::SeqCst);
+            }
+        }
+    });
 
     let mut zmq_socket = zeromq::SubSocket::new();
     zmq_socket
@@ -92,7 +152,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         .connect(env::var("NATS_HOST").expect("NATS_HOST not set"))
         .await?;
 
-    let nats_jetstream = async_nats::jetstream::new(nats_client);
+    let nats_jetstream = Arc::new(async_nats::jetstream::new(nats_client));
 
     for source in [Source::DVS, Source::DAS, Source::POS, Source::RIT] {
         zmq_socket.subscribe(source.as_envelope()).await?;
@@ -108,26 +168,40 @@ async fn main() -> Result<(), Box<dyn Error>> {
         info!(logger, "Created stream"; "stream" => source.name());
     }
 
-    loop {
-        let msg = zmq_socket.recv().await?;
-        assert!(msg.len() == 2);
+    let log_clone = Arc::clone(&logger);
+    let counter_received = Arc::new(get_meter().u64_counter("kedeng_messages_received").build());
+    let counter_published = Arc::new(get_meter().u64_counter("kedeng_messages_published").build());
 
-        let source = String::from_utf8(msg.get(0).unwrap().clone().to_vec()).unwrap();
-        let source = Source::from_envelope(source.as_str()).unwrap();
+    while running.load(Ordering::SeqCst) {
+        tokio::select! {
+            msg_result = zmq_socket.recv() => {
+                let msg = msg_result?;
 
-        let data = msg.get(1).unwrap().clone();
-        let mut gz = GzDecoder::new(&data[..]);
-        let mut unzipped_data = String::new();
+                let nats = Arc::clone(&nats_jetstream);
+                let log = Arc::clone(&log_clone);
 
-        gz.read_to_string(&mut unzipped_data).unwrap();
+                let counter_received = Arc::clone(&counter_received);
+                let counter_published = Arc::clone(&counter_published);
 
-        info!(logger, "Received message"; "envelope" => source.as_envelope());
-        debug!(logger, "Decompressed message"; "envelope" => source.name(), "data" => unzipped_data.clone());
-
-        nats_jetstream
-            .publish(source.name(), Bytes::from(unzipped_data))
-            .await?;
-
-        info!(logger, "Published message"; "subject" => source.name());
+                task_tracker.spawn(async move {
+                    if let Err(e) = process(msg, nats, log.clone(), counter_received.clone(), counter_published.clone()).await {
+                        error!(log, "Error processing message: {}", e);
+                    }
+                });
+            }
+            _ = sleep(Duration::from_millis(500)) => {
+                continue;
+            }
+        }
     }
+
+    info!(logger, "Shutting down gracefully");
+    task_tracker.close();
+
+    info!(logger, "Waiting for all tasks to complete");
+    task_tracker.wait().await;
+    shutdown_metrics()?;
+
+    info!(logger, "All tasks completed, shutdown complete");
+    Ok(())
 }

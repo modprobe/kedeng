@@ -23,7 +23,12 @@
     "tsx": "^4.19.4",
     "typescript": "^5.8.3"
   },
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "clean": "rm -r ./dist",
+    "build:clean": "rm -rf ./dist && tsc -p tsconfig.build.json",
     "dev": "tsx watch src/index.ts",
     "db:recreate": "knex migrate:rollback && knex migrate:latest"
   },

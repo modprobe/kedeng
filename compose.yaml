@@ -9,7 +9,7 @@ services:
       - nats
 
   persister:
-    image: node:23
+    image: node:24
     env_file:
       - .env
     command: bash -c "corepack enable && pnpm install && pnpm run dev"

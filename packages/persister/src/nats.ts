@@ -25,8 +25,8 @@ const logger = getLogger(["kedeng", "persister", "nats"]);
 export const createNatsConnection = (): Promise<NatsConnection> =>
   connect({
     servers: `${requireEnv("NATS_HOST")}:${requireEnv("NATS_PORT")}`,
-    user: requireEnv("NATS_USER"),
-    pass: requireEnv("NATS_PASSWORD"),
+    user: process.env.NATS_USER ?? undefined,
+    pass: process.env.NATS_PASSWORD ?? undefined,
   });
 
 export const createJetstreamConnection = async (): Promise<{

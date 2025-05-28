@@ -1,13 +1,8 @@
 mod instrumentation;
 
-use std::env;
-use std::error::Error;
-use std::io::Read;
-use std::sync::atomic::{AtomicBool, Ordering};
-use std::sync::{Arc, Mutex};
-
-use crate::instrumentation::{get_meter, shutdown_metrics};
+use crate::instrumentation::{get_meter, init_tracer_provider, shutdown_metrics};
 use async_nats::jetstream::{stream, Context};
+use async_nats::ConnectOptions;
 use bytes::Bytes;
 use flate2::bufread::GzDecoder;
 use opentelemetry::metrics::Counter;
@@ -15,6 +10,11 @@ use opentelemetry::KeyValue;
 use slog::{debug, error, info, o};
 use slog::{Drain, Logger};
 use slog_term::{FullFormat, TermDecorator};
+use std::env;
+use std::error::Error;
+use std::io::Read;
+use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::{Arc, Mutex};
 use tokio::signal::unix::{signal, SignalKind};
 use tokio::time::{sleep, Duration};
 use tokio_util::task::TaskTracker;
@@ -93,7 +93,7 @@ async fn process(
     gz.read_to_string(&mut unzipped_data)?;
 
     info!(logger, "Received message"; "envelope" => source.as_envelope());
-    // debug!(logger, "Decompressed message"; "envelope" => source.name(), "data" => unzipped_data.clone());
+    debug!(logger, "Decompressed message"; "envelope" => source.name(), "data" => unzipped_data.clone());
     counter_received.add(1, &[KeyValue::new("source", source.as_envelope())]);
 
     nats.publish(source.name(), Bytes::from(unzipped_data))
@@ -109,6 +109,8 @@ async fn process(
 async fn main() -> Result<(), Box<dyn Error>> {
     let logger = Arc::new(get_logger());
     info!(logger, "Starting receiver");
+
+    init_tracer_provider()?;
 
     let running = Arc::new(AtomicBool::new(true));
     let task_tracker = TaskTracker::new();
@@ -143,10 +145,14 @@ async fn main() -> Result<(), Box<dyn Error>> {
         )
         .await?;
 
-    let nats_options = async_nats::ConnectOptions::with_user_and_password(
-        env::var("NATS_USER").expect("NATS_USER not set"),
-        env::var("NATS_PASSWORD").expect("NATS_PASSWORD not set"),
-    );
+    let nats_options = if env::var("NATS_USER").is_ok() && env::var("NATS_PASSWORD").is_ok() {
+        ConnectOptions::with_user_and_password(
+            env::var("NATS_USER").unwrap(),
+            env::var("NATS_PASSWORD").unwrap(),
+        )
+    } else {
+        ConnectOptions::default()
+    };
 
     let nats_client = nats_options
         .connect(env::var("NATS_HOST").expect("NATS_HOST not set"))

@@ -45,11 +45,6 @@ fn get_instrumentation_scope() -> &'static InstrumentationScope {
     })
 }
 
-pub(crate) fn get_tracer() -> &'static BoxedTracer {
-    static TRACER: OnceLock<BoxedTracer> = OnceLock::new();
-    TRACER.get_or_init(|| global::tracer_with_scope(get_instrumentation_scope().clone()))
-}
-
 pub(crate) fn get_meter() -> &'static Meter {
     static METER: OnceLock<Meter> = OnceLock::new();
     METER.get_or_init(|| {

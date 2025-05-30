@@ -9,6 +9,7 @@ target "receiver" {
     labels = {
         "org.opencontainers.image.source" = "https://github.com/modprobe/kedeng"
     }
+    platforms = [ "linux/amd64" ]
 }
 
 target "data_importer" {
@@ -18,6 +19,7 @@ target "data_importer" {
     labels = {
         "org.opencontainers.image.source" = "https://github.com/modprobe/kedeng"
     }
+    platforms = [ "linux/amd64" ]
 }
 
 target "persister" {
@@ -27,4 +29,5 @@ target "persister" {
     labels = {
         "org.opencontainers.image.source" = "https://github.com/modprobe/kedeng"
     }
+    platforms = [ "linux/amd64" ]
 }

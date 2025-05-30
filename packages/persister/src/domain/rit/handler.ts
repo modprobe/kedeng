@@ -1,4 +1,4 @@
-import { Ok } from "ts-results-es";
+import { Err, Ok } from "ts-results-es";
 import type { Knex } from "knex";
 import { match } from "ts-pattern";
 import { getLogger } from "@logtape/logtape";
@@ -196,18 +196,25 @@ const handleStationLevelChanges = async (
 
 export const handler: Handler<RitMessage> = async (db, data) => {
   const msg = data.PutReisInformatieBoodschapIn.ReisInformatieProductRitInfo;
-  const trx = await db.transaction();
 
-  const changedElements = getChanges(data);
+  try {
+    const trx = await db.transaction();
+    const changedElements = getChanges(data);
+    await handleStationLevelChanges(
+      trx,
+      msg.RitInfo.TreinNummer,
+      msg.RitInfo.TreinDatum,
+      changedElements[ChangeLevel.Station],
+    );
 
-  await handleStationLevelChanges(
-    trx,
-    msg.RitInfo.TreinNummer,
-    msg.RitInfo.TreinDatum,
-    changedElements[ChangeLevel.Station],
-  );
+    await trx.commit();
+  } catch (e) {
+    if (!(e instanceof Error)) {
+      return Err("RIT processing failed");
+    }
 
-  await trx.commit();
+    return Err(`RIT processing failed: ${e.message}`);
+  }
 
   return Ok(void 0);
 };

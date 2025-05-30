@@ -1,5 +1,3 @@
-import fs from "node:fs/promises";
-
 import { getLogger } from "@logtape/logtape";
 import { match } from "ts-pattern";
 import type { Result } from "ts-results-es";
@@ -10,6 +8,7 @@ import { createJetstreamConnection, setupConsumers } from "./nats";
 import { circularIterator, requireEnv, setupLogger } from "./utils";
 import dvsHandler from "./domain/dvs";
 import dasHandler from "./domain/das";
+import ritHandler from "./domain/rit";
 import type { Handler } from "./types";
 import { setupParser } from "./parser";
 
@@ -49,27 +48,13 @@ const noopHandler: (stream: Stream) => Handler<any> =
       return Err("not implemented");
     });
 
-const saveHandler: (stream: Stream) => Handler<object> =
-  (stream) => async (_db, data) => {
-    await saveMessageToFile(data, stream);
-    return Err("not implemented");
-  };
-
 const getHandler = (stream: Stream): Handler<any> =>
   match(stream)
     .with(Stream.DVS, () => dvsHandler)
     .with(Stream.DAS, () => dasHandler)
     .with(Stream.POS, () => noopHandler(Stream.POS))
-    .with(Stream.RIT, () => saveHandler(Stream.RIT))
+    .with(Stream.RIT, () => ritHandler)
     .run();
-
-const saveMessageToFile = async (message: object, stream: Stream) => {
-  const path = `${__dirname}/../docs/${stream.toUpperCase()}/failed`;
-  await fs.mkdir(path, { recursive: true });
-
-  const fileName = `${crypto.randomUUID()}.json`;
-  await fs.writeFile(`${path}/${fileName}`, JSON.stringify(message));
-};
 
 void (async () => {
   const db = await createDbConnection();
@@ -82,6 +67,7 @@ void (async () => {
     Stream.DVS,
     Stream.RIT,
   ]);
+
   logger.info("Set up consumers", { consumers });
 
   for (const [stream, consumer] of circularIterator(
@@ -124,8 +110,6 @@ void (async () => {
       } else {
         logger.error(`failed to handle message: ${result.error}`);
         message.nak(5_000);
-        await saveMessageToFile(messageData as object, stream);
-        logger.debug("saved failed message to file");
       }
     } catch (err: any) {
       logger.error(`failed to handle message: ${err}`, { err });

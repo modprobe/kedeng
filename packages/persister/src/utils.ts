@@ -1,7 +1,11 @@
+import fs from "node:fs/promises";
+
 import { configureSync, getConsoleSink } from "@logtape/logtape";
 import { formatDate, parseISO } from "date-fns";
 
 import type { DateISOString, DateTimeISOString } from "./types/infoplus";
+
+import type { Stream } from ".";
 
 export const requireEnv = (env: string): string => {
   const value = process.env[env];
@@ -44,3 +48,11 @@ export function* circularIterator<T>(
 export const extractTimeFromIsoString = (
   input: DateTimeISOString,
 ): DateISOString => formatDate(parseISO(input), "HH:mm:ss");
+
+export const saveMessageToFile = async (message: object, stream: Stream) => {
+  const path = `${__dirname}/../docs/${stream.toUpperCase()}/failed`;
+  await fs.mkdir(path, { recursive: true });
+
+  const fileName = `${crypto.randomUUID()}.json`;
+  await fs.writeFile(`${path}/${fileName}`, JSON.stringify(message));
+};

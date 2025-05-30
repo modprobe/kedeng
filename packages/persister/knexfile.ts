@@ -22,6 +22,7 @@ const config: Knex.Config = {
     extension: "ts",
     directory: "migrations",
     tableName: "_migrations",
+    loadExtensions: process.env.NODE_ENV === "production" ? [".js"] : undefined,
   },
 };
 

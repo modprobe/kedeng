@@ -160,7 +160,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     let nats_jetstream = Arc::new(async_nats::jetstream::new(nats_client));
 
-    for source in [Source::DVS, Source::DAS, Source::POS, Source::RIT] {
+    for source in [
+        Source::DVS,
+        Source::DAS,
+        Source::RIT,
+        // Source::POS,
+    ] {
         zmq_socket.subscribe(source.as_envelope()).await?;
         info!(logger, "Subscribed to envelope"; "envelope" => source.as_envelope());
 

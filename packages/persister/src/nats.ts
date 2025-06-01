@@ -3,7 +3,6 @@ import type {
   Consumer,
   JetStreamClient,
   JetStreamManager,
-  Stream as JSStream,
 } from "@nats-io/jetstream";
 import {
   AckPolicy,
@@ -12,7 +11,6 @@ import {
   jetstreamManager,
   JetStreamApiError,
   JetStreamApiCodes,
-  RetentionPolicy,
 } from "@nats-io/jetstream";
 import { nanos, type NatsConnection } from "@nats-io/nats-core";
 import { getLogger } from "@logtape/logtape";

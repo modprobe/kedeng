@@ -102,20 +102,24 @@ const handleStationLevelChanges = async (
           );
         })
         .with({ WijzigingType: ChangeType.DeparturePlatformChanged }, () => {
-          update.departure_platform_actual =
-            changedStation.TreinVertrekSpoor![1]!.SpoorNummer;
+          update.departure_platform_actual = formatPlatform(
+            changedStation.TreinVertrekSpoor![1]!,
+          );
         })
         .with({ WijzigingType: ChangeType.ArrivalPlatformChanged }, () => {
-          update.arrival_platform_actual =
-            changedStation.TreinAankomstSpoor![1]!.SpoorNummer;
+          update.arrival_platform_actual = formatPlatform(
+            changedStation.TreinAankomstSpoor![1]!,
+          );
         })
         .with({ WijzigingType: ChangeType.ArrivalPlatformAllocated }, () => {
-          update.arrival_platform_planned =
-            changedStation.TreinAankomstSpoor![0].SpoorNummer;
+          update.arrival_platform_planned = formatPlatform(
+            changedStation.TreinAankomstSpoor![0],
+          );
         })
         .with({ WijzigingType: ChangeType.DeparturePlatformAllocated }, () => {
-          update.departure_platform_planned =
-            changedStation.TreinVertrekSpoor![0].SpoorNummer;
+          update.departure_platform_planned = formatPlatform(
+            changedStation.TreinVertrekSpoor![0],
+          );
         })
         .with(
           { WijzigingType: ChangeType.ArrivalCancelled },
@@ -146,12 +150,12 @@ const handleStationLevelChanges = async (
 
             update.arrival_platform_planned =
               changedStation.TreinAankomstSpoor &&
-              changedStation.TreinAankomstSpoor[0].SpoorNummer;
+              formatPlatform(changedStation.TreinAankomstSpoor[0]);
 
             update.arrival_platform_actual =
               changedStation.TreinAankomstSpoor &&
               changedStation.TreinAankomstSpoor[1] &&
-              changedStation.TreinAankomstSpoor[1].SpoorNummer;
+              formatPlatform(changedStation.TreinAankomstSpoor[1]);
 
             update.departure_time_planned =
               changedStation.VertrekTijd &&
@@ -164,12 +168,12 @@ const handleStationLevelChanges = async (
 
             update.departure_platform_planned =
               changedStation.TreinVertrekSpoor &&
-              changedStation.TreinVertrekSpoor[0].SpoorNummer;
+              formatPlatform(changedStation.TreinVertrekSpoor[0]);
 
             update.departure_platform_actual =
               changedStation.TreinVertrekSpoor &&
               changedStation.TreinVertrekSpoor[1] &&
-              changedStation.TreinVertrekSpoor[1].SpoorNummer;
+              formatPlatform(changedStation.TreinVertrekSpoor[1]);
           },
         )
         .otherwise((change) => {
@@ -199,6 +203,14 @@ const handleStationLevelChanges = async (
       });
   }
 };
+
+const formatPlatform = ({
+  SpoorNummer,
+  SpoorFase,
+}: {
+  SpoorNummer: string;
+  SpoorFase?: string;
+}) => (SpoorFase ? `${SpoorNummer}${SpoorFase}` : SpoorNummer);
 
 export const handler: Handler<RitMessage> = async (db, data) => {
   const msg = data.PutReisInformatieBoodschapIn.ReisInformatieProductRitInfo;

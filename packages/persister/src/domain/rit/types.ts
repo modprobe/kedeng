@@ -37,12 +37,14 @@ export type JourneySegmentStation = {
   }>;
   TreinAankomstSpoor?: InfoStatusAttr<{
     SpoorNummer: string;
+    SpoorFase?: string;
   }>;
   VertrekTijd?: InfoStatusAttr<{
     text: DateTimeISOString;
   }>;
   TreinVertrekSpoor?: InfoStatusAttr<{
     SpoorNummer: string;
+    SpoorFase?: string;
   }>;
   StationnementType: StopType;
   MaterieelDeel?: RollingStockPart[];

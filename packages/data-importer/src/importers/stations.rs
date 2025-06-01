@@ -1,7 +1,7 @@
 use crate::db;
 use anyhow::Result;
 use postgres::Client;
-use sea_query::{Expr, PostgresQueryBuilder, Query, QueryStatementWriter};
+use sea_query::{Expr, OnConflict, PostgresQueryBuilder, Query, QueryStatementWriter};
 use serde::{Deserialize, Serialize};
 use std::fmt::{Display, Formatter};
 
@@ -109,26 +109,50 @@ pub fn import(db: &mut Client, api_key: &str) -> Result<()> {
     let missing_data = serde_json::from_str::<StationResponse>(missing_data)?;
 
     let mut qb = Query::insert();
-    qb.into_table(db::Station::Table).columns([
-        db::Station::UicCode,
-        db::Station::UicCdCode,
-        db::Station::EvaCode,
-        db::Station::CdCode,
-        db::Station::Code,
-        db::Station::StationType,
-        db::Station::NameLong,
-        db::Station::NameMedium,
-        db::Station::NameShort,
-        db::Station::NameSynonyms,
-        db::Station::Country,
-        db::Station::Tracks,
-        db::Station::HasTravelAssistance,
-        db::Station::IsBorderStop,
-        db::Station::IsAvailableForAccessibleTravel,
-        db::Station::HasKnownFacilities,
-        db::Station::AreTracksIndependentlyAccessible,
-        db::Station::Location,
-    ]);
+    qb.into_table(db::Station::Table)
+        .columns([
+            db::Station::UicCode,
+            db::Station::UicCdCode,
+            db::Station::EvaCode,
+            db::Station::CdCode,
+            db::Station::Code,
+            db::Station::StationType,
+            db::Station::NameLong,
+            db::Station::NameMedium,
+            db::Station::NameShort,
+            db::Station::NameSynonyms,
+            db::Station::Country,
+            db::Station::Tracks,
+            db::Station::HasTravelAssistance,
+            db::Station::IsBorderStop,
+            db::Station::IsAvailableForAccessibleTravel,
+            db::Station::HasKnownFacilities,
+            db::Station::AreTracksIndependentlyAccessible,
+            db::Station::Location,
+        ])
+        .on_conflict(
+            OnConflict::column(db::Station::UicCode)
+                .update_columns([
+                    db::Station::UicCdCode,
+                    db::Station::EvaCode,
+                    db::Station::CdCode,
+                    db::Station::Code,
+                    db::Station::StationType,
+                    db::Station::NameLong,
+                    db::Station::NameMedium,
+                    db::Station::NameShort,
+                    db::Station::NameSynonyms,
+                    db::Station::Country,
+                    db::Station::Tracks,
+                    db::Station::HasTravelAssistance,
+                    db::Station::IsBorderStop,
+                    db::Station::IsAvailableForAccessibleTravel,
+                    db::Station::HasKnownFacilities,
+                    db::Station::AreTracksIndependentlyAccessible,
+                    db::Station::Location,
+                ])
+                .to_owned(),
+        );
 
     for station in response.payload.iter().chain(missing_data.payload.iter()) {
         qb.values([

@@ -81,7 +81,11 @@ fn main() -> anyhow::Result<()> {
     // init_metrics_provider()?;
 
     match cli.importer {
-        Importer::Timetable { input_path } => timetable::import(&mut db, input_path),
-        Importer::Stations { api_key } => stations::import(&mut db, api_key.as_str()),
-    }
+        Importer::Timetable { input_path } => timetable::import(&mut db, input_path)?,
+        Importer::Stations { api_key } => stations::import(&mut db, api_key.as_str())?,
+    };
+
+    db.close()?;
+
+    Ok(())
 }

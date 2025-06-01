@@ -1,9 +1,6 @@
 import fs from "node:fs/promises";
 
 import { configureSync, getConsoleSink } from "@logtape/logtape";
-import { formatDate, parseISO } from "date-fns";
-
-import type { DateISOString, DateTimeISOString } from "./types/infoplus";
 
 import type { Stream } from ".";
 
@@ -31,23 +28,6 @@ export const setupLogger = () =>
       { category: ["logtape", "meta"], sinks: [] },
     ],
   });
-
-export function* circularIterator<T>(
-  input: T[],
-  iterationCount: number = Infinity,
-): Generator<T> {
-  let i = 0;
-
-  for (i; i < iterationCount; i += 1) {
-    yield input[i % input.length];
-  }
-
-  return i;
-}
-
-export const extractTimeFromIsoString = (
-  input: DateTimeISOString,
-): DateISOString => formatDate(parseISO(input), "HH:mm:ss");
 
 export const saveMessageToFile = async (message: object, stream: Stream) => {
   const path = `${__dirname}/../docs/${stream.toUpperCase()}/failed`;

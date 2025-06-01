@@ -1,0 +1,61 @@
+{{- if .Values.data_importer.enabled -}}
+{{- $fullName := include "kedeng.fullname" . -}}
+{{- $dbSecret := ( .Values.postgres.enabled | ternary (printf "%s-db-app" $fullName) .Values.global.dbSecretOverride ) -}}
+apiVersion: batch/v1
+kind: CronJob
+
+metadata:
+  name: {{ include "kedeng.fullname" . }}-data-import
+  labels:
+    app.kubernetes.io/component: data-importer
+    {{- include "kedeng.labels" . | nindent 4 }}
+
+spec:
+  schedule: {{ .Values.data_importer.schedule | quote }}
+  concurrencyPolicy: Replace
+
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: 0  # clean up jobs after running
+      template:
+        spec:
+          restartPolicy: OnFailure
+
+          imagePullSecrets:
+          {{- range .Values.persister.imagePullSecrets }}
+            - name: {{ . | quote }}
+          {{- end }}
+
+          containers:
+            - name: data-importer
+              image: "{{ .Values.data_importer.image.repository }}:{{ .Values.data_importer.image.tag }}"
+              imagePullPolicy: {{ .Values.data_importer.image.pullPolicy }}
+              command: ["sh", "-c", "/app/data-importer stations && /app/data-importer timetable"]
+              env:
+                - name: DB_HOST
+                  value: kedeng-db-pooler-rw.kedeng.svc.cluster.local
+                  # valueFrom:
+                  #   secretKeyRef:
+                  #     name: {{ $dbSecret | quote }}
+                  #     key: host
+                - name: DB_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: {{ $dbSecret | quote }}
+                      key: user
+                - name: DB_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: {{ $dbSecret | quote }}
+                      key: password
+                - name: DB_NAME
+                  valueFrom:
+                    secretKeyRef:
+                      name: {{ $dbSecret | quote }}
+                      key: dbname
+                - name: NS_API_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: {{ $fullName }}-ns-api
+                      key: apiToken
+{{- end -}}

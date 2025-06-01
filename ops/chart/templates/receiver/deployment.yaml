@@ -1,0 +1,51 @@
+{{- $fullName := include "kedeng.fullname" . -}}
+{{- $natsHost := ( .Values.nats.enabled | ternary (printf "%s-nats" $fullName) .Values.global.natsHost ) -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "kedeng.fullname" . }}-receiver
+  labels:
+    app.kubernetes.io/component: receiver
+    {{- include "kedeng.labels" . | nindent 4 }}
+
+spec:
+  replicas: {{ .Values.receiver.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "kedeng.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: receiver
+
+  template:
+    metadata:
+      {{-  with .Values.receiver.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        app.kubernetes.io/component: receiver
+        {{- include "kedeng.labels" . | nindent 8 }}
+        {{- with .Values.receiver.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+
+    spec:
+      imagePullSecrets:
+      {{- range .Values.receiver.imagePullSecrets }}
+        - name: {{ . | quote }}
+      {{- end }}
+      containers:
+        - name: receiver
+          image: "{{ .Values.receiver.image.repository }}:{{ .Values.receiver.image.tag | default "latest" }}"
+          imagePullPolicy: {{ .Values.receiver.image.pullPolicy }}
+          {{- with .Values.receiver.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          env:
+            - name: NDOV_ZMQ_URL
+              value: {{ .Values.receiver.config.ndovZmqUrl | quote }}
+            - name: NATS_HOST
+              value: {{ $natsHost }}
+            {{- with .Values.receiver.env }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}

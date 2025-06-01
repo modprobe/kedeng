@@ -1,0 +1,115 @@
+{{- $fullName := include "kedeng.fullname" . -}}
+{{- $dbSecret := ( .Values.postgres.enabled | ternary (printf "%s-db-app" $fullName) .Values.global.dbSecretOverride ) -}}
+{{- $natsHost := ( .Values.nats.enabled | ternary (printf "%s-nats" $fullName) .Values.global.natsHost ) -}}
+{{- $natsPort := ( .Values.nats.enabled | ternary 4222 .Values.global.natsPort ) -}}
+
+{{- $streams := tuple "DAS" "DVS" "RIT" -}}
+
+{{ range $streams }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $fullName }}-persister-{{ . | lower }}
+  labels:
+    {{- include "kedeng.labels" $ | nindent 4 }}
+    app.kubernetes.io/component: persister
+    app.kubernetes.io/instance: {{ . | lower | quote }}
+
+spec:
+  replicas: {{ $.Values.persister.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "kedeng.selectorLabels" $ | nindent 6 }}
+      app.kubernetes.io/component: persister
+      app.kubernetes.io/instance: {{ . | lower | quote }}
+
+  template:
+    metadata:
+      {{-  with $.Values.persister.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "kedeng.labels" $ | nindent 8 }}
+        app.kubernetes.io/component: persister
+        app.kubernetes.io/instance: {{ . | lower | quote }}
+        {{- with $.Values.persister.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+
+    spec:
+      imagePullSecrets:
+      {{- range $.Values.persister.imagePullSecrets }}
+        - name: {{ . | quote }}
+      {{- end }}
+      initContainers:
+        - name: migrate
+          image: "{{ $.Values.persister.image.repository }}:{{ $.Values.persister.image.tag | default "latest" }}"
+          imagePullPolicy: {{ $.Values.persister.image.pullPolicy }}
+          command: ["/app/node_modules/.bin/knex", "migrate:latest"]
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $dbSecret | quote }}
+                  key: host
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $dbSecret | quote }}
+                  key: user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $dbSecret | quote }}
+                  key: password
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $dbSecret | quote }}
+                  key: dbname
+      containers:
+        - name: persister
+          image: "{{ $.Values.persister.image.repository }}:{{ $.Values.persister.image.tag | default "latest" }}"
+          imagePullPolicy: {{ $.Values.persister.image.pullPolicy }}
+          {{- with $.Values.persister.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          env:
+            - name: KEDENG_PERSISTER_NATS_STREAM
+              value: {{ . | quote }}
+            - name: NODE_ENV
+              value: production
+            - name: DB_HOST
+              value: kedeng-db-pooler-rw.kedeng.svc.cluster.local
+              # valueFrom:
+              #   secretKeyRef:
+              #     name: {{ $dbSecret | quote }}
+              #     key: host
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $dbSecret | quote }}
+                  key: user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $dbSecret | quote }}
+                  key: password
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $dbSecret | quote }}
+                  key: dbname
+            - name: NATS_HOST
+              value: {{ $natsHost }}
+            - name: NATS_PORT
+              value: {{ $natsPort | quote }}
+            {{- with $.Values.persister.env }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+{{- end }}

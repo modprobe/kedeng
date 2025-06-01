@@ -1,0 +1,121 @@
+nameOverride: ""
+fullnameOverride: ""
+
+global:
+  # used when postgres.enabled = false
+  # has to have fields host, user, password
+  dbSecretOverride:
+
+  # used when nats.enabled = false
+  natsHost:
+  natsPort:
+
+  # used only by data-importer (for now) to import stations
+  nsApiKey: ""
+
+data_importer:
+  enabled: true
+  schedule: "0 4 * * *"
+  image:
+    repository: ghcr.io/modprobe/kedeng-data-importer
+    pullPolicy: Always
+    tag: latest
+  imagePullSecrets:
+    - ghcr-pullsecret
+  podAnnotations: {}
+  podLabels: {}
+
+receiver:
+  replicaCount: 1
+  config:
+    ndovZmqUrl: "tcp://pubsub.besteffort.ndovloket.nl:7664"
+  image:
+    repository: ghcr.io/modprobe/kedeng-receiver
+    pullPolicy: Always
+    tag: latest
+  imagePullSecrets:
+    - ghcr-pullsecret
+  env:
+    - name: OTEL_EXPORTER_OTLP_ENDPOINT
+      value: "alloy.observability.svc.cluster.local:4317"
+  podAnnotations: {}
+  podLabels: {}
+  resources:
+    requests:
+      cpu: 150m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 512Mi
+
+persister:
+  replicaCount: 1
+  image:
+    repository: ghcr.io/modprobe/kedeng-persister
+    pullPolicy: Always
+    tag: latest
+  imagePullSecrets:
+    - ghcr-pullsecret
+  podAnnotations: {}
+  podLabels: {}
+  env: []
+  resources:
+    requests:
+      cpu: 300m
+      memory: 512Mi
+    limits:
+      cpu: 500m
+      memory: 1024Mi
+
+nats:
+  enabled: true
+  # fullnameOverride: kedeng-nats
+  config:
+    jetstream:
+      enabled: true
+  promExporter:
+    enabled: true
+    podMonitor:
+      enabled: true
+
+postgres:
+  enabled: true
+  replicaCount: 1
+  pooler:
+    enabled: true
+    replicas: 3
+  podMonitor:
+    enabled: true
+  backup:
+    enabled: true
+    storageConfig: 
+      destinationPath: "s3://kedeng-db-backups/"
+      endpointURL: "http://minio.minio.svc.cluster.local:9000"
+      s3Credentials:
+        accessKeyId: secretValue
+        secretAccessKey: secretValue
+
+# This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
+service:
+  # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
+  type: ClusterIP
+  # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
+  port: 80
+
+# This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
+ingress:
+  enabled: false
+  className: ""
+  annotations:
+    {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local

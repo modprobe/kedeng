@@ -1,0 +1,14 @@
+{{- if .Values.postgres.backup.enabled -}}
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: {{ include "kedeng.fullname" . }}-db-backup
+  labels:
+    {{- include "kedeng.labels" . | nindent 4 }}
+
+spec:
+  schedule: "0 0 */2 * * *"
+  backupOwnerReference: self
+  cluster:
+    name: {{ include "kedeng.fullname" . }}-db
+{{- end -}}

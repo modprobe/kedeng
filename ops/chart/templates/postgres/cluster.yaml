@@ -1,0 +1,46 @@
+{{- if .Values.postgres.enabled -}}
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: {{ include "kedeng.fullname" . }}-db
+  labels:
+    {{- include "kedeng.labels" . | nindent 4 }}
+
+spec:
+  instances: {{ .Values.postgres.replicaCount }}
+  enableSuperuserAccess: true
+
+  storage:
+    size: 25Gi
+  
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1024Mi
+    limits:
+      cpu: 500m
+      memory: 1024Mi
+  
+  postgresql:
+    parameters:
+      shared_buffers: "128MB"
+
+  backup:
+    retentionPolicy: 30d
+    target: "prefer-standby"
+    barmanObjectStore:
+      destinationPath: "s3://kedeng-db-backups/"
+      endpointURL: "http://minio.minio.svc.cluster.local:9000"
+      s3Credentials:
+        accessKeyId:
+          name: {{ include "kedeng.fullname" . }}-db-backups-storage
+          key: accessKeyId
+        secretAccessKey:
+          name: {{ include "kedeng.fullname" . }}-db-backups-storage
+          key: secretAccessKey
+
+  {{- if .Values.postgres.podMonitor.enabled }}
+  monitoring:
+    enablePodMonitor: true
+  {{- end }}
+{{- end -}}

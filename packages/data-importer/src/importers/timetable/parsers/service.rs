@@ -46,6 +46,7 @@ impl Service {
     pub fn split_legs(&self) -> Vec<ServiceLeg> {
         if self.service_number.len() == 1 {
             return vec![ServiceLeg {
+                service_identification: self.identification.clone(),
                 service_number: self.service_number[0].clone(),
                 validity: self.validity.clone(),
                 transport_mode: self.transport_mode.clone(),
@@ -82,6 +83,7 @@ impl Service {
 
             return vec![
                 ServiceLeg {
+                    service_identification: self.identification.clone(),
                     service_number: self.service_number[0].clone(),
                     validity: self.validity.clone(),
                     transport_mode: self.transport_mode.clone(),
@@ -89,6 +91,7 @@ impl Service {
                     station_events: new_events_leg_1,
                 },
                 ServiceLeg {
+                    service_identification: self.identification.clone(),
                     service_number: self.service_number[1].clone(),
                     validity: self.validity.clone(),
                     transport_mode: self.transport_mode.clone(),
@@ -104,6 +107,7 @@ impl Service {
 
 #[derive(Debug, PartialEq, Clone)]
 pub struct ServiceLeg {
+    pub service_identification: ServiceIdentification,
     pub service_number: ServiceNumber,
     pub validity: Validity,
     pub transport_mode: TransportMode,

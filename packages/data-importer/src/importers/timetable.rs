@@ -9,16 +9,20 @@ use crate::importers::timetable::parsers::{
 };
 use crate::util::read_iso_8859_1_file;
 use anyhow::{Context, Result, anyhow};
+use atty::Stream::Stdout;
 use chrono::{NaiveDateTime, Utc};
 use indicatif::{ProgressBar, ProgressStyle};
 use nom::{IResult, Parser};
 use postgres::Client;
-use sea_query::{OnConflict, PostgresQueryBuilder, Query, ReturningClause};
+use ratelimit::Ratelimiter;
+use sea_query::{Expr, OnConflict, PostgresQueryBuilder, Query, ReturningClause};
 use sea_query_postgres::PostgresBinder;
 use std::io::Cursor;
 use std::path::{Path, PathBuf};
+use std::thread::sleep;
+use std::time::Duration;
 use std::{env, fs};
-use uuid::{ContextV7, Timestamp, Uuid};
+use uuid::Uuid;
 
 fn load_file<TData>(
     path: &Path,
@@ -59,7 +63,7 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
         data_dir
     };
 
-    let timetable = load_file(&data_dir.join("./timetbls_new.dat"), timetable_file)?;
+    let timetable = load_file(&data_dir.join("./timetbls.dat"), timetable_file)?;
     println!("+ Loaded {} services", timetable.data.len());
 
     let footnotes = load_file(&data_dir.join("./footnote.dat"), footnote_file)?;
@@ -79,6 +83,18 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
         ]),
     );
 
+    let output = |text: String| {
+        if atty::is(Stdout) {
+            spinner.println(text);
+        } else {
+            println!("{}", text);
+        }
+    };
+
+    let ratelimit = Ratelimiter::builder(5, Duration::from_secs(1))
+        .max_tokens(5)
+        .build()?;
+
     for (sidx, service) in services.enumerate() {
         let mut transaction = db.transaction()?;
 
@@ -95,7 +111,7 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
             .or(service.service_number.variant.clone());
 
         if service_number.is_none() {
-            spinner.println("+ Skipping service without number or variant");
+            output("+ Skipping service without number or variant".to_owned());
             continue;
         }
 
@@ -190,6 +206,7 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
                     db::Journey::ServiceId,
                     db::Journey::RunningOn,
                     db::Journey::Attributes,
+                    db::Journey::SourceIds,
                 ])
                 .values_panic([
                     service_id.into(),
@@ -202,14 +219,21 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
                                 .collect::<Vec<_>>()
                         })
                         .into(),
+                    vec![service.service_identification.0.to_string()].into(),
                 ])
                 .on_conflict(
                     OnConflict::columns([db::Journey::ServiceId, db::Journey::RunningOn])
                         .update_columns([db::Journey::Attributes])
+                        .value(
+                            db::Journey::SourceIds,
+                            Expr::cust("ARRAY(SELECT DISTINCT unnest(array_cat(\"journey\".\"source_ids\", \"excluded\".\"source_ids\")))"),
+                        )
                         .to_owned(),
                 )
                 .returning(Query::returning().columns([db::Journey::Id]))
                 .build_postgres(PostgresQueryBuilder);
+
+            // output(journey_insert.to_string(PostgresQueryBuilder));
 
             let inserted_journey = transaction
                 .query(
@@ -280,15 +304,20 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
                 .context("! could not insert journey events")?;
         }
 
+        while let Err(time_to_wait) = ratelimit.try_wait() {
+            sleep(time_to_wait);
+        }
+
         transaction
             .commit()
             .context("! could not commit transaction")?;
 
-        // spinner.println(format!(
-        //     "+ Inserted service {} {}",
-        //     service.transport_mode.code,
-        //     service_number.clone()
-        // ));
+        output(format!(
+            "+ Inserted service {} {} (from # {})",
+            service.transport_mode.code,
+            service_number.clone(),
+            service.service_identification.0,
+        ));
         spinner.tick();
     }
 

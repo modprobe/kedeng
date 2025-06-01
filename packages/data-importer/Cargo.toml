@@ -5,6 +5,7 @@ edition = "2024"
 
 [dependencies]
 anyhow = { version = "1.0.98", features = ["backtrace"] }
+atty = "0.2.14"
 chrono = { version = "0.4.40", features = ["std", "clock"] }
 clap = { version = "4.5.37", features = ["derive", "env"] }
 encoding = "0.2.33"
@@ -14,6 +15,7 @@ opentelemetry = { version = "0.29.1", default-features = false, features = ["met
 opentelemetry-otlp = { version = "0.29.0", default-features = false, features = ["grpc-tonic", "metrics"] }
 opentelemetry_sdk = { version = "0.29.0", default-features = false }
 postgres = { version = "0.19.10", features = ["with-chrono-0_4"] }
+ratelimit = "0.10.0"
 sea-query = { version = "0.32.3", features = ["backend-postgres", "derive", "postgres-array", "with-chrono", "with-uuid"] }
 sea-query-postgres = { version = "0.5.0", features = ["with-uuid", "with-chrono", "postgres-array"] }
 serde = { version = "1.0.219", features = ["derive"] }

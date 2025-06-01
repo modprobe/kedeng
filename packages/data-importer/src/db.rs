@@ -38,6 +38,7 @@ pub enum Journey {
     ServiceId,
     RunningOn,
     Attributes,
+    SourceIds,
 }
 
 #[derive(Iden)]

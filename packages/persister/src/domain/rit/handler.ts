@@ -2,13 +2,14 @@ import { Err, Ok } from "ts-results-es";
 import type { Knex } from "knex";
 import { match } from "ts-pattern";
 import { getLogger } from "@logtape/logtape";
+import { formatDate, parseISO } from "date-fns";
+import { tz } from "@date-fns/tz";
 
 import type { Handler } from "../../types";
 import type { DateISOString } from "../../types/infoplus";
 import { ChangeType } from "../../types/infoplus";
 import type { JourneyEventTable } from "../../types/db";
 import { JourneyEventType } from "../../types/db";
-import { extractTimeFromIsoString } from "../../utils";
 
 import type {
   Journey,
@@ -46,6 +47,11 @@ export const getChanges = (
   };
 };
 
+// converts an input ISO datetime string in UTC
+// into the local time (HH:MM)
+const convertTime = (isoString: string): string =>
+  formatDate(parseISO(isoString), "HH:mm:ss", { in: tz("Europe/Amsterdam") });
+
 const handleStationLevelChanges = async (
   db: Knex,
   trainNumber: string,
@@ -76,22 +82,22 @@ const handleStationLevelChanges = async (
 
       match(change)
         .with({ WijzigingType: ChangeType.DepartureDelayed }, () => {
-          update.departure_time_actual = extractTimeFromIsoString(
+          update.departure_time_actual = convertTime(
             changedStation.VertrekTijd![1]!.text,
           );
         })
         .with({ WijzigingType: ChangeType.ArrivalDelayed }, () => {
-          update.arrival_time_actual = extractTimeFromIsoString(
+          update.arrival_time_actual = convertTime(
             changedStation.AankomstTijd![1]!.text,
           );
         })
         .with({ WijzigingType: ChangeType.DepartureTimeChanged }, () => {
-          update.departure_time_planned = extractTimeFromIsoString(
+          update.departure_time_planned = convertTime(
             changedStation.VertrekTijd![0].text,
           );
         })
         .with({ WijzigingType: ChangeType.ArrivalTimeChanged }, () => {
-          update.arrival_time_planned = extractTimeFromIsoString(
+          update.arrival_time_planned = convertTime(
             changedStation.AankomstTijd![0].text,
           );
         })
@@ -131,12 +137,12 @@ const handleStationLevelChanges = async (
 
             update.arrival_time_planned =
               changedStation.AankomstTijd &&
-              extractTimeFromIsoString(changedStation.AankomstTijd[0].text);
+              convertTime(changedStation.AankomstTijd[0].text);
 
             update.arrival_time_actual =
               changedStation.AankomstTijd &&
               changedStation.AankomstTijd[1] &&
-              extractTimeFromIsoString(changedStation.AankomstTijd[1]?.text);
+              convertTime(changedStation.AankomstTijd[1]?.text);
 
             update.arrival_platform_planned =
               changedStation.TreinAankomstSpoor &&
@@ -149,12 +155,12 @@ const handleStationLevelChanges = async (
 
             update.departure_time_planned =
               changedStation.VertrekTijd &&
-              extractTimeFromIsoString(changedStation.VertrekTijd[0].text);
+              convertTime(changedStation.VertrekTijd[0].text);
 
             update.departure_time_actual =
               changedStation.VertrekTijd &&
               changedStation.VertrekTijd[1] &&
-              extractTimeFromIsoString(changedStation.VertrekTijd[1].text);
+              convertTime(changedStation.VertrekTijd[1].text);
 
             update.departure_platform_planned =
               changedStation.TreinVertrekSpoor &&
@@ -198,16 +204,13 @@ export const handler: Handler<RitMessage> = async (db, data) => {
   const msg = data.PutReisInformatieBoodschapIn.ReisInformatieProductRitInfo;
 
   try {
-    const trx = await db.transaction();
     const changedElements = getChanges(data);
     await handleStationLevelChanges(
-      trx,
+      db,
       msg.RitInfo.TreinNummer,
       msg.RitInfo.TreinDatum,
       changedElements[ChangeLevel.Station],
     );
-
-    await trx.commit();
   } catch (e) {
     if (!(e instanceof Error)) {
       return Err("RIT processing failed");

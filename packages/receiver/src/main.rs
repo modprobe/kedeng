@@ -15,6 +15,7 @@ use std::error::Error;
 use std::io::Read;
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
+use async_nats::jetstream::stream::RetentionPolicy;
 use tokio::signal::unix::{signal, SignalKind};
 use tokio::time::{sleep, Duration};
 use tokio_util::task::TaskTracker;
@@ -172,6 +173,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         nats_jetstream
             .get_or_create_stream(stream::Config {
                 name: source.name().into(),
+                retention: RetentionPolicy::WorkQueue,
                 ..Default::default()
             })
             .await?;

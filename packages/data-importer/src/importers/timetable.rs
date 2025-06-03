@@ -91,8 +91,8 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
         }
     };
 
-    let ratelimit = Ratelimiter::builder(5, Duration::from_secs(1))
-        .max_tokens(5)
+    let ratelimit = Ratelimiter::builder(1, Duration::from_millis(100))
+        .max_tokens(1)
         .build()?;
 
     for (sidx, service) in services.enumerate() {

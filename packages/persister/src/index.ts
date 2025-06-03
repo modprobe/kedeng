@@ -86,7 +86,7 @@ void (async () => {
 
       const dbTransaction = await db.transaction();
 
-      let result: Result<void, string>;
+      let result: Result<any, string>;
       try {
         result = await handleMessage(dbTransaction, messageData);
         await dbTransaction.commit();

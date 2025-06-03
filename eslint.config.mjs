@@ -5,7 +5,8 @@ import prettierRecommended from "eslint-plugin-prettier/recommended";
 import jest from "eslint-plugin-jest";
 import importPlugin from "eslint-plugin-import";
 
-export default tseslint.config(
+/** @type {import("typescript-eslint").ConfigArray} */
+const config = tseslint.config(
   {
     ignores: ["jest.config.*", "tsconfig.json", "eslint.config.*", "**/dist/**"],
   },
@@ -53,7 +54,10 @@ export default tseslint.config(
         },
       ],
       "import/no-duplicates": "error",
+      "@typescript-eslint/no-unused-vars": ["error", { destructuredArrayIgnorePattern: "^_" }]
     },
   },
   prettierRecommended,
 );
+
+export default config;

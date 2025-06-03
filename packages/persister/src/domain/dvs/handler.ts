@@ -44,12 +44,13 @@ export const handle: Handler<DvsMessage> = async (
         .from("journey_event")
         .innerJoin("journey", "journey_event.journey_id", "journey.id")
         .innerJoin("service", "journey.service_id", "service.id")
-        .where({
-          "service.train_number": msg.RitId,
-          "journey.running_on": msg.RitDatum,
-          "journey_event.station": msg.RitStation.StationCode.toLowerCase(),
-        });
+        .where("service.train_number", msg.RitId)
+        .andWhere("journey.running_on", msg.RitDatum)
+        .andWhere(
+          "journey_event.station",
+          msg.RitStation.StationCode.toLowerCase(),
+        );
     });
 
-  return Ok(void 0);
+  return Ok(undefined);
 };

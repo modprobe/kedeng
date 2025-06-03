@@ -19,7 +19,7 @@ type RollingStockPart = {
   AchterBlijvenMaterieelDeel: BooleanString;
 };
 
-const enum StopType {
+export const enum StopType {
   Stop = "X",
   Passage = "D",
 }

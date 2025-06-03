@@ -97,3 +97,44 @@ export type DateTimeISOString = string;
 
 // Time string: HH:mm:ss
 export type TimeString = string;
+
+export const enum Attributes {
+  ReservationPossible = "RESM",
+  ReservationRequired = "RESV",
+  InternationalReservationRecommended = "RESA",
+  InternationalReservationRequired = "IRES",
+
+  SpecialTicketRequired = "SPEC",
+  TrainWithSupplement = "T",
+  SupplementSchipholRotterdam = "TSR",
+  ExceptionalFare = "TAR",
+  InterrailSupplement = "TVIE",
+
+  AvrNsDoNotApply = "GAVR",
+
+  FirstClassOnly = "EEN",
+  SecondClassOnly = "TWEE",
+
+  NotForBoarding = "NIIN",
+  NotForAlighting = "NUIT",
+
+  BarOrBuffet = "BAR",
+  WarmAndColdDrinks = "KOPS",
+  Restaurant = "REST",
+  Bistro = "BIST",
+
+  BikeTransportPossible = "FIET",
+  BikeTransportNotPossible = "FINI",
+  BikeReservationRequired = "FIVE",
+
+  WheelchairSpacePresent = "ROL",
+
+  SleepingCar = "SLP",
+  CouchetteCar = "LIGW",
+
+  HighOccupancyExpected = "OO",
+  SprinterWithoutToilet = "SPRZ",
+  VisitorsRailwayMuseum = "BEMU",
+  DepartsFromUKTerminal = "UKT",
+  Telephone = "TELE",
+}

@@ -1,58 +1,16 @@
-import { Err, Ok } from "ts-results-es";
 import type { Knex } from "knex";
 import { match } from "ts-pattern";
 import { getLogger } from "@logtape/logtape";
-import { formatDate, parseISO } from "date-fns";
-import { tz } from "@date-fns/tz";
 
-import type { Handler } from "../../types";
-import type { DateISOString } from "../../types/infoplus";
-import { ChangeType } from "../../types/infoplus";
-import type { JourneyEventTable } from "../../types/db";
-import { JourneyEventType } from "../../types/db";
+import { type JourneyEventTable, JourneyEventType } from "../../../types/db";
+import { type DateISOString, ChangeType } from "../../../types/infoplus";
+import type { JourneySegmentStation } from "../types";
+import { convertTime, formatPlatform } from "../utils";
+import { LOGGER_CATEGORY } from "../../../utils";
 
-import type {
-  Journey,
-  JourneySegment,
-  JourneySegmentStation,
-  RitMessage,
-} from "./types";
+const logger = getLogger([...LOGGER_CATEGORY, "rit", "changedStations"]);
 
-const logger = getLogger(["kedeng", "persister", "rit"]);
-
-export const enum ChangeLevel {
-  Journey,
-  JourneySegment,
-  Station,
-}
-
-export const getChanges = (
-  msg: RitMessage,
-): {
-  [ChangeLevel.Journey]: Journey[];
-  [ChangeLevel.JourneySegment]: JourneySegment[];
-  [ChangeLevel.Station]: JourneySegmentStation[];
-} => {
-  const data =
-    msg.PutReisInformatieBoodschapIn.ReisInformatieProductRitInfo.RitInfo;
-
-  return {
-    [ChangeLevel.Journey]: data.LogischeRit.Wijziging ? [data.LogischeRit] : [],
-    [ChangeLevel.JourneySegment]: data.LogischeRit.LogischeRitDeel.filter(
-      (lrd) => lrd.Wijziging,
-    ),
-    [ChangeLevel.Station]: data.LogischeRit.LogischeRitDeel.flatMap((lrd) =>
-      lrd.LogischeRitDeelStation.filter((s) => s.Wijziging),
-    ),
-  };
-};
-
-// converts an input ISO datetime string in UTC
-// into the local time (HH:MM)
-const convertTime = (isoString: string): string =>
-  formatDate(parseISO(isoString), "HH:mm:ss", { in: tz("Europe/Amsterdam") });
-
-const handleStationLevelChanges = async (
+export const handleStationLevelChanges = async (
   db: Knex,
   trainNumber: string,
   runningOn: DateISOString,
@@ -79,7 +37,6 @@ const handleStationLevelChanges = async (
        * [ ] 43 extra doorkomst
        * [x] 44 vervallen doorkomst
        */
-
       match(change)
         .with({ WijzigingType: ChangeType.DepartureDelayed }, () => {
           update.departure_time_actual = convertTime(
@@ -194,42 +151,12 @@ const handleStationLevelChanges = async (
           .from("journey_event")
           .innerJoin("journey", "journey_event.journey_id", "journey.id")
           .innerJoin("service", "journey.service_id", "service.id")
-          .where({
-            "service.train_number": trainNumber,
-            "journey.running_on": runningOn,
-            "journey_event.station":
-              changedStation.Station.StationCode.toLowerCase(),
-          });
+          .where("service.train_number", trainNumber)
+          .andWhere("journey.running_on", runningOn)
+          .andWhere(
+            "journey_event.station",
+            changedStation.Station.StationCode.toLowerCase(),
+          );
       });
   }
-};
-
-const formatPlatform = ({
-  SpoorNummer,
-  SpoorFase,
-}: {
-  SpoorNummer: string;
-  SpoorFase?: string;
-}) => (SpoorFase ? `${SpoorNummer}${SpoorFase}` : SpoorNummer);
-
-export const handler: Handler<RitMessage> = async (db, data) => {
-  const msg = data.PutReisInformatieBoodschapIn.ReisInformatieProductRitInfo;
-
-  try {
-    const changedElements = getChanges(data);
-    await handleStationLevelChanges(
-      db,
-      msg.RitInfo.TreinNummer,
-      msg.RitInfo.TreinDatum,
-      changedElements[ChangeLevel.Station],
-    );
-  } catch (e) {
-    if (!(e instanceof Error)) {
-      return Err("RIT processing failed");
-    }
-
-    return Err(`RIT processing failed: ${e.message}`);
-  }
-
-  return Ok(void 0);
 };

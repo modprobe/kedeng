@@ -4,4 +4,4 @@ import type { Result } from "ts-results-es";
 export type Handler<TData> = (
   db: Knex,
   data: TData,
-) => Promise<Result<void, string>>;
+) => Promise<Result<void | void[], string>>;

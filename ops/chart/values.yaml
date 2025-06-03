@@ -35,9 +35,6 @@ receiver:
     tag: latest
   imagePullSecrets:
     - ghcr-pullsecret
-  env:
-    - name: OTEL_EXPORTER_OTLP_ENDPOINT
-      value: "alloy.observability.svc.cluster.local:4317"
   podAnnotations: {}
   podLabels: {}
   resources:

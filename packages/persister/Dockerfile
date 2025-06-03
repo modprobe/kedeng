@@ -7,7 +7,7 @@ COPY packages/persister /app/packages/persister/
 
 RUN corepack enable && pnpm install
 RUN pnpm --filter=@alxt/kedeng-persister run build
-RUN pnpm --filter=@alxt/kedeng-persister --prod deploy --legacy /build
+RUN pnpm --filter=@alxt/kedeng-persister --prod deploy /build
 
 FROM node:24-alpine
 

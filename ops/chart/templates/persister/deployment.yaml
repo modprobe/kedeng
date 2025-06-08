@@ -85,11 +85,11 @@ spec:
             - name: NODE_ENV
               value: production
             - name: DB_HOST
-              value: kedeng-db-pooler-rw.kedeng.svc.cluster.local
-              # valueFrom:
-              #   secretKeyRef:
-              #     name: {{ $dbSecret | quote }}
-              #     key: host
+              # value: kedeng-db-pooler-rw.kedeng.svc.cluster.local
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $dbSecret | quote }}
+                  key: host
             - name: DB_USER
               valueFrom:
                 secretKeyRef:

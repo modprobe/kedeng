@@ -91,9 +91,9 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
         }
     };
 
-    let ratelimit = Ratelimiter::builder(1, Duration::from_millis(100))
-        .max_tokens(1)
-        .build()?;
+    // let ratelimit = Ratelimiter::builder(1, Duration::from_millis(100))
+    //     .max_tokens(1)
+    //     .build()?;
 
     for (sidx, service) in services.enumerate() {
         let mut transaction = db.transaction()?;
@@ -304,9 +304,9 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
                 .context("! could not insert journey events")?;
         }
 
-        while let Err(time_to_wait) = ratelimit.try_wait() {
-            sleep(time_to_wait);
-        }
+        // while let Err(time_to_wait) = ratelimit.try_wait() {
+        //     sleep(time_to_wait);
+        // }
 
         transaction
             .commit()

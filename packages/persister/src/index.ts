@@ -91,8 +91,23 @@ void (async () => {
         result = await handleMessage(dbTransaction, messageData);
         await dbTransaction.commit();
       } catch (e: any) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-        result = Err(e.toString());
+        if (!(e instanceof Error)) {
+          result = Err("");
+        } else {
+          logger.error("processing failed", {
+            stream: sourceStream,
+            fullMsg: JSON.stringify(messageData),
+            err: {
+              name: e.name,
+              message: e.message,
+              stack: e.stack,
+              cause: e.cause,
+            },
+          });
+
+          result = Err(e.message);
+        }
+        await dbTransaction.rollback();
       }
 
       if (result.isOk()) {

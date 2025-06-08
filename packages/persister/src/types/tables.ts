@@ -25,14 +25,15 @@ declare module "knex/types/tables" {
     arrival_time_actual: string;
     arrival_platform_planned: string;
     arrival_platform_actual: string;
+    arrival_cancelled: boolean;
 
     departure_time_planned: string;
     departure_time_actual: string;
     departure_platform_planned: string;
     departure_platform_actual: string;
+    departure_cancelled: boolean;
 
     status: number;
-    is_cancelled: boolean;
     attributes: string[];
   }
 

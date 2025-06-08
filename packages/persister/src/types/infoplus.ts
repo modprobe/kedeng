@@ -115,8 +115,8 @@ export const enum Attributes {
   FirstClassOnly = "EEN",
   SecondClassOnly = "TWEE",
 
-  NotForBoarding = "NIIN",
-  NotForAlighting = "NUIT",
+  DoNotBoard = "NIIN",
+  DoNotAlight = "NUIT",
 
   BarOrBuffet = "BAR",
   WarmAndColdDrinks = "KOPS",

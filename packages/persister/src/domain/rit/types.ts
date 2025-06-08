@@ -22,6 +22,9 @@ type RollingStockPart = {
 export const enum StopType {
   Stop = "X",
   Passage = "D",
+  AlightingOnly = "U",
+  BoardingOnly = "I",
+  ServiceStop = "N",
 }
 
 export type JourneySegmentStation = {

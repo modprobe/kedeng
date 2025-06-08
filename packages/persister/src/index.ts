@@ -8,7 +8,7 @@ import { createJetstreamConnection, setupConsumer } from "./nats";
 import { requireEnv, setupLogger, sleep } from "./utils";
 import dvsHandler from "./domain/dvs";
 import dasHandler from "./domain/das";
-import ritHandler from "./domain/rit";
+import { handler as ritHandler } from "./domain/rit/handler/v2";
 import type { Handler } from "./types";
 import { setupParser } from "./parser";
 

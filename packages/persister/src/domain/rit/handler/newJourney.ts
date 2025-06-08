@@ -1,14 +1,19 @@
 import type { Knex } from "knex";
 import type { JourneyEvent } from "knex/types/tables";
-import { match, P } from "ts-pattern";
+import { match } from "ts-pattern";
 import { Ok } from "ts-results-es";
-import { format as formatDate } from "date-fns";
 
 import type { Handler } from "../../../types";
-import { JourneyEventType } from "../../../types/db";
+import type { JourneyEventType } from "../../../types/db";
 import { parseDateString } from "../../../utils";
 import { type RitMessage, StopType } from "../types";
-import { convertTime, formatPlatform } from "../utils";
+import {
+  convertTime,
+  determineJourneyEventType,
+  existingServiceAndJourney,
+  formatPlatform,
+} from "../utils";
+import { Attributes } from "../../../types/infoplus";
 
 export const handleNewJourney: Handler<RitMessage> = async (db, data) => {
   const msg =
@@ -49,33 +54,16 @@ export const handleNewJourney: Handler<RitMessage> = async (db, data) => {
 
     const journeyEventValues: Knex.DbRecordArr<JourneyEvent> =
       journey.LogischeRitDeelStation.map((stop, idx) => {
-        const eventType: JourneyEventType = match([
-          stop.StationnementType,
-          stop.Stopt[1]?.text,
-          stop.AankomstTijd?.[0]?.text,
-          stop.VertrekTijd?.[0]?.text,
-        ])
-          .returnType<JourneyEventType>()
-          .with(
-            [StopType.Passage, "N", P._, P._],
-            () => JourneyEventType.Passage,
-          )
-          .with(
-            [StopType.Stop, "J", undefined, P.string],
-            () => JourneyEventType.Departure,
-          )
-          .with(
-            [StopType.Stop, "J", P.string, undefined],
-            () => JourneyEventType.Arrival,
-          )
-          .with(
-            [StopType.Stop, "J", P.string, P.string],
-            ([_a, _b, arrival, departure]) =>
-              arrival === departure
-                ? JourneyEventType.ShortStop
-                : JourneyEventType.LongerStop,
-          )
-          .run();
+        const eventType: JourneyEventType = determineJourneyEventType(stop);
+
+        const attributes: Attributes[] = match(stop.StationnementType)
+          .with(StopType.AlightingOnly, () => [Attributes.DoNotBoard])
+          .with(StopType.BoardingOnly, () => [Attributes.DoNotAlight])
+          .with(StopType.ServiceStop, () => [
+            Attributes.DoNotBoard,
+            Attributes.DoNotAlight,
+          ])
+          .otherwise(() => []);
 
         return {
           journey_id: journeyId,
@@ -116,6 +104,8 @@ export const handleNewJourney: Handler<RitMessage> = async (db, data) => {
           departure_platform_actual:
             stop.TreinVertrekSpoor?.[1] &&
             formatPlatform(stop.TreinVertrekSpoor[1]),
+
+          attributes,
         };
       });
 
@@ -123,31 +113,4 @@ export const handleNewJourney: Handler<RitMessage> = async (db, data) => {
   }
 
   return Ok(undefined);
-};
-
-export const existingServiceAndJourney = async (
-  db: Knex,
-  trainNumber: string,
-  date: Date,
-): Promise<{ service_id: string | null; journey_id: string | null }> => {
-  const existing = (await db
-    .table<{ id: string; train_number: string }>("service")
-    .leftJoin("journey", (on) => {
-      on.on("service.id", "journey.service_id").andOn(
-        "journey.running_on",
-        db.raw("?", formatDate(date, "yyyy-MM-dd")),
-      );
-    })
-    .select({ service_id: "service.id", journey_id: "journey.id" })
-    .where("service.train_number", trainNumber)
-    .andWhere("service.timetable_year", formatDate(date, "yyyy"))
-    .limit(1)) as [
-    | {
-        service_id: string;
-        journey_id: string | null;
-      }
-    | undefined,
-  ];
-
-  return existing[0] ?? { service_id: null, journey_id: null };
 };

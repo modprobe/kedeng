@@ -209,15 +209,17 @@ export const handler: Handler<RitMessage> = async (
       )?.MaterieelDeel;
 
       const preparedRollingStockEntries: Knex.DbRecordArr<RollingStock> =
-        rollingStock?.map((stock) => ({
-          journey_event_id: newEventId,
-          journey_id: journeyId,
-          departure_order: parseInt(stock.MaterieelDeelVolgordeVertrek),
+        rollingStock
+          ?.filter((stock) => stock.AchterBlijvenMaterieelDeel === "N")
+          ?.map((stock) => ({
+            journey_event_id: newEventId,
+            journey_id: journeyId,
+            departure_order: parseInt(stock.MaterieelDeelVolgordeVertrek ?? 1),
 
-          material_type: stock.MaterieelDeelSoort,
-          material_subtype: stock.MaterieelDeelAanduiding,
-          material_number: stock.MaterieelDeelID,
-        })) ?? [];
+            material_type: stock.MaterieelDeelSoort,
+            material_subtype: stock.MaterieelDeelAanduiding,
+            material_number: stock.MaterieelDeelID,
+          })) ?? [];
 
       const mergedAttributes = [
         ...new Set([

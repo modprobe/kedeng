@@ -34,12 +34,23 @@ declare module "knex/types/tables" {
     departure_cancelled: boolean;
 
     status: number;
-    attributes: string[];
+    attributes: string[] | null;
+  }
+
+  interface RollingStock {
+    journey_id: string;
+    journey_event_id: string;
+
+    departure_order: number;
+    material_type: string | null;
+    material_subtype: string | null;
+    material_number: string | null;
   }
 
   interface Tables {
     service: Service;
     journey: Journey;
     journey_event: JourneyEvent;
+    rolling_stock: RollingStock;
   }
 }

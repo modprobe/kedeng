@@ -1,7 +1,8 @@
 import assert from "assert";
+import { randomUUID } from "crypto";
 
 import type { Knex } from "knex";
-import type { JourneyEvent } from "knex/types/tables";
+import type { JourneyEvent, RollingStock } from "knex/types/tables";
 import { match } from "ts-pattern";
 import { Ok, Result } from "ts-results-es";
 import { getLogger } from "@logtape/logtape";
@@ -192,32 +193,58 @@ export const handler: Handler<RitMessage> = async (
     );
 
     const resultingJourneyEvents = [];
+    const resultingRollingStockEntries = [];
 
     for (const [order, desiredJourneyEvent] of desiredJourneyEvents.entries()) {
       const matching = existingJourneyEvents.find(
         (event) => event.station === desiredJourneyEvent.station,
       );
 
-      if (!matching) {
-        resultingJourneyEvents.push(desiredJourneyEvent);
-        continue;
-      }
+      const newEventId = randomUUID();
+
+      const rollingStock = journey.LogischeRitDeelStation.find(
+        (stop) =>
+          stop.Station.StationCode.toLowerCase() ===
+          desiredJourneyEvent.station,
+      )?.MaterieelDeel;
+
+      const preparedRollingStockEntries: Knex.DbRecordArr<RollingStock> =
+        rollingStock?.map((stock) => ({
+          journey_event_id: newEventId,
+          journey_id: journeyId,
+          departure_order: parseInt(stock.MaterieelDeelVolgordeVertrek),
+
+          material_type: stock.MaterieelDeelSoort,
+          material_subtype: stock.MaterieelDeelAanduiding,
+          material_number: stock.MaterieelDeelID,
+        })) ?? [];
+
+      const mergedAttributes = [
+        ...new Set([
+          ...(matching?.attributes ?? []),
+          ...(desiredJourneyEvent.attributes ?? []),
+        ]),
+      ];
 
       const mergedJourneyEvent: Partial<JourneyEvent> = {
-        ...matching,
+        ...(matching ? matching : {}),
         ...desiredJourneyEvent,
-        id: undefined,
+        id: newEventId,
         stop_order: order,
-        attributes: [
-          ...new Set([
-            ...(matching.attributes ?? []),
-            ...(desiredJourneyEvent.attributes ?? []),
-          ]),
-        ],
+        attributes: mergedAttributes.length > 0 ? mergedAttributes : null,
       };
 
       resultingJourneyEvents.push(mergedJourneyEvent);
+      resultingRollingStockEntries.push(...preparedRollingStockEntries);
     }
+
+    await db("rolling_stock").delete().where({
+      journey_id: journeyId,
+    });
+
+    logger.debug("deleted existing rolling stock entries", {
+      journeyId,
+    });
 
     await db("journey_event").delete().where({
       journey_id: journeyId,
@@ -228,10 +255,16 @@ export const handler: Handler<RitMessage> = async (
     });
 
     await db("journey_event").insert(resultingJourneyEvents);
-
     logger.debug("inserted updated journey events", {
       journeyId,
     });
+
+    if (resultingRollingStockEntries.length > 0) {
+      await db("rolling_stock").insert(resultingRollingStockEntries);
+      logger.debug("inserted updated rolling stock entries", {
+        journeyId,
+      });
+    }
 
     results.push(Ok(RitResult.UPDATED_EXISTING));
   }

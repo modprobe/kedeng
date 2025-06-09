@@ -61,15 +61,17 @@ export const determineJourneyEventType = (
     .with(
       [StopType.Passage, P._, P._, P._],
       [StopType.ServiceStop, P._, P._, P._],
-      [StopType.Stop, "N", P._, P._],
+      [P._, "N", P._, P._],
       () => JourneyEventType.Passage,
     )
     .with(
-      [StopType.Stop, "J", undefined, P.string],
+      [StopType.Stop, "J", P.nullish, P.string],
+      [StopType.BoardingOnly, "J", P.nullish, P.string],
       () => JourneyEventType.Departure,
     )
     .with(
-      [StopType.Stop, "J", P.string, undefined],
+      [StopType.Stop, "J", P.string, P.nullish],
+      [StopType.AlightingOnly, "J", P.string, P.nullish],
       () => JourneyEventType.Arrival,
     )
     .with(

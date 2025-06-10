@@ -1,3 +1,17 @@
+x-persister: &persister
+  image: node:24
+  env_file:
+    - .env
+  command: bash -c "corepack enable && pnpm install && pnpm --filter=@alxt/kedeng-persister build:clean && node /app/packages/persister/dist/src/index.js"
+  restart: no
+  working_dir: /app
+  volumes:
+    - ".:/app"
+    - "persister_node_modules:/app/node_modules"
+  depends_on:
+    - nats
+    - db
+
 services:
   receiver:
     build:
@@ -8,19 +22,18 @@ services:
     depends_on:
       - nats
 
-  persister:
-    image: node:24
-    env_file:
-      - .env
-    command: bash -c "corepack enable && pnpm install && pnpm run dev"
-    restart: no
-    working_dir: /app
-    volumes:
-      - "./packages/persister:/app"
-      - "persister_node_modules:/app/node_modules"
-    depends_on:
-      - nats
-      - db
+  persister-das:
+    <<: *persister
+    environment:
+      KEDENG_PERSISTER_NATS_STREAM: DAS
+  persister-dvs:
+    <<: *persister
+    environment:
+      KEDENG_PERSISTER_NATS_STREAM: DVS
+  persister-rit:
+    <<: *persister
+    environment:
+      KEDENG_PERSISTER_NATS_STREAM: RIT
 
   nats:
     image: "nats:2-alpine"
@@ -38,12 +51,11 @@ services:
       - "nats:/data"
 
   db:
-    image: timescale/timescaledb:latest-pg17
+    image: postgres:17.2
     environment:
       POSTGRES_USER: ${DB_USER:-app}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-supersecret}
       POSTGRES_DB: ${DB_NAME:-kedeng}
-      TIMESCALEDB_TELEMETRY: "off"
     ports:
       - "5432:5432"
 

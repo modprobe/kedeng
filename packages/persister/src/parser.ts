@@ -1,6 +1,11 @@
 import { XMLParser } from "fast-xml-parser";
 
-const alwaysArrayTags = ["MaterieelDeel", "LogischeRitDeel", "Wijziging"];
+const alwaysArrayTags = [
+  "MaterieelDeel",
+  "LogischeRit",
+  "LogischeRitDeel",
+  "Wijziging",
+];
 
 export const setupParser = () =>
   new XMLParser({

@@ -88,8 +88,14 @@ export type RitMessage = {
         SpeciaalKaartje: BooleanString;
         Reisplanner: BooleanString;
 
-        LogischeRit: Journey;
+        LogischeRit: Journey[];
       };
     };
   };
 };
+
+export const enum ChangeLevel {
+  Journey,
+  JourneySegment,
+  Station,
+}

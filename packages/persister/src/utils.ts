@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 
-import { configureSync, getConsoleSink } from "@logtape/logtape";
+import { configureSync, getConsoleSink, getLogger } from "@logtape/logtape";
 import { parse, set } from "date-fns";
 
 import type { Stream } from ".";
@@ -33,11 +33,15 @@ export const setupLogger = () =>
   });
 
 export const saveMessageToFile = async (message: object, stream: Stream) => {
+  const logger = getLogger([...LOGGER_CATEGORY]);
+
   const path = `${__dirname}/../docs/${stream.toUpperCase()}/failed`;
   await fs.mkdir(path, { recursive: true });
 
   const fileName = `${crypto.randomUUID()}.json`;
   await fs.writeFile(`${path}/${fileName}`, JSON.stringify(message));
+
+  logger.info(`Wrote to file: ${path}/${fileName}`);
 };
 
 export const parseDateString = (input: string) =>

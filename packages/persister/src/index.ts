@@ -1,16 +1,17 @@
 import { getLogger } from "@logtape/logtape";
 import { match } from "ts-pattern";
 import type { Result } from "ts-results-es";
-import { Err } from "ts-results-es";
 
-import { createDbConnection } from "./db";
 import { createJetstreamConnection, setupConsumer } from "./nats";
 import { requireEnv, setupLogger, sleep } from "./utils";
-import dvsHandler from "./domain/dvs";
-import dasHandler from "./domain/das";
-import { handler as ritHandler } from "./domain/rit/handler/v2";
-import type { Handler } from "./types";
 import { setupParser } from "./parser";
+import type { Processor } from "./processor";
+import {
+  DasProcessor,
+  DvsProcessor,
+  NoopProcessor,
+  RitProcessor,
+} from "./processor";
 
 setupLogger();
 const logger = getLogger(["kedeng", "persister"]);
@@ -39,28 +40,19 @@ const toStream = (input: string): Stream => {
   return Stream[input as keyof typeof Stream];
 };
 
-const noopHandler: (stream: Stream) => Handler<any> =
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (stream) => (_db, _data) =>
-    new Promise(() => {
-      console.log(`noop for stream ${stream}`);
-      return Err("not implemented");
-    });
-
-const getHandler = (stream: Stream): Handler<any> =>
+const getProcessor = async (stream: Stream): Promise<Processor<any>> =>
   match(stream)
-    .with(Stream.DVS, () => dvsHandler)
-    .with(Stream.DAS, () => dasHandler)
-    .with(Stream.POS, () => noopHandler(Stream.POS))
-    .with(Stream.RIT, () => ritHandler)
-    .run();
+    .with(Stream.DVS, () => DvsProcessor.build())
+    .with(Stream.DAS, () => DasProcessor.build())
+    .with(Stream.RIT, () => RitProcessor.build())
+    .with(Stream.POS, () => new NoopProcessor<any>(Stream.POS))
+    .exhaustive();
 
 void (async () => {
-  const db = await createDbConnection();
   const { nc, js, jsm } = await createJetstreamConnection();
 
   const sourceStream = toStream(requireEnv("KEDENG_PERSISTER_NATS_STREAM"));
-  const handleMessage = getHandler(sourceStream);
+  const processor = await getProcessor(sourceStream);
 
   const parser = setupParser();
 
@@ -84,31 +76,8 @@ void (async () => {
 
       logger.debug(`Parsed message from ${sourceStream}`);
 
-      const dbTransaction = await db.transaction();
-
-      let result: Result<any, string>;
-      try {
-        result = await handleMessage(dbTransaction, messageData);
-        await dbTransaction.commit();
-      } catch (e: any) {
-        if (!(e instanceof Error)) {
-          result = Err("");
-        } else {
-          logger.error("processing failed", {
-            stream: sourceStream,
-            fullMsg: JSON.stringify(messageData),
-            err: {
-              name: e.name,
-              message: e.message,
-              stack: e.stack,
-              cause: e.cause,
-            },
-          });
-
-          result = Err(e.message);
-        }
-        await dbTransaction.rollback();
-      }
+      const result: Result<any, string> =
+        await processor.processMessage(messageData);
 
       if (result.isOk()) {
         logger.info(`Successfully processed message from ${sourceStream}`);

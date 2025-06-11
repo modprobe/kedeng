@@ -34,6 +34,10 @@ services:
     <<: *persister
     environment:
       KEDENG_PERSISTER_NATS_STREAM: RIT
+  persister-pos:
+    <<: *persister
+    environment:
+      KEDENG_PERSISTER_NATS_STREAM: POS
 
   nats:
     image: "nats:2-alpine"

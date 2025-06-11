@@ -1,0 +1,32 @@
+{{- if .Values.influxdb.enabled -}}
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "kedeng.fullname" . }}-influxdb-data
+  labels:
+    {{- include "kedeng.labels" . | nindent 4 }}
+    app.kubernetes.io/component: influxdb
+
+spec:
+  accessModes:
+    {{- .Values.influxdb.pvc.accessModes | toYaml | nindent 4 }}
+  resources:
+    requests:
+      storage: {{ .Values.influxdb.pvc.size }}
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "kedeng.fullname" . }}-influxdb-config
+  labels:
+    {{- include "kedeng.labels" . | nindent 4 }}
+    app.kubernetes.io/component: influxdb
+
+spec:
+  accessModes:
+    {{- .Values.influxdb.pvc.accessModes | toYaml | nindent 4 }}
+  resources:
+    requests:
+      storage: 5G
+{{- end -}}

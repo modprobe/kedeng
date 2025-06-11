@@ -1,0 +1,87 @@
+{{- if .Values.influxdb.enabled -}}
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "kedeng.fullname" . }}-influxdb
+  labels:
+    {{- include "kedeng.labels" . | nindent 4 }}
+    app.kubernetes.io/component: influxdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "kedeng.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: influxdb
+  serviceName: influxdb
+  template:
+    metadata:
+      labels:
+        {{- include "kedeng.labels" . | nindent 8 }}
+        app.kubernetes.io/component: influxdb
+    spec:
+      containers:
+        - image: {{ .Values.influxdb.image.repository }}:{{ .Values.influxdb.image.tag }}
+          name: influxdb
+          ports:
+            - containerPort: 8086
+              name: http
+          volumeMounts:
+            - mountPath: /var/lib/influxdb2
+              name: data
+          volumeMounts:
+            - mountPath: /etc/influxdb2
+              name: config
+          env:
+            - name: DOCKER_INFLUXDB_INIT_MODE
+              value: setup
+            - name: DOCKER_INFLUXDB_INIT_USERNAME
+              value: {{ .Values.influxdb.adminUser | quote }}
+            - name: DOCKER_INFLUXDB_INIT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "kedeng.fullname" . }}-influxdb-auth
+                  key: admin-password
+            - name: DOCKER_INFLUXDB_INIT_ORG
+              value: {{ .Values.influxdb.org | quote }}
+            - name: DOCKER_INFLUXDB_INIT_BUCKET
+              value: {{ .Values.influxdb.bucket | quote }}
+            - name: DOCKER_INFLUXDB_INIT_ADMIN_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "kedeng.fullname" . }}-influxdb-auth
+                  key: admin-token
+            - name: INFLUXD_ENGINE_PATH
+              value: "/var/lib/influxdb2"
+            # - name: INFLUXD_BOLT_PATH
+            #   value: "/var/lib/influxdb2/influxd.bolt"
+          livenessProbe:
+            httpGet:
+              path: "/health"
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            timeoutSeconds: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: "/health"
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 3
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ include "kedeng.fullname" . }}-influxdb-data
+        - name: config
+          persistentVolumeClaim:
+            claimName: {{ include "kedeng.fullname" . }}-influxdb-config
+      securityContext:
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+{{- end }}

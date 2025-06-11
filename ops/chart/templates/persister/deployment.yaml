@@ -3,7 +3,7 @@
 {{- $natsHost := ( .Values.nats.enabled | ternary (printf "%s-nats" $fullName) .Values.global.natsHost ) -}}
 {{- $natsPort := ( .Values.nats.enabled | ternary 4222 .Values.global.natsPort ) -}}
 
-{{- $streams := tuple "DAS" "DVS" "RIT" -}}
+{{- $streams := tuple "DAS" "DVS" "RIT" "POS" -}}
 
 {{ range $streams }}
 ---
@@ -109,6 +109,17 @@ spec:
               value: {{ $natsHost }}
             - name: NATS_PORT
               value: {{ $natsPort | quote }}
+            - name: INFLUX_URL
+              value: "http://{{ include "kedeng.fullname" $ }}-influxdb.{{ $.Release.Namespace }}.svc.cluster.local:8086"
+            - name: INFLUX_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "kedeng.fullname" $ }}-influxdb-auth
+                  key: admin-token
+            - name: INFLUX_ORG
+              value: {{ $.Values.influxdb.org | quote }}
+            - name: INFLUX_BUCKET
+              value: {{ $.Values.influxdb.bucket | quote }}
             {{- with $.Values.persister.env }}
             {{- toYaml . | nindent 12 }}
             {{- end }}

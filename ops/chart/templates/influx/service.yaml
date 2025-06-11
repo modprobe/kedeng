@@ -1,0 +1,21 @@
+{{- if .Values.influxdb.enabled -}}
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: {{ include "kedeng.fullname" . }}-influxdb
+  labels:
+    {{- include "kedeng.labels" . | nindent 4 }}
+    app.kubernetes.io/component: influxdb
+
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 8086
+      protocol: TCP
+      targetPort: 8086
+  selector:
+    {{- include "kedeng.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: influxdb
+{{- end -}}

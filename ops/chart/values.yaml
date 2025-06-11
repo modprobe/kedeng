@@ -47,6 +47,10 @@ receiver:
 
 persister:
   replicaCount: 1
+  autoscaling:
+    enabled: true
+    minReplicaCount: 1
+    maxReplicaCount: 15
   image:
     repository: ghcr.io/modprobe/kedeng-persister
     pullPolicy: Always
@@ -58,11 +62,11 @@ persister:
   env: []
   resources:
     requests:
-      cpu: 100m
+      cpu: 50m
       memory: 128Mi
     limits:
-      cpu: 300m
-      memory: 512Mi
+      cpu: 100m
+      memory: 256Mi
 
 nats:
   enabled: true

@@ -1,0 +1,35 @@
+{{- if .Values.persister.autoscaling.enabled -}}
+{{- $streams := tuple "DAS" "DVS" "RIT" "POS" -}}
+
+{{ range $streams }}
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+
+metadata:
+  name: {{ include "kedeng.fullname" $ }}-persister-{{ . | lower }}
+  labels:
+    {{- include "kedeng.labels" $ | nindent 4 }}
+    app.kubernetes.io/component: persister
+    app.kubernetes.io/instance: {{ . | lower | quote }}
+
+spec:
+  pollingInterval: 30
+  cooldownPeriod: 300
+  minReplicaCount: {{ $.Values.persister.autoscaling.minReplicaCount }}
+  maxReplicaCount: {{ $.Values.persister.autoscaling.maxReplicaCount }}
+
+  scaleTargetRef:
+    kind: Deployment
+    name: {{ include "kedeng.fullname" $ }}-persister-{{ . | lower }}
+
+  triggers:
+    - type: nats-jetstream
+      metadata:
+        natsServerMonitoringEndpoint: {{ include "kedeng.fullname" $ }}-nats-headless.{{ $.Release.Namespace }}.svc.cluster.local:8222
+        account: "$G"
+        stream: {{ . }}
+        consumer: {{ printf "kedeng-persister-%s" . }}
+        lagThreshold: "150"
+{{- end -}}
+{{- end -}}

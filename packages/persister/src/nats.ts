@@ -11,6 +11,7 @@ import {
   jetstreamManager,
   JetStreamApiError,
   JetStreamApiCodes,
+  ReplayPolicy,
 } from "@nats-io/jetstream";
 import { nanos, type NatsConnection } from "@nats-io/nats-core";
 import { getLogger } from "@logtape/logtape";
@@ -77,6 +78,7 @@ export const setupConsumer = async (
       inactive_threshold: nanos(300_000),
       max_deliver: 10,
       backoff: [nanos(5_000)],
+      replay_policy: ReplayPolicy.Instant,
     });
 
     const consumer = await js.consumers.get(stream, name);

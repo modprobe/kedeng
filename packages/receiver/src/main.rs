@@ -165,7 +165,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         Source::DVS,
         Source::DAS,
         Source::RIT,
-        // Source::POS,
+        Source::POS,
     ] {
         zmq_socket.subscribe(source.as_envelope()).await?;
         info!(logger, "Subscribed to envelope"; "envelope" => source.as_envelope());

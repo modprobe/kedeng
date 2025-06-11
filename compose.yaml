@@ -2,7 +2,7 @@ x-persister: &persister
   image: node:24
   env_file:
     - .env
-  command: bash -c "corepack enable && pnpm install && pnpm --filter=@alxt/kedeng-persister build:clean && node /app/packages/persister/dist/src/index.js"
+  command: bash -c "corepack enable && pnpm install && pnpm --filter=@alxt/kedeng-persister run dev"
   restart: no
   working_dir: /app
   volumes:

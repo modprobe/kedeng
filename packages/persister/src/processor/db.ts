@@ -1,28 +1,23 @@
 import type { Knex } from "knex";
-import { Err, Ok, type Result } from "ts-results-es";
+import { Err, type Result } from "ts-results-es";
 import { getLogger } from "@logtape/logtape";
 
-import type { RitMessage } from "./domain/rit/types";
-import type { DasMessage } from "./domain/das/types";
-import type { DvsMessage } from "./domain/dvs/types";
-import ritHandler from "./domain/rit";
-import dasHandler from "./domain/das";
-import dvsHandler from "./domain/dvs";
-import { LOGGER_CATEGORY } from "./utils";
-import { createDbConnection } from "./db";
+import type { RitMessage } from "../domain/rit/types";
+import type { DasMessage } from "../domain/das/types";
+import type { DvsMessage } from "../domain/dvs/types";
+import ritHandler from "../domain/rit";
+import dasHandler from "../domain/das";
+import dvsHandler from "../domain/dvs";
+import { LOGGER_CATEGORY } from "../utils";
+import { createDbConnection } from "../db";
+import { Stream } from "..";
 
-import { Stream } from ".";
-
-type InfoPlusMessage = RitMessage | DasMessage | DvsMessage;
+import type { InfoPlusMessage, Processor } from ".";
 
 export type DbHandler<TMessage extends InfoPlusMessage> = (
   db: Knex,
   data: TMessage,
 ) => Promise<Result<any, string>>;
-
-export interface Processor<TMessage extends InfoPlusMessage> {
-  processMessage: (message: TMessage) => Promise<Result<any, string>>;
-}
 
 abstract class DbProcessor<TMessage extends InfoPlusMessage>
   implements Processor<TMessage>
@@ -69,19 +64,6 @@ abstract class DbProcessor<TMessage extends InfoPlusMessage>
     }
 
     return result;
-  }
-}
-
-export class NoopProcessor<TMessage extends InfoPlusMessage>
-  implements Processor<TMessage>
-{
-  private logger = getLogger([...LOGGER_CATEGORY]);
-
-  constructor(private readonly stream: Stream) {}
-
-  processMessage(): Promise<Result<any, string>> {
-    this.logger.warn(`Unhandled message from ${this.stream}`);
-    return Promise.resolve(Ok(undefined));
   }
 }
 

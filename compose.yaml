@@ -59,6 +59,21 @@ services:
     ports:
       - "5432:5432"
 
+  influx:
+    image: influxdb:2.7-alpine
+    ports:
+      - "8086:8086"
+    volumes:
+      - "influx:/var/lib/influxdb3"
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: ${INFLUX_USER:-admin}
+      DOCKER_INFLUXDB_INIT_PASSWORD: ${INFLUX_PASSWORD:-supersecret}
+      DOCKER_INFLUXDB_INIT_ORG: ${INFLUX_ORG:-kedeng}
+      DOCKER_INFLUXDB_INIT_BUCKET: ${INFLUX_BUCKET:-infoplus_pos}
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: ${INFLUX_TOKEN:-thisisinsecure}
+
 volumes:
   nats:
   persister_node_modules:
+  influx:

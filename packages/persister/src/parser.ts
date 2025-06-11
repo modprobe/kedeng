@@ -5,6 +5,8 @@ const alwaysArrayTags = [
   "LogischeRit",
   "LogischeRitDeel",
   "Wijziging",
+  "TreinMaterieelDelen",
+  "TreinLocation",
 ];
 
 export const setupParser = () =>

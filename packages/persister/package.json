@@ -3,6 +3,7 @@
   "dependencies": {
     "@date-fns/tz": "^1.2.0",
     "@date-fns/utc": "^2.1.0",
+    "@influxdata/influxdb-client": "^1.35.0",
     "@logtape/logtape": "^0.9.1",
     "@logtape/otel": "^0.3.0",
     "@nats-io/jetstream": "^3.0.2",

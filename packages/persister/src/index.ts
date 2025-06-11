@@ -6,12 +6,8 @@ import { createJetstreamConnection, setupConsumer } from "./nats";
 import { requireEnv, setupLogger, sleep } from "./utils";
 import { setupParser } from "./parser";
 import type { Processor } from "./processor";
-import {
-  DasProcessor,
-  DvsProcessor,
-  NoopProcessor,
-  RitProcessor,
-} from "./processor";
+import { DasProcessor, DvsProcessor, RitProcessor } from "./processor/db";
+import { PosProcessor } from "./processor/influx";
 
 setupLogger();
 const logger = getLogger(["kedeng", "persister"]);
@@ -45,7 +41,7 @@ const getProcessor = async (stream: Stream): Promise<Processor<any>> =>
     .with(Stream.DVS, () => DvsProcessor.build())
     .with(Stream.DAS, () => DasProcessor.build())
     .with(Stream.RIT, () => RitProcessor.build())
-    .with(Stream.POS, () => new NoopProcessor<any>(Stream.POS))
+    .with(Stream.POS, () => PosProcessor.build())
     .exhaustive();
 
 void (async () => {

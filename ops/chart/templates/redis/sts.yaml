@@ -1,0 +1,41 @@
+{{- if .Values.redis.enabled -}}
+apiVersion: apps/v1
+kind: StatefulSet
+
+metadata:
+  name: {{ include "kedeng.fullname" . }}-redis
+  labels:
+    {{- include "kedeng.labels" . | nindent 4 }}
+    app.kubernetes.io/component: redis
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "kedeng.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: redis
+
+  serviceName: {{ include "kedeng.fullname" . }}-redis
+  template:
+    metadata:
+      labels:
+        {{- include "kedeng.labels" . | nindent 8 }}
+        app.kubernetes.io/component: redis
+    
+    spec:
+      containers:
+        - image: {{ .Values.redis.image.repository }}:{{ .Values.redis.image.tag }}
+          imagePullPolicy: {{ .Values.redis.image.pullPolicy }}
+          name: redis
+          ports:
+            - containerPort: 6379
+              name: redis
+          livenessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - redis-cli ping
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+{{- end -}}

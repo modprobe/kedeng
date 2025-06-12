@@ -120,6 +120,14 @@ spec:
               value: {{ $.Values.influxdb.org | quote }}
             - name: INFLUX_BUCKET
               value: {{ $.Values.influxdb.bucket | quote }}
+            - name: REDIS_HOST
+              value: {{ printf "%s-redis.%s.svc.cluster.local" (include "kedeng.fullname" $) $.Release.Namespace }}
+            - name: REDIS_PORT
+              value: "6379"
+            - name: REDIS_LOCK_VALUE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
             {{- with $.Values.persister.env }}
             {{- toYaml . | nindent 12 }}
             {{- end }}

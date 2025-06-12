@@ -118,3 +118,10 @@ influxdb:
     enabled: true
     host: influx.kedeng.dev.t8n.io
     annotations: {}
+
+redis:
+  enabled: true
+  image:
+    repository: redis
+    tag: 8-alpine
+    pullPolicy: IfNotPresent

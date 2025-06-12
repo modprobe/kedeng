@@ -1,3 +1,5 @@
+import assert from "node:assert";
+
 import type { Knex } from "knex";
 import type { JourneyEvent } from "knex/types/tables";
 import { Ok } from "ts-results-es";
@@ -52,6 +54,12 @@ export const insertNewJourney = async (
 
   const journeyEventsToInsert: Knex.DbRecordArr<JourneyEvent> =
     ritJourneyToDbJourneyEvents(journey, journeyId);
+
+  assert.deepStrictEqual(
+    journeyEventsToInsert.map((evt) => evt.stop_order),
+    [...new Array(journeyEventsToInsert.length).keys()],
+    "new journey: stop_order not sequential as expected",
+  );
 
   await db("journey_event").insert(journeyEventsToInsert);
   return Ok(RitResult.INSERTED_NEW);

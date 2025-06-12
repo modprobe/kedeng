@@ -5,6 +5,7 @@ import { match, P } from "ts-pattern";
 import { JourneyEventType } from "../../../types/db";
 import { StopType } from "../types";
 import type { Journey, JourneySegment, JourneySegmentStation } from "../types";
+import { ChangeType } from "../../../types/infoplus";
 
 export const existingServiceAndJourney = async (
   db: Knex,
@@ -32,14 +33,51 @@ export const existingServiceAndJourney = async (
 
   return existing[0] ?? { service_id: null, journey_id: null };
 };
-export const determineJourneyEventType = (
+export const determineStopPattern = (
   stop: JourneySegmentStation,
-): JourneyEventType => {
-  return match([
-    stop.StationnementType,
-    stop.Stopt[1]?.text,
+  order: number,
+  lastEventOrder: number,
+): {
+  journeyEventTypePlanned: JourneyEventType;
+  journeyEventTypeActual: JourneyEventType;
+  arrivalCancelled: boolean;
+  departureCancelled: boolean;
+} => {
+  const planned = match([
+    order,
+    stop.Stopt[0]?.text,
     stop.AankomstTijd?.[0]?.text,
     stop.VertrekTijd?.[0]?.text,
+  ])
+    .with(
+      [0, P._, P._, P._],
+      [P.number, "J", P.nullish, P._],
+      () => JourneyEventType.Departure,
+    )
+    .with(
+      [P.number, "J", P.string, P.string],
+      ([_order, _stops, arrival, departure]) =>
+        arrival === departure
+          ? JourneyEventType.ShortStop
+          : JourneyEventType.LongerStop,
+    )
+    .with(
+      [P.number, "J", P.nullish, P.nullish],
+      () => JourneyEventType.ShortStop,
+    )
+    .with([P.number, "N", P._, P._], () => JourneyEventType.Passage)
+    .with(
+      [lastEventOrder, P._, P._, P._],
+      [P.number, "J", P._, P.nullish],
+      () => JourneyEventType.Arrival,
+    )
+    .run();
+
+  const actual = match([
+    stop.StationnementType,
+    stop.Stopt[1]?.text,
+    stop.AankomstTijd?.[1]?.text,
+    stop.VertrekTijd?.[1]?.text,
   ])
     .returnType<JourneyEventType>()
     .with(
@@ -69,6 +107,44 @@ export const determineJourneyEventType = (
           : JourneyEventType.LongerStop,
     )
     .run();
+
+  const [arrivalCancelled, departureCancelled] = match(stop.StationnementType)
+    .returnType<[boolean, boolean]>()
+    .with(StopType.Passage, () => {
+      const cancelled =
+        stop.Wijziging?.find(
+          (chg) => chg.WijzigingType === ChangeType.PassageCancelled,
+        ) !== undefined;
+
+      return [cancelled, cancelled];
+    })
+    .with(
+      StopType.Stop,
+      StopType.AlightingOnly,
+      StopType.BoardingOnly,
+      StopType.ServiceStop,
+      () => {
+        const arrivalCancelled =
+          stop.Wijziging?.find(
+            (chg) => chg.WijzigingType === ChangeType.ArrivalCancelled,
+          ) !== undefined;
+
+        const departureCancelled =
+          stop.Wijziging?.find(
+            (chg) => chg.WijzigingType === ChangeType.DepartureCancelled,
+          ) !== undefined;
+
+        return [arrivalCancelled, departureCancelled];
+      },
+    )
+    .run();
+
+  return {
+    journeyEventTypePlanned: planned,
+    journeyEventTypeActual: actual,
+    arrivalCancelled,
+    departureCancelled,
+  };
 };
 
 export const inlineSplittingJourneys = (

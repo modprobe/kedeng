@@ -72,6 +72,10 @@ export type Journey = {
 export type RitMessage = {
   PutReisInformatieBoodschapIn: {
     ReisInformatieProductRitInfo: {
+      RIPAdministratie: {
+        ReisInformatieTijdstip: DateTimeISOString;
+      };
+
       RitInfo: {
         TreinNummer: string;
         TreinDatum: string;

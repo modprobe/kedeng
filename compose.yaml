@@ -77,6 +77,11 @@ services:
       DOCKER_INFLUXDB_INIT_BUCKET: ${INFLUX_BUCKET:-infoplus_pos}
       DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: ${INFLUX_TOKEN:-thisisinsecure}
 
+  redis:
+    image: redis:8-alpine
+    ports:
+      - "6379:6379"
+
 volumes:
   nats:
   persister_node_modules:

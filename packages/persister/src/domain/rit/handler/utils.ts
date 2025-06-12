@@ -49,11 +49,7 @@ export const determineStopPattern = (
     stop.AankomstTijd?.[0]?.text,
     stop.VertrekTijd?.[0]?.text,
   ])
-    .with(
-      [0, P._, P._, P._],
-      [P.number, "J", P.nullish, P._],
-      () => JourneyEventType.Departure,
-    )
+    .with([0, P._, P._, P._], () => JourneyEventType.Departure)
     .with(
       [P.number, "J", P.string, P.string],
       ([_order, _stops, arrival, departure]) =>
@@ -66,12 +62,8 @@ export const determineStopPattern = (
       () => JourneyEventType.ShortStop,
     )
     .with([P.number, "N", P._, P._], () => JourneyEventType.Passage)
-    .with(
-      [lastEventOrder, P._, P._, P._],
-      [P.number, "J", P._, P.nullish],
-      () => JourneyEventType.Arrival,
-    )
-    .run();
+    .with([lastEventOrder, P._, P._, P._], () => JourneyEventType.Arrival)
+    .otherwise(() => JourneyEventType.LongerStop);
 
   const actual = match([
     stop.StationnementType,

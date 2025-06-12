@@ -57,7 +57,7 @@ const ritJourneyStopToJourneyEvent = (
     ])
     .otherwise(() => []);
 
-  return {
+  const toInsert = {
     journey_id: journeyId,
     station: stop.Station.StationCode.toLowerCase(),
 
@@ -98,6 +98,14 @@ const ritJourneyStopToJourneyEvent = (
 
     attributes,
   };
+
+  return Object.keys(toInsert).reduce(
+    (acc, key) =>
+      toInsert[key as keyof typeof toInsert] === undefined
+        ? { ...acc }
+        : { ...acc, [key]: toInsert[key as keyof typeof toInsert] },
+    {},
+  );
 };
 
 export const ritJourneyToDbJourneyEvents = (
@@ -105,7 +113,7 @@ export const ritJourneyToDbJourneyEvents = (
   journeyId: string,
 ) =>
   journey.LogischeRitDeelStation.map((stop, idx, stops) =>
-    ritJourneyStopToJourneyEvent(stop, idx, stops.length, journeyId),
+    ritJourneyStopToJourneyEvent(stop, idx, stops.length - 1, journeyId),
   );
 
 export const handler: Handler<RitMessage> = async (

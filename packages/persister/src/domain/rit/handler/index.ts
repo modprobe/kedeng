@@ -40,7 +40,7 @@ const ritJourneyStopToJourneyEvent = (
   order: number,
   lastStopOrder: number,
   journeyId?: string,
-) => {
+): Partial<JourneyEvent> => {
   const {
     journeyEventTypePlanned,
     journeyEventTypeActual,
@@ -99,6 +99,7 @@ const ritJourneyStopToJourneyEvent = (
     attributes,
   };
 
+  // remove every key that has an `undefined` value, to avoid overwriting it in the database
   return Object.keys(toInsert).reduce(
     (acc, key) =>
       toInsert[key as keyof typeof toInsert] === undefined

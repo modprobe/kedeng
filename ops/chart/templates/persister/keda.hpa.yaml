@@ -30,6 +30,6 @@ spec:
         account: "$G"
         stream: {{ . }}
         consumer: {{ printf "kedeng-persister-%s" . }}
-        lagThreshold: "150"
+        lagThreshold: {{ (eq . "RIT") | ternary "100" "250" | quote }}
 {{- end -}}
 {{- end -}}

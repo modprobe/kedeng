@@ -78,3 +78,11 @@ pub enum Station {
     AreTracksIndependentlyAccessible,
     Location,
 }
+
+#[derive(Iden)]
+pub enum StationGeometry {
+    Table,
+    From,
+    To,
+    LineString,
+}

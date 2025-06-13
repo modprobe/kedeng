@@ -1,4 +1,4 @@
-use crate::importers::{stations, timetable};
+use crate::importers::{station_geometry, stations, timetable};
 use clap::{Parser, Subcommand};
 use opentelemetry::global;
 use opentelemetry_otlp::{MetricExporter, Protocol, WithExportConfig};
@@ -45,6 +45,11 @@ enum Importer {
         #[arg(short = 'k', long, env = "NS_API_KEY")]
         api_key: String,
     },
+
+    StationGeometry {
+        #[arg(short = 'k', long, env = "NS_API_KEY")]
+        api_key: String,
+    },
 }
 
 fn init_metrics_provider() -> anyhow::Result<()> {
@@ -83,6 +88,9 @@ fn main() -> anyhow::Result<()> {
     match cli.importer {
         Importer::Timetable { input_path } => timetable::import(&mut db, input_path)?,
         Importer::Stations { api_key } => stations::import(&mut db, api_key.as_str())?,
+        Importer::StationGeometry { api_key } => {
+            station_geometry::import(&mut db, api_key.as_str())?
+        }
     };
 
     db.close()?;

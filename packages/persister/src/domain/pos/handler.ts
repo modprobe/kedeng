@@ -20,7 +20,8 @@ export const handler: InfluxHandler<PosMessage> = async (influx, message) => {
         .tag("provider", "NS")
         .floatField("latitude", parseFloat(rollingStock.Latitude))
         .floatField("longitude", parseFloat(rollingStock.Longitude))
-        .floatField("speed", parseFloat(rollingStock.Snelheid)),
+        .floatField("speed", parseFloat(rollingStock.Snelheid))
+        .floatField("direction", parseFloat(rollingStock.Richting)),
     );
 
     influx.writePoints(points);

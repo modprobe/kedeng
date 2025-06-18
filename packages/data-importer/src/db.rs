@@ -1,24 +1,26 @@
-use postgres::Client;
-use postgres::Config;
-use postgres::NoTls;
+use deadpool_postgres::{Pool, PoolConfig, Runtime, Timeouts};
 use sea_query::Iden;
+use tokio_postgres::NoTls;
 
-pub fn connect(
+pub async fn connect_async(
     username: &str,
     password: &str,
     database: &str,
     host: &str,
     port: Option<u16>,
-) -> Client {
-    let mut config = Config::new();
-    config
-        .user(username)
-        .password(password)
-        .dbname(database)
-        .host(host)
-        .port(port.unwrap_or(5432));
+) -> Pool {
+    let mut config = deadpool_postgres::Config::new();
+    config.host = Some(host.to_string());
+    config.user = Some(username.to_string());
+    config.password = Some(password.to_string());
+    config.dbname = Some(database.to_string());
+    config.port = port;
 
-    config.connect(NoTls).expect("failed to connect")
+    config.pool = config.pool.or(Some(PoolConfig::default()));
+    config.pool.unwrap().max_size = 10;
+    config.pool.unwrap().timeouts = Timeouts::wait_millis(10_000);
+
+    config.create_pool(Some(Runtime::Tokio1), NoTls).unwrap()
 }
 
 #[derive(Iden)]

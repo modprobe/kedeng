@@ -1,7 +1,9 @@
 use crate::db::StationGeometry;
-use postgres::Client;
+use crate::ns::create_ns_api_client;
+use deadpool_postgres::Pool;
 use sea_query::{OnConflict, PostgresQueryBuilder, Query};
 use serde::{Deserialize, Serialize};
+use std::sync::Arc;
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 struct LineString {
@@ -35,12 +37,16 @@ struct StationGeometryResponse {
 
 const API_URL: &str = "https://gateway.apiportal.ns.nl/Spoorkaart-API/api/v1/spoorkaart";
 
-pub fn import(db: &mut Client, api_key: &str) -> anyhow::Result<()> {
-    let response = ureq::get(API_URL)
-        .header("Ocp-Apim-Subscription-Key", api_key)
-        .call()?
-        .body_mut()
-        .read_json::<StationGeometryResponse>()?;
+pub async fn import(db_pool: Arc<Pool>, api_key: &str) -> anyhow::Result<()> {
+    let db = db_pool.get().await?;
+    let http_client = create_ns_api_client(api_key)?;
+
+    let response = http_client
+        .get(API_URL)
+        .send()
+        .await?
+        .json::<StationGeometryResponse>()
+        .await?;
 
     let mut qb = Query::insert();
     qb.into_table(StationGeometry::Table)
@@ -64,7 +70,7 @@ pub fn import(db: &mut Client, api_key: &str) -> anyhow::Result<()> {
     }
 
     let sql = qb.to_string(PostgresQueryBuilder);
-    db.batch_execute(&sql)?;
+    db.batch_execute(&sql).await?;
 
     Ok(())
 }

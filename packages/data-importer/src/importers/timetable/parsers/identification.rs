@@ -8,13 +8,13 @@ use nom::{
 
 use super::{chrono::date_string, utils::is_eol};
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 pub struct DeliveryIdentified<T> {
     pub identification: Identification,
     pub data: T,
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 pub struct Identification {
     pub company_number: String,
     pub first_valid: NaiveDate,

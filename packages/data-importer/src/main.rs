@@ -1,13 +1,11 @@
 use crate::importers::{station_geometry, stations, timetable};
 use clap::{Parser, Subcommand};
-use opentelemetry::global;
-use opentelemetry_otlp::{MetricExporter, Protocol, WithExportConfig};
-use opentelemetry_sdk::Resource;
-use opentelemetry_sdk::metrics::SdkMeterProvider;
+use std::sync::Arc;
 
 mod db;
-mod importers;
-mod util;
+pub mod importers;
+mod ns;
+pub(crate) mod util;
 
 #[derive(Parser)]
 #[command(
@@ -52,48 +50,29 @@ enum Importer {
     },
 }
 
-fn init_metrics_provider() -> anyhow::Result<()> {
-    let exporter = MetricExporter::builder()
-        .with_tonic()
-        .with_protocol(Protocol::Grpc)
-        .with_endpoint("http://localhost:4317")
-        .build()?;
-
-    let provider = SdkMeterProvider::builder()
-        .with_periodic_exporter(exporter)
-        .with_resource(
-            Resource::builder()
-                .with_service_name("kedeng/date-importer")
-                .build(),
-        )
-        .build();
-
-    global::set_meter_provider(provider.clone());
-
-    Ok(())
-}
-
-fn main() -> anyhow::Result<()> {
+#[tokio::main]
+async fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();
-    let mut db = db::connect(
+    let db = db::connect_async(
         cli.db_user.as_str(),
         cli.db_password.as_str(),
         cli.db_name.as_str(),
         cli.db_host.as_str(),
         Some(cli.db_port),
-    );
+    )
+    .await;
+
+    let db = Arc::new(db);
 
     // init_metrics_provider()?;
 
     match cli.importer {
-        Importer::Timetable { input_path } => timetable::import(&mut db, input_path)?,
-        Importer::Stations { api_key } => stations::import(&mut db, api_key.as_str())?,
+        Importer::Timetable { input_path } => timetable::import(db, input_path).await?,
+        Importer::Stations { api_key } => stations::import(db, api_key.as_str()).await?,
         Importer::StationGeometry { api_key } => {
-            station_geometry::import(&mut db, api_key.as_str())?
+            station_geometry::import(db, api_key.as_str()).await?
         }
     };
-
-    db.close()?;
 
     Ok(())
 }

@@ -1,9 +1,11 @@
 use crate::db;
+use crate::ns::create_ns_api_client;
 use anyhow::Result;
-use postgres::Client;
+use deadpool_postgres::Pool;
 use sea_query::{Expr, OnConflict, PostgresQueryBuilder, Query, QueryStatementWriter};
 use serde::{Deserialize, Serialize};
 use std::fmt::{Display, Formatter};
+use std::sync::Arc;
 
 #[derive(Debug, Deserialize, Clone)]
 struct StationIds {
@@ -98,12 +100,16 @@ struct StationResponse {
 
 const API_URL: &str = "https://gateway.apiportal.ns.nl/nsapp-stations/v3";
 
-pub fn import(db: &mut Client, api_key: &str) -> Result<()> {
-    let response = ureq::get(API_URL)
-        .header("Ocp-Apim-Subscription-Key", api_key)
-        .call()?
-        .body_mut()
-        .read_json::<StationResponse>()?;
+pub async fn import(db_pool: Arc<Pool>, api_key: &str) -> Result<()> {
+    let db = db_pool.get().await?;
+    let http_client = create_ns_api_client(api_key)?;
+
+    let response = http_client
+        .get(API_URL)
+        .send()
+        .await?
+        .json::<StationResponse>()
+        .await?;
 
     let missing_data = include_str!("./stations/missing.json");
     let missing_data = serde_json::from_str::<StationResponse>(missing_data)?;
@@ -191,7 +197,7 @@ pub fn import(db: &mut Client, api_key: &str) -> Result<()> {
     }
 
     let sql = qb.to_string(PostgresQueryBuilder);
-    db.batch_execute(&sql)?;
+    db.batch_execute(&sql).await?;
 
     Ok(())
 }

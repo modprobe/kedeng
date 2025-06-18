@@ -47,11 +47,8 @@ pub fn service_number(input: &str) -> IResult<&str, ServiceNumber> {
     )
     .parse(input)?;
 
-    let (input, name) = terminated(
-        take_while(|c: char| c.is_ascii() && c != '\r' && c != '\n'),
-        line_ending,
-    )
-    .parse(input)?;
+    let (input, name) =
+        terminated(take_while(|c: char| c != '\r' && c != '\n'), line_ending).parse(input)?;
 
     Ok((
         input,

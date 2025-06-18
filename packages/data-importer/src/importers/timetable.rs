@@ -1,26 +1,24 @@
 pub mod parsers;
 
 use crate::db;
-use crate::importers::timetable::parsers::footnote::Footnote;
-use crate::importers::timetable::parsers::service::Service;
+use crate::importers::timetable::parsers::company::Companies;
+use crate::importers::timetable::parsers::footnote::{Footnote, Footnotes};
+use crate::importers::timetable::parsers::service::{Service, ServiceLeg};
+use crate::importers::timetable::parsers::timetable::Timetable;
 use crate::importers::timetable::parsers::{
     company::company_file, footnote::footnote_file, identification::DeliveryIdentified,
     timetable::timetable_file,
 };
 use crate::util::read_iso_8859_1_file;
 use anyhow::{Context, Result, anyhow};
-use atty::Stream::Stdout;
-use chrono::{NaiveDateTime, Utc};
-use indicatif::{ProgressBar, ProgressStyle};
+use chrono::Utc;
+use deadpool_postgres::Pool;
 use nom::{IResult, Parser};
-use postgres::Client;
-use ratelimit::Ratelimiter;
-use sea_query::{Expr, OnConflict, PostgresQueryBuilder, Query, ReturningClause};
+use sea_query::{Expr, OnConflict, PostgresQueryBuilder, Query};
 use sea_query_postgres::PostgresBinder;
 use std::io::Cursor;
 use std::path::{Path, PathBuf};
-use std::thread::sleep;
-use std::time::Duration;
+use std::sync::Arc;
 use std::{env, fs};
 use uuid::Uuid;
 
@@ -35,12 +33,8 @@ fn load_file<TData>(
 }
 
 const DATA_URL: &str = "https://data.ndovloket.nl/ns/ns-latest.zip";
-fn download_and_extract_data(dir: &Path) -> Result<()> {
-    let timetable_data_archive: Vec<u8> = ureq::get(DATA_URL)
-        .call()
-        .context("! failed to download timetable zip")?
-        .body_mut()
-        .read_to_vec()?;
+async fn download_and_extract_data(dir: &Path) -> Result<()> {
+    let timetable_data_archive = reqwest::get(DATA_URL).await?.bytes().await?.to_vec();
 
     zip_extract::extract(Cursor::new(timetable_data_archive), dir, true)
         .context("! failed to extract zip")?;
@@ -48,85 +42,57 @@ fn download_and_extract_data(dir: &Path) -> Result<()> {
     Ok(())
 }
 
-pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
-    let data_dir: PathBuf = if let Some(input_path) = input_path {
-        println!("+ Using input path: {}", input_path);
-        PathBuf::from(input_path)
-    } else {
-        println!("+ Downloading and unzipping latest data");
-        let data_dir = env::temp_dir().join("./kedeng-data-importer");
-        fs::create_dir_all(&data_dir).context("! failed to create temp dir")?;
-        println!("+ Created temp dir: {}", data_dir.display());
+enum ProcessingResult {
+    Success(u32),
+    Skipped(u32),
+}
 
-        download_and_extract_data(&data_dir)?;
+struct JourneyProcessingJob {
+    db: Arc<Pool>,
+    service: ServiceLeg,
+    timetable: Arc<Timetable>,
+    footnotes: Arc<Footnotes>,
+    companies: Arc<Companies>,
+}
 
-        data_dir
-    };
+impl JourneyProcessingJob {
+    pub(crate) async fn process(self, worker_id: usize) -> Result<ProcessingResult> {
+        println!(
+            "+ Processing service {} with worker {worker_id}",
+            self.service.service_identification.0
+        );
 
-    let timetable = load_file(&data_dir.join("./timetbls.dat"), timetable_file)?;
-    println!("+ Loaded {} services", timetable.data.len());
+        let mut db = self
+            .db
+            .get()
+            .await
+            .context("worker failed to get client from pool")?;
 
-    let footnotes = load_file(&data_dir.join("./footnote.dat"), footnote_file)?;
-    println!("+ Loaded {} footnotes", footnotes.data.len());
+        let transaction = db
+            .transaction()
+            .await
+            .context("failed to start transaction")?;
 
-    let companies = load_file(&data_dir.join("./company.dat"), company_file)?;
-    println!("+ Loaded {} companies", companies.data.len());
-
-    let services = timetable.data.iter().flat_map(Service::split_legs);
-
-    let spinner = ProgressBar::new_spinner();
-    spinner.set_style(
-        ProgressStyle::with_template("{spinner} [{elapsed_precise}] {msg}")?.tick_strings(&[
-            "[    ]", "[=   ]", "[==  ]", "[=== ]", "[====]", "[ ===]", "[  ==]", "[   =]",
-            "[    ]", "[   =]", "[  ==]", "[ ===]", "[====]", "[=== ]", "[==  ]", "[=   ]",
-            "[====]",
-        ]),
-    );
-
-    let output = |text: String| {
-        if atty::is(Stdout) {
-            spinner.println(text);
+        let footnote = if self.service.validity.footnote == 0 {
+            &Footnote::always_valid(&self.timetable.identification)
         } else {
-            println!("{}", text);
-        }
-    };
-
-    // let ratelimit = Ratelimiter::builder(1, Duration::from_millis(100))
-    //     .max_tokens(1)
-    //     .build()?;
-
-    for (sidx, service) in services.enumerate() {
-        let mut transaction = db.transaction()?;
-
-        let footnote = if service.validity.footnote == 0 {
-            &Footnote::always_valid(&timetable.identification)
-        } else {
-            footnotes
-                .get_by_id(service.validity.footnote)
+            self.footnotes
+                .get_by_id(self.service.validity.footnote)
                 .context("! footnote not found")?
         };
 
-        let service_number = (service.service_number.service_number != 0)
-            .then_some(service.service_number.service_number.to_string())
-            .or(service.service_number.variant.clone());
+        let service_number = match self.get_service_number() {
+            Some(service_number) => service_number,
+            None => {
+                return Ok(ProcessingResult::Skipped(
+                    self.service.service_identification.0,
+                ));
+            }
+        };
 
-        if service_number.is_none() {
-            output("+ Skipping service without number or variant".to_owned());
-            continue;
-        }
-
-        let service_number = service_number.unwrap();
-
-        spinner.set_message(format!(
-            "[{} / ~{}] Processing service {} {}",
-            sidx,
-            timetable.data.len(),
-            service.transport_mode.code,
-            service_number
-        ));
-
-        let company = companies
-            .get_by_id(service.service_number.company_number)
+        let company = self
+            .companies
+            .get_by_id(self.service.service_number.company_number)
             .unwrap();
 
         let (service_sql, service_params) = Query::insert()
@@ -138,7 +104,7 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
             ])
             .values_panic([
                 service_number.clone().into(),
-                service.transport_mode.code.clone().into(),
+                self.service.transport_mode.code.clone().into(),
                 company.code.clone().into(),
             ])
             .on_conflict(
@@ -153,17 +119,17 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
 
         let inserted_service = transaction
             .query(service_sql.as_str(), &service_params.as_params())
+            .await
             .context("! failed to insert service(s)")?;
 
         assert_eq!(inserted_service.len(), 1);
 
         let service_id: Uuid = inserted_service.first().unwrap().get("id");
 
-        let (journey_attributes, stop_attributes): (Vec<_>, Vec<_>) = service
-            .attributes
-            .iter()
-            .cloned()
-            .partition(|attr| attr.first_stop == 1 && attr.last_stop == service.num_stops());
+        let (journey_attributes, stop_attributes): (Vec<_>, Vec<_>) =
+            self.service.attributes.iter().cloned().partition(|attr| {
+                attr.first_stop == 1 && attr.last_stop == self.service.num_stops()
+            });
 
         let mut journey_event_insert = Query::insert();
         journey_event_insert
@@ -196,7 +162,7 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
         let mut at_least_one_journey_event = false;
 
         for journey in footnote
-            .iterate_valid_dates(&timetable.identification)
+            .iterate_valid_dates(&self.timetable.identification)
             .flatten()
         {
             let mut journey_insert = Query::insert();
@@ -219,7 +185,7 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
                                 .collect::<Vec<_>>()
                         })
                         .into(),
-                    vec![service.service_identification.0.to_string()].into(),
+                    vec![self.service.service_identification.0.to_string()].into(),
                 ])
                 .on_conflict(
                     OnConflict::columns([db::Journey::ServiceId, db::Journey::RunningOn])
@@ -233,13 +199,12 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
                 .returning(Query::returning().columns([db::Journey::Id]))
                 .build_postgres(PostgresQueryBuilder);
 
-            // output(journey_insert.to_string(PostgresQueryBuilder));
-
             let inserted_journey = transaction
                 .query(
                     journey_insert_sql.as_str(),
                     &journey_insert_params.as_params(),
                 )
+                .await
                 .context(format!(
                     "query: {} - params: {:?}",
                     journey_insert_sql.as_str(),
@@ -251,10 +216,10 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
 
             let journey_id: Uuid = inserted_journey.first().unwrap().get("id");
 
-            for (idx, (event, platform)) in service.station_events.iter().enumerate() {
+            for (idx, (event, platform)) in self.service.station_events.iter().enumerate() {
                 at_least_one_journey_event = true;
 
-                let stop_attributes = service.stop_number(event).and_then(|stop_number| {
+                let stop_attributes = self.service.stop_number(event).and_then(|stop_number| {
                     let attribute_codes = stop_attributes
                         .iter()
                         .filter(|attr| {
@@ -300,26 +265,120 @@ pub fn import(db: &mut Client, input_path: Option<String>) -> Result<()> {
             let journey_event_insert_query = journey_event_insert.to_string(PostgresQueryBuilder);
             transaction
                 .batch_execute(journey_event_insert_query.as_str())
+                .await
                 .context(format!("query: {journey_event_insert_query}"))
                 .context("! could not insert journey events")?;
         }
 
-        // while let Err(time_to_wait) = ratelimit.try_wait() {
-        //     sleep(time_to_wait);
-        // }
-
         transaction
             .commit()
+            .await
             .context("! could not commit transaction")?;
 
-        output(format!(
-            "+ Inserted service {} {} (from # {})",
-            service.transport_mode.code,
-            service_number.clone(),
-            service.service_identification.0,
-        ));
-        spinner.tick();
+        Ok(ProcessingResult::Success(
+            self.service.service_identification.0,
+        ))
     }
+
+    fn get_service_number(&self) -> Option<String> {
+        (self.service.service_number.service_number != 0)
+            .then_some(self.service.service_number.service_number.to_string())
+            .or(self.service.service_number.variant.clone())
+    }
+}
+
+async fn worker(
+    id: usize,
+    job_rx: async_channel::Receiver<JourneyProcessingJob>,
+    result_tx: async_channel::Sender<Result<ProcessingResult>>,
+) {
+    println!("+ Worker {id} started");
+    while let Ok(job) = job_rx.recv().await {
+        let output = job.process(id).await;
+        let _ = result_tx.send(output).await;
+    }
+    println!("+ Worker {id} exiting");
+}
+
+async fn collect_results(mut rx: async_channel::Receiver<Result<ProcessingResult>>) {
+    while let Ok(result) = rx.recv().await {
+        match result {
+            Ok(result) => match result {
+                ProcessingResult::Success(service_number) => {
+                    println!("+ Service {service_number} processed successfully")
+                }
+                ProcessingResult::Skipped(service_number) => {
+                    println!("+ Service {service_number} skipped")
+                }
+            },
+            Err(e) => {
+                println!("! Failed to process service: {e}")
+            }
+        }
+    }
+}
+
+pub async fn import(db: Arc<Pool>, input_path: Option<String>) -> Result<()> {
+    let data_dir: PathBuf = if let Some(input_path) = input_path {
+        println!("+ Using input path: {}", input_path);
+        PathBuf::from(input_path)
+    } else {
+        println!("+ Downloading and unzipping latest data");
+        let data_dir = env::temp_dir().join(format!("kedeng-data-importer-{}", Uuid::new_v4()));
+        fs::create_dir_all(&data_dir).context("! failed to create temp dir")?;
+        println!("+ Created temp dir: {}", data_dir.display());
+
+        download_and_extract_data(&data_dir).await?;
+
+        data_dir
+    };
+
+    let timetable = load_file(&data_dir.join("./timetbls.dat"), timetable_file)?;
+    println!("+ Loaded {} services", timetable.data.len());
+    let timetable = Arc::new(timetable);
+    // println!("{:#?}", timetable);
+    // return Ok(());
+
+    let footnotes = load_file(&data_dir.join("./footnote.dat"), footnote_file)?;
+    println!("+ Loaded {} footnotes", footnotes.data.len());
+    let footnotes = Arc::new(footnotes);
+
+    let companies = load_file(&data_dir.join("./company.dat"), company_file)?;
+    println!("+ Loaded {} companies", companies.data.len());
+    let companies = Arc::new(companies);
+
+    let (job_tx, job_rx) = async_channel::unbounded::<JourneyProcessingJob>();
+    let (result_tx, result_rx) = async_channel::unbounded::<Result<ProcessingResult>>();
+
+    let worker_handles = (0..5)
+        .map(|id| tokio::spawn(worker(id, job_rx.clone(), result_tx.clone())))
+        .collect::<Vec<_>>();
+    drop(result_tx);
+
+    let collector_handle = tokio::spawn(collect_results(result_rx));
+
+    let services = timetable.data.iter().flat_map(Service::split_legs);
+    for service in services {
+        let job = JourneyProcessingJob {
+            db: Arc::clone(&db),
+            service,
+            timetable: Arc::clone(&timetable),
+            footnotes: Arc::clone(&footnotes),
+            companies: Arc::clone(&companies),
+        };
+
+        if job_tx.send(job).await.is_err() {
+            eprintln!("! job receiver has been dropped, aborting");
+            break;
+        }
+    }
+
+    drop(job_tx);
+
+    for handle in worker_handles {
+        handle.await?;
+    }
+    collector_handle.await?;
 
     println!("+ All done!");
 

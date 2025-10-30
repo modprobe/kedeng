@@ -1,0 +1,113 @@
+{{- $fullName := include "kedeng.fullname" . -}}
+{{- $dbSecret := ( .Values.postgres.enabled | ternary (printf "%s-db-app" $fullName) .Values.global.dbSecretOverride ) -}}
+{{- $influxConfig := printf "%s-influxdb-config" $fullName -}}
+{{- $influxSecret := printf "%s-influxdb-auth" $fullName -}}
+---
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: {{ $fullName }}-api
+  labels:
+    {{- include "kedeng.labels" . | nindent 4 }}
+    app.kubernetes.io/component: api
+
+spec:
+  replicas: {{ .Values.api.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "kedeng.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: api
+  
+  template:
+    metadata:
+      {{-  with .Values.api.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "kedeng.labels" . | nindent 8 }}
+        app.kubernetes.io/component: api
+        {{- with .Values.api.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    
+    spec:
+      imagePullSecrets:
+      {{- range .Values.api.imagePullSecrets }}
+        - name: {{ . | quote }}
+      {{- end }}
+      containers:
+        - name: api
+          image: "{{ .Values.api.image.repository }}:{{ .Values.api.image.tag | default "latest" }}"
+          imagePullPolicy: {{ .Values.api.image.pullPolicy }}
+          {{- with .Values.api.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          ports:
+            - containerPort: 8080
+              name: http
+            - containerPort: 8081
+              name: http-probes
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http-probes
+            periodSeconds: 5
+            timeoutSeconds: 5
+          startupProbe:
+            httpGet:
+              path: /health
+              port: http-probes
+            failureThreshold: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: http-probes
+            timeoutSeconds: 10
+          env: 
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $dbSecret | quote }}
+                  key: host
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $dbSecret | quote }}
+                  key: user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $dbSecret | quote }}
+                  key: password
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $dbSecret | quote }}
+                  key: dbname
+            - name: INFLUX_URL
+              value: "http://{{ $fullName }}-influxdb.{{ $.Release.Namespace }}.svc.cluster.local:8086"
+            - name: INFLUX_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "kedeng.fullname" $ }}-influxdb-auth
+                  key: admin-token
+            - name: INFLUX_ORG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ $fullName }}-influxdb-config
+                  key: org
+            - name: INFLUX_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ $fullName }}-influxdb-config
+                  key: bucket
+            {{- with $.Values.api.env }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+
+

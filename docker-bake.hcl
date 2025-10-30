@@ -1,5 +1,5 @@
 group "default" {
-    targets = ["receiver", "data_importer", "persister"]
+    targets = ["receiver", "data_importer", "persister", "api"]
 }
 
 target "receiver" {
@@ -26,6 +26,16 @@ target "persister" {
     context = "."
     dockerfile = "./packages/persister/Dockerfile"
     tags = ["ghcr.io/modprobe/kedeng-persister:latest"]
+    labels = {
+        "org.opencontainers.image.source" = "https://github.com/modprobe/kedeng"
+    }
+    platforms = [ "linux/amd64" ]
+}
+
+target "api" {
+    context = "./packages/api"
+    dockerfile = "Dockerfile"
+    tags = [ "ghcr.io/modprobe/kedeng-api" ]
     labels = {
         "org.opencontainers.image.source" = "https://github.com/modprobe/kedeng"
     }

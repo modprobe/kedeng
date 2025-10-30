@@ -68,6 +68,29 @@ persister:
       cpu: 100m
       memory: 256Mi
 
+api:
+  replicaCount: 1
+  image:
+    repository: ghcr.io/modprobe/kedeng-api
+    pullPolicy: Always
+    tag: latest
+  imagePullSecrets:
+    - ghcr-pullsecret
+  podAnnotations: {}
+  podLabels: {}
+  env: []
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 1024Mi
+  ingress:
+    enabled: true
+    host: api.kedeng.t8n.io
+    annotations: {}
+
 nats:
   enabled: true
   # fullnameOverride: kedeng-nats

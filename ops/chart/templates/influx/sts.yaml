@@ -31,20 +31,32 @@ spec:
           volumeMounts:
             - mountPath: /etc/influxdb2
               name: config
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsUser: 0
           env:
             - name: DOCKER_INFLUXDB_INIT_MODE
               value: setup
             - name: DOCKER_INFLUXDB_INIT_USERNAME
-              value: {{ .Values.influxdb.adminUser | quote }}
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "kedeng.fullname" . }}-influxdb-config
+                  key: admin-user
             - name: DOCKER_INFLUXDB_INIT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ template "kedeng.fullname" . }}-influxdb-auth
                   key: admin-password
             - name: DOCKER_INFLUXDB_INIT_ORG
-              value: {{ .Values.influxdb.org | quote }}
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "kedeng.fullname" . }}-influxdb-config
+                  key: org
             - name: DOCKER_INFLUXDB_INIT_BUCKET
-              value: {{ .Values.influxdb.bucket | quote }}
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "kedeng.fullname" . }}-influxdb-config
+                  key: bucket
             - name: DOCKER_INFLUXDB_INIT_ADMIN_TOKEN
               valueFrom:
                 secretKeyRef:
@@ -80,8 +92,4 @@ spec:
         - name: config
           persistentVolumeClaim:
             claimName: {{ include "kedeng.fullname" . }}-influxdb-config
-      securityContext:
-        runAsUser: 65534
-        runAsGroup: 65534
-        fsGroup: 65534
 {{- end }}

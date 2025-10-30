@@ -117,9 +117,15 @@ spec:
                   name: {{ include "kedeng.fullname" $ }}-influxdb-auth
                   key: admin-token
             - name: INFLUX_ORG
-              value: {{ $.Values.influxdb.org | quote }}
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ $fullName }}-influxdb-config
+                  key: org
             - name: INFLUX_BUCKET
-              value: {{ $.Values.influxdb.bucket | quote }}
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ $fullName }}-influxdb-config
+                  key: bucket
             - name: REDIS_HOST
               value: {{ printf "%s-redis.%s.svc.cluster.local" (include "kedeng.fullname" $) $.Release.Namespace }}
             - name: REDIS_PORT

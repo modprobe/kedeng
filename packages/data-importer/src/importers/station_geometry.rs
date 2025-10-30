@@ -35,7 +35,7 @@ struct StationGeometryResponse {
     payload: FeatureCollection,
 }
 
-const API_URL: &str = "https://gateway.apiportal.ns.nl/Spoorkaart-API/api/v1/spoorkaart";
+const API_URL: &str = "https://gateway.apiportal.ns.nl/spoorkaart-api/api/v1/spoorkaart";
 
 pub async fn import(db_pool: Arc<Pool>, api_key: &str) -> anyhow::Result<()> {
     let db = db_pool.get().await?;

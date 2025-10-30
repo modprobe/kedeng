@@ -9,5 +9,5 @@ pub(crate) fn create_ns_api_client(api_key: &str) -> Result<reqwest::Client> {
     let mut headers = HeaderMap::new();
     headers.insert("Ocp-Apim-Subscription-Key", api_key_header);
 
-    Ok(ClientBuilder::new().default_headers(headers).build()?)
+    Ok(ClientBuilder::new().default_headers(headers).user_agent("kedeng/0.1").build()?)
 }

@@ -30,7 +30,8 @@ spec:
             - name: data-importer
               image: "{{ .Values.data_importer.image.repository }}:{{ .Values.data_importer.image.tag }}"
               imagePullPolicy: {{ .Values.data_importer.image.pullPolicy }}
-              command: ["sh", "-c", "/app/data-importer stations && /app/data-importer station-geometry && /app/data-importer timetable"]
+              # command: ["sh", "-c", "/app/data-importer stations && /app/data-importer station-geometry && /app/data-importer timetable"]
+              command: ["sh", "-c", "/app/data-importer stations"]
               env:
                 - name: DB_HOST
                   value: kedeng-db-pooler-rw.kedeng.svc.cluster.local

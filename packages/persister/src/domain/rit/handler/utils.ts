@@ -33,6 +33,7 @@ export const existingServiceAndJourney = async (
 
   return existing[0] ?? { service_id: null, journey_id: null };
 };
+
 export const determineStopPattern = (
   stop: JourneySegmentStation,
   order: number,
@@ -73,8 +74,11 @@ export const determineStopPattern = (
   ])
     .returnType<JourneyEventType>()
     .with(
-      [StopType.Passage, P._, P._, P._],
       [StopType.ServiceStop, P._, P._, P._],
+      () => JourneyEventType.ServiceStop,
+    )
+    .with(
+      [StopType.Passage, P._, P._, P._],
       [P._, "N", P._, P._],
       () => JourneyEventType.Passage,
     )

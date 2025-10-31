@@ -13,11 +13,11 @@ setupLogger();
 const logger = getLogger(["kedeng", "persister"]);
 
 let shuttingDown = false;
-["SIGTERM", "SIGINT", "beforeExit"].forEach((evt) =>
+["SIGTERM", "SIGINT", "beforeExit"].forEach((evt) => {
   process.on(evt, () => {
     shuttingDown = true;
-  }),
-);
+  });
+});
 
 export enum Stream {
   DAS = "DAS",
@@ -72,7 +72,7 @@ void (async () => {
 
       logger.debug(`Parsed message from ${sourceStream}`);
 
-      const result: Result<any, string> =
+      const result: Result<any, string | Error> =
         await processor.processMessage(messageData);
 
       if (result.isOk()) {

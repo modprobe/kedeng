@@ -1,8 +1,9 @@
 import assert from "node:assert";
 
 import type { Knex } from "knex";
-import type { JourneyEvent } from "knex/types/tables";
+import type { JourneyEvent, RollingStock } from "knex/types/tables";
 import { Ok } from "ts-results-es";
+import uuid from "uuid";
 
 import type { JourneySegment, RitMessage } from "../types";
 
@@ -23,6 +24,7 @@ export const insertNewJourney = async (
   if (!serviceId) {
     const insertedServiceIds = await db("service")
       .insert({
+        id: uuid.v7(),
         train_number: journey.LogischeRitDeelNummer,
         provider,
         type: trainType,
@@ -40,6 +42,7 @@ export const insertNewJourney = async (
 
   const insertedJourneyIds = await db("journey")
     .insert({
+      id: uuid.v7(),
       service_id: serviceId,
       running_on: runningOn,
     })
@@ -52,8 +55,7 @@ export const insertNewJourney = async (
     journeyId,
   });
 
-  const journeyEventsToInsert: Knex.DbRecordArr<JourneyEvent> =
-    ritJourneyToDbJourneyEvents(journey, journeyId);
+  const journeyEventsToInsert = ritJourneyToDbJourneyEvents(journey, journeyId);
 
   assert.deepStrictEqual(
     journeyEventsToInsert.map((evt) => evt.stop_order),
@@ -62,5 +64,41 @@ export const insertNewJourney = async (
   );
 
   await db("journey_event").insert(journeyEventsToInsert);
+  await db("rolling_stock").insert(
+    extractRollingStockEntries(journey, journeyEventsToInsert),
+  );
+
   return Ok(RitResult.INSERTED_NEW);
+};
+
+const extractRollingStockEntries = (
+  journey: JourneySegment,
+  journeyEvents: Partial<JourneyEvent>[],
+): RollingStock[] => {
+  const rollingStockEntries = [];
+
+  for (const journeyEvent of journeyEvents) {
+    const rollingStock = journey.LogischeRitDeelStation.find(
+      (stop) =>
+        stop.Station?.StationCode.toLowerCase() ===
+        journeyEvent.station?.toLowerCase(),
+    )?.MaterieelDeel;
+
+    const preparedRollingStockEntries: RollingStock[] =
+      rollingStock
+        ?.filter((rs) => rs.AchterBlijvenMaterieelDeel === "N")
+        ?.map((rs) => ({
+          journey_id: journeyEvent.journey_id!,
+          journey_event_id: journeyEvent.id!,
+          departure_order: parseInt(rs.MaterieelDeelVolgordeVertrek, 10),
+
+          material_type: rs.MaterieelDeelSoort,
+          material_subtype: rs.MaterieelDeelAanduiding,
+          material_number: rs.MaterieelDeelID,
+        })) ?? [];
+
+    rollingStockEntries.push(...preparedRollingStockEntries);
+  }
+
+  return rollingStockEntries;
 };

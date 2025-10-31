@@ -9,7 +9,7 @@ import type { Stream } from "..";
 import { LOGGER_CATEGORY } from "../utils";
 
 export interface Processor<TMessage extends InfoPlusMessage> {
-  processMessage: (message: TMessage) => Promise<Result<any, string>>;
+  processMessage: (message: TMessage) => Promise<Result<any, string | Error>>;
 }
 
 export type InfoPlusMessage = RitMessage | DasMessage | DvsMessage | PosMessage;
@@ -21,7 +21,7 @@ export class NoopProcessor<TMessage extends InfoPlusMessage>
 
   constructor(private readonly stream: Stream) {}
 
-  processMessage(): Promise<Result<any, string>> {
+  processMessage(): Promise<Result<any, string | Error>> {
     this.logger.warn(`Unhandled message from ${this.stream}`);
     return Promise.resolve(Ok(undefined));
   }

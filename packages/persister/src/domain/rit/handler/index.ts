@@ -1,5 +1,4 @@
 import assert from "assert";
-import { randomUUID } from "crypto";
 
 import type { Knex } from "knex";
 import type { JourneyEvent, RollingStock } from "knex/types/tables";
@@ -8,6 +7,7 @@ import { Err, Ok, Result } from "ts-results-es";
 import { getLogger } from "@logtape/logtape";
 import { parseISO } from "date-fns";
 import { utc } from "@date-fns/utc";
+import uuid from "uuid";
 
 import type { Handler } from "../../../types";
 import { LOGGER_CATEGORY, parseDateString } from "../../../utils";
@@ -58,6 +58,8 @@ const ritJourneyStopToJourneyEvent = (
     .otherwise(() => []);
 
   const toInsert = {
+    id: uuid.v7(),
+
     journey_id: journeyId,
     station: stop.Station.StationCode.toLowerCase(),
 
@@ -136,6 +138,10 @@ export const handler: Handler<RitMessage> = async (
   const lockResult = await lock.acquire();
 
   if (lockResult.isErr()) {
+    logger.error("failed to lock", {
+      trainNumber: msg.TreinNummer,
+      runningOn: msg.TreinDatum,
+    });
     return Err("Failed to lock, try again later");
   }
 
@@ -195,19 +201,9 @@ export const handler: Handler<RitMessage> = async (
         "Train stops at or passes through one station more than once",
       );
 
-      const resultingJourneyEvents = [];
       const resultingRollingStockEntries = [];
 
-      for (const [
-        order,
-        desiredJourneyEvent,
-      ] of desiredJourneyEvents.entries()) {
-        const matching = existingJourneyEvents.find(
-          (event) => event.station === desiredJourneyEvent.station,
-        );
-
-        const newEventId = randomUUID();
-
+      for (const [_, desiredJourneyEvent] of desiredJourneyEvents.entries()) {
         const rollingStock = journey.LogischeRitDeelStation.find(
           (stop) =>
             stop.Station.StationCode.toLowerCase() ===
@@ -218,7 +214,7 @@ export const handler: Handler<RitMessage> = async (
           rollingStock
             ?.filter((stock) => stock.AchterBlijvenMaterieelDeel === "N")
             ?.map((stock) => ({
-              journey_event_id: newEventId,
+              journey_event_id: desiredJourneyEvent.id,
               journey_id: journeyId,
               departure_order: parseInt(
                 stock.MaterieelDeelVolgordeVertrek ?? 1,
@@ -229,28 +225,12 @@ export const handler: Handler<RitMessage> = async (
               material_number: stock.MaterieelDeelID,
             })) ?? [];
 
-        const mergedAttributes = [
-          ...new Set([
-            ...(matching?.attributes ?? []),
-            ...(desiredJourneyEvent.attributes ?? []),
-          ]),
-        ];
-
-        const mergedJourneyEvent: Partial<JourneyEvent> = {
-          ...(matching ? matching : {}),
-          ...desiredJourneyEvent,
-          id: newEventId,
-          stop_order: order,
-          attributes: mergedAttributes.length > 0 ? mergedAttributes : null,
-        };
-
-        resultingJourneyEvents.push(mergedJourneyEvent);
         resultingRollingStockEntries.push(...preparedRollingStockEntries);
       }
 
       assert.deepStrictEqual(
-        resultingJourneyEvents.map((evt) => evt.stop_order),
-        [...new Array(resultingJourneyEvents.length).keys()],
+        desiredJourneyEvents.map((evt) => evt.stop_order),
+        [...new Array(desiredJourneyEvents.length).keys()],
         "updated journey: stop_order not sequential as expected",
       );
 
@@ -280,7 +260,7 @@ export const handler: Handler<RitMessage> = async (
         journeyId,
       });
 
-      await db("journey_event").insert(resultingJourneyEvents);
+      await db("journey_event").insert(desiredJourneyEvents);
       logger.debug("inserted updated journey events", {
         journeyId,
       });

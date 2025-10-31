@@ -17,7 +17,7 @@ import type { InfoPlusMessage, Processor } from ".";
 export type DbHandler<TMessage extends InfoPlusMessage> = (
   db: Knex,
   data: TMessage,
-) => Promise<Result<any, string>>;
+) => Promise<Result<any, string | Error>>;
 
 abstract class DbProcessor<TMessage extends InfoPlusMessage>
   implements Processor<TMessage>
@@ -32,34 +32,28 @@ abstract class DbProcessor<TMessage extends InfoPlusMessage>
     this.logger = getLogger([...LOGGER_CATEGORY, sourceStream]);
   }
 
-  async processMessage(message: TMessage): Promise<Result<any, string>> {
+  async processMessage(
+    message: TMessage,
+  ): Promise<Result<any, string | Error>> {
     const dbTransaction = await this.db.transaction();
 
-    let result: Result<any, string>;
+    let result: Result<any, string | Error>;
     try {
       result = await this.processor(dbTransaction, message);
-      if (result.isErr()) {
-        throw new Error(result.unwrapErr());
-      }
-
       await dbTransaction.commit();
     } catch (e: any) {
       if (!(e instanceof Error)) {
-        result = Err("");
+        result = Err("processing failed, unknown error");
       } else {
-        this.logger.error("processing failed", {
-          stream: this.sourceStream,
-          err: {
-            name: e.name,
-            message: e.message,
-            stack: e.stack,
-            cause: e.cause,
-          },
-        });
-
-        result = Err(e.message);
+        result = Err(e);
       }
+    }
 
+    if (result.isErr()) {
+      this.logger.error("processing failed", {
+        stream: this.sourceStream,
+        err: result.unwrapErr(),
+      });
       await dbTransaction.rollback();
     }
 

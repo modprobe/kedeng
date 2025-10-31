@@ -7,7 +7,6 @@ import type { RedisClientType } from "@redis/client";
 
 import { createRedisClient } from "../../../redis";
 import type { DateISOString } from "../../../types/infoplus";
-import { requireEnv } from "../../../utils";
 
 export const isNewestMessage = async (
   trainNumber: string,
@@ -39,6 +38,7 @@ export const isNewestMessage = async (
   }
 
   if (latest < timestamp.valueOf()) {
+    await updateToNewTimestamp();
     return Ok(undefined);
   }
 
@@ -76,8 +76,7 @@ export class RitProcessingLock {
     private readonly redis: RedisClientType,
     lockValue?: string,
   ) {
-    this.lockValue =
-      lockValue ?? requireEnv("REDIS_LOCK_VALUE") ?? randomUUID();
+    this.lockValue = lockValue ?? process.env?.REDIS_LOCK_VALUE ?? randomUUID();
   }
 
   async isLocked(): Promise<boolean> {

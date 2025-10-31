@@ -15,6 +15,7 @@ import {
 } from "@nats-io/jetstream";
 import { nanos, type NatsConnection } from "@nats-io/nats-core";
 import { getLogger } from "@logtape/logtape";
+import { minutesToMilliseconds, secondsToMilliseconds } from "date-fns";
 
 import { requireEnv } from "./utils";
 
@@ -77,7 +78,13 @@ export const setupConsumer = async (
       deliver_policy: DeliverPolicy.All,
       inactive_threshold: nanos(300_000),
       max_deliver: 10,
-      backoff: [nanos(5_000)],
+      backoff: [
+        secondsToMilliseconds(5),
+        secondsToMilliseconds(30),
+        minutesToMilliseconds(1),
+        minutesToMilliseconds(2),
+        minutesToMilliseconds(5),
+      ].map(nanos),
       replay_policy: ReplayPolicy.Instant,
     });
 

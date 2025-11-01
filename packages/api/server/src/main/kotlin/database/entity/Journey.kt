@@ -14,5 +14,5 @@ class Journey(id: EntityID<UUID>) : UUIDEntity(id) {
     val runningOn by JourneyTable.runningOn
     val attributes by JourneyTable.attributes
 
-    val journeyEvents by JourneyEvent referrersOn JourneyEventTable.journey
+    val journeyEvents by JourneyEvent referrersOn JourneyEventTable.journey orderBy JourneyEventTable.stopOrder
 }

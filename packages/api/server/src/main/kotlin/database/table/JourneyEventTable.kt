@@ -24,5 +24,7 @@ object JourneyEventTable : UUIDTable("journey_event") {
     val departureCancelled = bool("departure_cancelled").nullable()
     val arrivalCancelled = bool("arrival_cancelled").nullable()
 
+    val stopOrder = integer("stop_order")
+
     val attributes = array<String>("attributes").nullable()
 }
